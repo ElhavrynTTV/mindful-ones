@@ -44,9 +44,45 @@ silence inside the Muse app was associated with Muse's embedded viewing
 environment rather than an inherent limitation of the sound generator; the exact
 cause has not been technically proven.
 
+## Custom frequency testing (user-verified, 2026-11-08)
+
+Custom entry works. An above-range value safely clamped to the Studio maximum
+of 2000 Hz and displayed cleanly ("2000 Hz · custom frequency"; diagnostics at
+the time read Audio engine: running · Page: visible · Session: stopped).
+
+Corrected phyphox measurements (analyzer at 16384 samples, ~2.93 Hz resolution,
+same settings as the preset sweep):
+
+| Selected | Measured | Difference |
+|---|---|---|
+| 250 Hz | 249.02 Hz | 0.98 Hz |
+| 500 Hz | 500.98 Hz | 0.98 Hz |
+| 777 Hz | 776.37 Hz | 0.63 Hz |
+
+All three within about 1 Hz of target, consistent with the preset sweep.
+Preliminary acoustic measurements, not laboratory-grade certification.
+
+Superseded attempt: an earlier round of the same three values (257.81 / 492.19 /
+773.44 Hz) was discarded after the tester found the analyzer's sample-size
+setting was wrong; she corrected the setting, re-measured, and crossed the old
+values out. Kept here only as a labeled superseded attempt.
+
+## Error handling (user-verified, 2026-11-08)
+
+Passed: rapid Play/Stop about ten times and preset switching produced no
+stacked tones and no volume jumps; nothing played when it should not have.
+Note: the headphone-disconnect sub-test is not directly equivalent on the
+tester's setup (headphones run through an external audio card), so that
+sub-item is recorded as setup-different — neither passed nor failed.
+
+## Local copy check (user-verified, 2026-11-08)
+
+The exported `index.html` was opened from the tester's own computer
+(D:\Download\mindful-ones-app) in Chrome; all checks passed as before. The
+site runs correctly as a local file with no hosting involved.
+
 ## Still Pending
 
-- Custom frequency verification (e.g. 250, 500, 777 Hz) and invalid-input handling
-- Electronic binaural channel verification (measured left/right output frequencies)
-- Error handling: rapid Play/Stop, preset switching mid-play, Bluetooth
-  interruptions, audio errors, timer recovery
+- Electronic binaural channel verification (machine-measured left/right output
+  frequencies). The by-ear check passed earlier (left/right tones sound
+  slightly different per ear); that is the subjective check, not this one.

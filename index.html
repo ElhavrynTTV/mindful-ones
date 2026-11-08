@@ -655,7 +655,7 @@ footer .fine{color:#a99cd4;font-size:13.5px}
     <div class="status-grid">
       <div class="testbox">
         <h3 style="margin:0 0 6px">✅ Verified by the creator — in-person checks</h3>
-        <p style="color:var(--ink2);font-size:14.5px;margin:0 0 8px">Phase 1 round: <strong>7 of 7</strong> laptop checks passed. V2 round: <strong>9 of 9</strong> laptop checks passed, plus Android foreground checks through the Muse app. V3 round: <strong>3 of 3</strong> Android Chrome background tests passed. Frequency sweep: <strong>10 of 10</strong> presets passed preliminary independent acoustic verification (full table below). Tested in person, November 2026:</p>
+        <p style="color:var(--ink2);font-size:14.5px;margin:0 0 8px">Phase 1 round: <strong>7 of 7</strong> laptop checks passed. V2 round: <strong>9 of 9</strong> laptop checks passed, plus Android foreground checks through the Muse app. V3 round: <strong>3 of 3</strong> Android Chrome background tests passed. Frequency sweep: <strong>10 of 10</strong> presets passed preliminary independent acoustic verification (full table below). Custom frequency round (2026-11-08): entry verified with safe clamping to 2000 Hz, and corrected measurements <strong>3 of 3</strong> within about 1 Hz of target (detail below). Error handling: <strong>passed</strong>, user-verified. Local copy: the exported file opened from the creator's own computer in Chrome passed like before. Tested in person, November 2026:</p>
         <ul class="check-list">
           <li><span class="badge-verified">Passed</span><span><strong>528 Hz preset</strong> — audible, steady tone.</span></li>
           <li><span class="badge-verified">Passed</span><span><strong>Volume slider</strong> — adjusts sound, silent at 0%.</span></li>
@@ -669,15 +669,16 @@ footer .fine{color:#a99cd4;font-size:13.5px}
           <li><span class="badge-verified">Passed</span><span><strong>Android Chrome — pressing Home (V3)</strong> — audio continued playing through headphones while Chrome was in the background.</span></li>
           <li><span class="badge-verified">Passed</span><span><strong>Android Chrome — locking the phone (V3)</strong> — audio continued playing with the screen locked.</span></li>
           <li><span class="badge-verified">Passed</span><span><strong>Android Chrome — timer expiration (V3)</strong> — after the one-minute session expired, playback stopped and remained stopped when returning to the page.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Custom frequency entry</strong> — entering a value above the allowed range safely clamps to the Studio maximum of 2000 Hz, displayed cleanly as “2000 Hz · custom frequency” at 20% volume, with diagnostics reading Audio engine: running · Page: visible · Session: stopped.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Error handling</strong> — rapid Play/Stop about ten times and switching presets during use: no stacked tones, no volume jumps, and nothing played when it should not have.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Local copy in Chrome</strong> — the exported index.html opened from the creator's own computer (D:\Download\mindful-ones-app) in Chrome passed the tests like before; the site runs correctly as a local file.</span></li>
         </ul>
       </div>
       <div class="testbox">
         <h3 style="margin:0 0 6px">Next testing phase — not yet verified</h3>
-        <p style="color:var(--ink2);font-size:14.5px;margin:0 0 8px">Implemented, but <strong>not</strong> claimed as passed until checked independently:</p>
+        <p style="color:var(--ink2);font-size:14.5px;margin:0 0 8px">Implemented, but <strong>not</strong> claimed as passed until checked independently. After the 2026-11-08 update, only one item remains pending:</p>
         <ul class="check-list">
-          <li><span class="badge-pending">Pending</span><span><strong>Custom frequency testing</strong> — entering and verifying custom Hz values in the Frequency Studio.</span></li>
-          <li><span class="badge-pending">Pending</span><span><strong>Binaural channel accuracy</strong> — electronic verification of the actual left/right frequencies, not just that they sound different.</span></li>
-          <li><span class="badge-pending">Pending</span><span><strong>Error handling</strong> — rapid Play/Stop, switching modes mid-play, changing presets while playing, stopping early.</span></li>
+          <li><span class="badge-pending">Pending</span><span><strong>Electronic binaural channel verification</strong> — machine-measured left/right channel frequencies. The creator's by-ear check already passed earlier (left/right tones sound slightly different per ear); that stays recorded as the subjective check, not the electronic one.</span></li>
         </ul>
       </div>
     </div>
@@ -721,6 +722,27 @@ footer .fine{color:#a99cd4;font-size:13.5px}
       </div>
     </div>
     <div class="testbox" style="margin-top:16px">
+      <h3 style="margin:0 0 6px">🎛️ Custom frequency testing — user-verified</h3>
+      <p style="color:var(--ink2);font-size:14.5px;margin:0 0 8px">Reported by the creator on 2026-11-08. Custom frequency entry works: entering a value above the allowed range safely clamps to the Studio maximum of <strong style="color:var(--ink)">2000 Hz</strong>, displayed cleanly as “2000 Hz · custom frequency” at 20% volume, with the diagnostics reading <strong style="color:var(--ink)">Audio engine: running · Page: visible · Session: stopped</strong>.</p>
+      <p style="margin:0 0 10px"><span class="badge-info">Preliminary</span> <strong>Corrected phyphox Audio Spectrum measurements: 3 of 3 custom frequencies within about 1 Hz of target</strong>, consistent with the preset sweep above.</p>
+      <table style="width:100%;border-collapse:collapse;font-size:15px" aria-label="Selected custom frequency versus corrected measured frequency">
+        <thead>
+          <tr>
+            <th scope="col" style="text-align:left;padding:7px 8px;border-bottom:2px solid var(--line2);color:var(--ink)">Selected</th>
+            <th scope="col" style="text-align:left;padding:7px 8px;border-bottom:2px solid var(--line2);color:var(--ink)">Measured (corrected)</th>
+            <th scope="col" style="text-align:left;padding:7px 8px;border-bottom:2px solid var(--line2);color:var(--ink)">Difference</th>
+          </tr>
+        </thead>
+        <tbody style="color:var(--ink2)">
+          <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line)"><strong style="color:var(--ink)">250 Hz</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">249.02 Hz</td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">−0.98 Hz</td></tr>
+          <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line)"><strong style="color:var(--ink)">500 Hz</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">500.98 Hz</td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">+0.98 Hz</td></tr>
+          <tr><td style="padding:6px 8px"><strong style="color:var(--ink)">777 Hz</strong></td><td style="padding:6px 8px">776.37 Hz</td><td style="padding:6px 8px">−0.63 Hz</td></tr>
+        </tbody>
+      </table>
+      <p style="color:var(--ink2);font-size:14.5px;margin:10px 0 0">The analyzer was set to 16384 samples, approximately 2.93 Hz resolution — the same settings as the preset sweep. These are <strong style="color:var(--ink)">preliminary acoustic measurements, not laboratory-grade certification</strong>.</p>
+      <p style="color:var(--ink2);font-size:14.5px;margin:10px 0 0"><span class="badge-info">Superseded</span> An earlier measurement attempt of the same three values — <s>250 Hz → 257.81 Hz</s>, <s>500 Hz → 492.19 Hz</s>, <s>777 Hz → 773.44 Hz</s> — was <strong style="color:var(--ink)">superseded, not deleted</strong>: the creator discovered the analyzer's sample-size setting was wrong, fixed the setting, re-measured, and crossed the old values out. The corrected readings above are the official ones.</p>
+    </div>
+    <div class="testbox" style="margin-top:16px">
       <h3 style="margin:0 0 6px">📱 Android Chrome background tests — user-verified</h3>
       <p style="color:var(--ink2);font-size:14.5px;margin:0 0 8px">Tested in person on Android in Google Chrome, outside the Muse app, on the V3 build: <strong>3 of 3 passed</strong>. These are user-verified results. Together they <strong>strongly suggest</strong> the earlier background-audio limitation was associated with Muse's embedded viewing environment rather than an inherent limitation of the sound generator, although the exact cause has not been technically proven. No individual diagnostics-panel readings were reported for these tests, so none are recorded here.</p>
       <ul class="check-list">
@@ -728,6 +750,25 @@ footer .fine{color:#a99cd4;font-size:13.5px}
         <li><span class="badge-verified">Passed</span><span><strong>Locking the phone</strong> — audio continued playing with the screen locked.</span></li>
         <li><span class="badge-verified">Passed</span><span><strong>Timer expiration</strong> — after the one-minute session expired, playback stopped and remained stopped when returning to the page.</span></li>
       </ul>
+    </div>
+    <div class="status-grid" style="margin-top:16px">
+      <div class="testbox">
+        <h3 style="margin:0 0 6px">🛡️ Error handling — passed, user-verified</h3>
+        <p style="color:var(--ink2);font-size:14.5px;margin:0 0 8px">Reported by the creator on 2026-11-08:</p>
+        <ul class="check-list">
+          <li><span class="badge-verified">Passed</span><span><strong>Rapid Play/Stop</strong> — tapped about ten times: no stacked tones, no problems.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Switching presets during use</strong> — no stacked tones, no volume jumps.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Nothing played when it should not have.</strong></span></li>
+          <li><span class="badge-info">Setup-different</span><span><strong>Headphone-disconnect sub-test</strong> — not directly equivalent on the creator's setup, because her headphones run through an external audio card. Recorded as setup-different — not counted as passed or failed.</span></li>
+        </ul>
+      </div>
+      <div class="testbox">
+        <h3 style="margin:0 0 6px">💻 Local copy check — user-verified</h3>
+        <p style="color:var(--ink2);font-size:14.5px;margin:0 0 8px">The creator opened the exported index.html from her own computer (<strong style="color:var(--ink)">D:\Download\mindful-ones-app</strong>) in Chrome and reported everything passed the tests like before — the site runs correctly as a local file, with no internet or Muse connection needed.</p>
+        <ul class="check-list">
+          <li><span class="badge-verified">Passed</span><span><strong>Local file playback</strong> — the full site works opened directly from the computer's own drive in Chrome.</span></li>
+        </ul>
+      </div>
     </div>
     <div class="testbox" style="margin-top:16px">
       <h3 style="margin:0 0 8px">Implementation notes that can affect those tests</h3>
@@ -749,7 +790,7 @@ footer .fine{color:#a99cd4;font-size:13.5px}
     <p class="principle">Knowledge should be accessible. Wellness should not depend on wealth.</p>
     <p>Mindful Ones is free — no account, no subscription, no advertising in this build. Sound is generated locally on your own device with your browser's audio engine.</p>
     <p style="margin:10px 0"><a href="#safety" style="color:#ffe9a8;font-weight:800">Sound Safety &amp; Responsible Use</a> · <a href="#studio" style="color:#ddd2fb">Frequency Studio</a> · <a href="#evidence" style="color:#ddd2fb">Research &amp; Evidence</a></p>
-    <p class="fine">Mindful Ones is for education, relaxation, and spiritual exploration. It does not diagnose, treat, cure, or replace care from qualified professionals, and it does not promise that any frequency heals organs, repairs DNA, or cures disease. Phase 1 baseline preserved · Sanctuary, Frequency Studio, Body Map, Chakra Library, Evidence system, Sound Safety — with Astrology &amp; BodyGraph designed in for Phase 2. Testing status is labeled honestly on this page: creator-verified checks are marked passed — including the 3 of 3 Android Chrome background tests — all ten frequency preset measurements are recorded as preliminary acoustic verification (10 of 10 within the analyzer's resolution, not laboratory-grade certification), the background behavior seen inside Muse is documented as observed, and custom frequency testing, electronic binaural verification, and error-handling tests are still marked pending — not passed.</p>
+    <p class="fine">Mindful Ones is for education, relaxation, and spiritual exploration. It does not diagnose, treat, cure, or replace care from qualified professionals, and it does not promise that any frequency heals organs, repairs DNA, or cures disease. Phase 1 baseline preserved · Sanctuary, Frequency Studio, Body Map, Chakra Library, Evidence system, Sound Safety — with Astrology &amp; BodyGraph designed in for Phase 2. Testing status is labeled honestly on this page: creator-verified checks are marked passed — including the 3 of 3 Android Chrome background tests — all ten frequency preset measurements are recorded as preliminary acoustic verification (10 of 10 within the analyzer's resolution, not laboratory-grade certification), the background behavior seen inside Muse is documented as observed, custom frequency testing and error handling are now recorded as passed — user-verified (custom measurements preliminary, 3 of 3 within about 1 Hz), and electronic binaural channel verification is the only item still marked pending — not passed.</p>
   </div>
 </footer>
 

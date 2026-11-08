@@ -46,10 +46,11 @@ then open http://localhost:8000 in your browser or on your phone on the same net
 ## Testing status (honest labels only)
 
 User-performed checks that have **passed** are recorded in `docs/testing-record.md`
-and in the Testing Status section of the site itself. Anything not yet verified is
-marked **Pending** there — including custom frequency testing, electronic binaural
-channel verification, and error-handling tests. Preliminary phyphox acoustic
-measurements are labeled preliminary, not laboratory-grade certification.
+and in the Testing Status section of the site itself. Custom frequency testing
+(corrected phyphox readings within ~1 Hz) and error-handling tests have passed,
+user-verified. The one item still marked **Pending** is electronic binaural
+channel verification. Preliminary phyphox acoustic measurements are labeled
+preliminary, not laboratory-grade certification.
 
 ## Project layout
 
