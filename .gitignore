@@ -1,0 +1,26 @@
+# Secrets — never commit these
+.env
+.env.*
+*.key
+*.pem
+*secret*
+*credentials*
+*password*
+
+# Personal / private data
+*birth*
+*private*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Dependencies and build output (for future modular development)
+node_modules/
+dist/
+
+# Muse snapshot sync records
+*.muse-github-snapshot-sync.json
+*.muse-github-snapshot-sync.json.tmp-*

@@ -1,0 +1,1102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Mindful Ones — Phase 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f1fa; --bg2:#ece7f7; --surface:#ffffff; --surface2:#f7f4fd;
+  --ink:#241640; --ink2:#4c4270; --muted:#6f6690;
+  --purple:#5b3a9e; --purple-deep:#2a1650; --purple-mid:#43297a;
+  --teal:#0e7c74; --teal-bright:#14a398; --green:#3d8b5f;
+  --gold:#c99a2e; --line:#ddd3f0; --line2:#cabdE8;
+  --chip-s:#e3f2e7; --chip-s-ink:#256b3f;
+  --chip-i:#fdf0d5; --chip-i-ink:#8a5c00;
+  --chip-t:#ece4fb; --chip-t-ink:#4b2a8a;
+  --radius:18px; --shadow:0 10px 30px rgba(42,22,80,.10);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#140b28; --bg2:#1a0f36; --surface:#211445; --surface2:#281a52;
+    --ink:#f1ebff; --ink2:#cfc3ee; --muted:#a99cd4;
+    --purple:#a88ae0; --teal:#2dd4bf; --teal-bright:#2dd4bf; --green:#6fce93;
+    --gold:#e3b959; --line:#3b2a6b; --line2:#4a3790;
+    --chip-s:#173d28; --chip-s-ink:#8fe0ab;
+    --chip-i:#4a3808; --chip-i-ink:#ffd97a;
+    --chip-t:#33205f; --chip-t-ink:#cdbcf7;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+body{margin:0;font-family:"Nunito",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:17px}
+h1,h2,h3,.display{font-family:"Marcellus",serif;font-weight:400;line-height:1.2;color:var(--ink)}
+a{color:var(--teal)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:56px 0 8px}
+.sec-head{max-width:720px;margin-bottom:22px}
+.sec-head h2{font-size:34px;margin:0 0 8px}
+.sec-head p{color:var(--ink2);margin:0;font-size:17.5px}
+
+/* NAV */
+nav.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:8px;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+.brand{font-family:"Marcellus",serif;font-size:20px;color:var(--ink);margin-right:auto;display:flex;align-items:center;gap:9px;text-decoration:none}
+.brand .moon{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--purple-deep),var(--purple) 55%,var(--teal));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:15px}
+nav.top a.nl{color:var(--ink2);text-decoration:none;font-weight:700;font-size:14.5px;padding:7px 11px;border-radius:999px}
+nav.top a.nl:hover{background:var(--surface2);color:var(--ink)}
+.free-pill{font-size:12.5px;font-weight:800;background:var(--chip-s);color:var(--chip-s-ink);padding:5px 10px;border-radius:999px}
+
+/* HERO */
+.hero{background:radial-gradient(1000px 500px at 85% -10%, rgba(20,163,152,.35), transparent 60%),radial-gradient(900px 600px at 10% 0%, rgba(124,84,214,.5), transparent 55%),linear-gradient(160deg,#1c0d3d 0%,#2a1650 48%,#123f3a 130%);color:#f3efff;border-radius:0 0 34px 34px;position:relative;overflow:hidden}
+.hero .wrap{padding:58px 20px 52px;position:relative;z-index:2}
+.stars{position:absolute;inset:0;z-index:1;pointer-events:none}
+@media(max-width:640px){ .stars .moonshape{display:none} }
+.hero h1{color:#fff;font-size:clamp(38px,6vw,60px);margin:0 0 14px;max-width:700px}
+.hero p.lede{font-size:19px;color:#ddd2fb;max-width:640px;margin:0 0 10px}
+.hero .principle{font-family:"Marcellus",serif;font-size:21px;color:#ffe9a8;margin:22px 0 26px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:inherit;font-weight:800;font-size:16px;padding:13px 22px;border-radius:999px;text-decoration:none;transition:transform .15s ease, box-shadow .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:#e9b949;color:#2a1650}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35)}
+.btn-purple{background:var(--purple);color:#fff}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-soft{background:var(--surface2);color:var(--ink);border:1px solid var(--line)}
+.hero-note{margin-top:18px;font-size:14px;color:#bdb0e8}
+
+/* Feeling check */
+.feel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-top:-6px}
+.feel h3{margin:0 0 4px;font-size:22px}
+.feel p{margin:0 0 14px;color:var(--ink2)}
+.feel-row{display:flex;flex-wrap:wrap;gap:9px}
+.feel-btn{border:1.5px solid var(--line2);background:var(--surface2);color:var(--ink);font-family:inherit;font-weight:700;font-size:15.5px;padding:9px 16px;border-radius:999px;cursor:pointer}
+.feel-btn[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.feel-out{margin-top:16px;background:var(--surface2);border-radius:12px;padding:14px 16px;display:none}
+.feel-out.show{display:block}
+.feel-out strong{color:var(--purple)}
+@media (prefers-color-scheme: dark){ .feel-out strong{color:var(--purple)} }
+
+/* Section cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 6px;font-size:21px}
+.card p{margin:0 0 12px;color:var(--ink2);font-size:15.5px}
+.card .go{font-weight:800;text-decoration:none}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:4px 9px;border-radius:999px;margin-bottom:10px}
+.tag-live{background:var(--chip-s);color:var(--chip-s-ink)}
+.tag-soon{background:var(--chip-i);color:var(--chip-i-ink)}
+.ic{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.ic svg{width:24px;height:24px}
+
+/* Evidence chips */
+.ev{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.ev::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.ev-s{background:var(--chip-s);color:var(--chip-s-ink)}
+.ev-i{background:var(--chip-i);color:var(--chip-i-ink)}
+.ev-t{background:var(--chip-t);color:var(--chip-t-ink)}
+
+/* FREQUENCY STUDIO */
+.studio{background:linear-gradient(170deg,var(--purple-deep),var(--purple-mid) 60%,#173f3a);border-radius:26px;padding:26px;color:#efe9ff;box-shadow:var(--shadow)}
+.studio h3{color:#fff;font-size:24px;margin:0 0 2px}
+.studio .sub{color:#cdbcf7;margin:0 0 18px;font-size:15px}
+.studio label{font-weight:800;font-size:13.5px;letter-spacing:.03em;text-transform:uppercase;color:#cdbcf7;display:block;margin:18px 0 8px}
+.preset-row{display:flex;flex-wrap:wrap;gap:8px}
+.preset{border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.07);color:#fff;font-family:inherit;font-weight:700;font-size:14.5px;padding:9px 13px;border-radius:12px;cursor:pointer;text-align:left;line-height:1.35}
+.preset small{display:block;font-weight:600;color:#cdbcf7;font-size:12px}
+.preset[aria-pressed="true"]{background:#e9b949;border-color:#e9b949;color:#2a1650}
+.preset[aria-pressed="true"] small{color:#5c4303}
+.seg{display:inline-flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:4px;gap:4px;flex-wrap:wrap}
+.seg button{border:none;background:transparent;color:#e6ddff;font-family:inherit;font-weight:800;font-size:14.5px;padding:8px 16px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:#fff;color:#2a1650}
+.studio input[type=range]{width:100%;accent-color:#e9b949;height:32px}
+.studio input[type=number]{width:110px;padding:9px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;font-family:inherit;font-size:16px;font-weight:700}
+.freq-read{font-family:"Marcellus",serif;font-size:30px;color:#fff}
+.freq-read small{font-size:15px;color:#cdbcf7;font-family:"Nunito",sans-serif}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px}
+@media(max-width:640px){.cols{grid-template-columns:1fr}}
+.playrow{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.play-btn{background:#e9b949;color:#2a1650;font-size:18px;padding:15px 34px}
+.stop-btn{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.4)}
+.nowplaying{margin-top:16px;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:14px 16px;font-size:15px;display:none}
+.nowplaying.show{display:block}
+.nowplaying b{color:#ffe9a8}
+.wave-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#4ade80;margin-right:8px;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.timer-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.timer-btn{border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.07);color:#fff;font-family:inherit;font-weight:700;font-size:14.5px;padding:8px 14px;border-radius:999px;cursor:pointer}
+.timer-btn[aria-pressed="true"]{background:#14a398;border-color:#14a398;color:#fff}
+.countdown{font-family:"Marcellus",serif;font-size:22px;color:#ffe9a8;min-width:86px}
+.headnote{background:rgba(233,185,73,.14);border:1px solid rgba(233,185,73,.45);color:#ffe9a8;border-radius:12px;padding:11px 14px;font-size:14.5px;margin-top:14px;display:none}
+.headnote.show{display:block}
+.diag{margin-top:14px;background:rgba(0,0,0,.22);border:1px dashed rgba(255,255,255,.28);border-radius:14px;padding:13px 16px;font-size:14px;color:#ddd2fb}
+.diag b{color:#fff}
+.diag .dstate{font-weight:800;color:#ffe9a8}
+
+/* BODY MAP */
+.body-layout{display:grid;grid-template-columns:320px 1fr;gap:20px;align-items:start}
+@media(max-width:760px){.body-layout{grid-template-columns:1fr}}
+.body-fig{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;text-align:center}
+.body-fig svg{max-width:220px;width:100%;height:auto}
+.region{cursor:pointer;fill:var(--purple);opacity:.28;stroke:var(--purple);stroke-width:1.5;transition:opacity .15s}
+.region:hover{opacity:.55}
+.region.sel{opacity:.9;fill:var(--teal)}
+.region:focus{outline:none;opacity:.7}
+.fig-note{font-size:13.5px;color:var(--muted);margin-top:8px}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+.detail h3{margin:0 0 2px;font-size:26px}
+.detail .chakra-line{color:var(--ink2);margin:0 0 14px;font-size:15px}
+.detail h4{margin:18px 0 5px;font-size:16.5px;font-family:"Nunito",sans-serif;font-weight:800}
+.detail p{margin:0;color:var(--ink2)}
+.detail .evrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+
+/* CHAKRAS */
+.chakra-card{border-top:6px solid var(--cc,#888)}
+.chakra-card .dotrow{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.cdot{width:26px;height:26px;border-radius:50%;background:var(--cc);flex:none;box-shadow:inset 0 0 0 3px rgba(255,255,255,.35)}
+.chakra-card h3{margin:0;font-size:20px}
+.chakra-card .sans{color:var(--muted);font-size:13.5px;font-weight:700}
+.chakra-card dl{margin:10px 0 0;font-size:15px}
+.chakra-card dt{font-weight:800;margin-top:9px}
+.chakra-card dd{margin:0;color:var(--ink2)}
+.chakra-card .playtone{margin-top:14px}
+
+/* EVIDENCE */
+.ev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.ev-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.ev-card h3{margin:10px 0 6px;font-size:20px}
+.ev-card p{margin:0;color:var(--ink2);font-size:15.5px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:700px){.duo{grid-template-columns:1fr}}
+.duo .card h3{font-size:19px}
+
+/* FUTURE SECTIONS */
+.future{background:var(--surface);border:1.5px dashed var(--line2);border-radius:26px;padding:26px;box-shadow:var(--shadow)}
+.future h3{font-size:25px;margin:0 0 6px}
+.future p{color:var(--ink2)}
+.mockrow{display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:center}
+@media(max-width:640px){.mockrow{grid-template-columns:1fr}}
+.future ul{margin:8px 0 0;padding-left:20px;color:var(--ink2)}
+.future li{margin:4px 0}
+.disabled-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:14px}
+.disabled-form label{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);display:block}
+.disabled-form input,.disabled-form select{width:100%;margin-top:5px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--surface2);color:var(--muted);font-family:inherit;font-size:15px}
+
+footer{margin-top:64px;background:var(--purple-deep);color:#ddd2fb;border-radius:34px 34px 0 0}
+footer .wrap{padding:38px 20px 44px}
+footer .principle{font-family:"Marcellus",serif;font-size:22px;color:#ffe9a8;margin:0 0 10px}
+footer p{margin:0 0 8px;font-size:15px;max-width:680px}
+footer .fine{color:#a99cd4;font-size:13.5px}
+.testbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.testbox li{margin:7px 0;color:var(--ink2)}
+.testbox strong{color:var(--ink)}
+.safety-banner{background:#fff7d6;border:1px solid #e3c86a;color:#5c4303;border-radius:14px;padding:14px 16px;font-size:15px;margin-top:16px}
+@media (prefers-color-scheme: dark){ .safety-banner{background:#3a2f08;color:#ffe9a8;border-color:#6b5a14} }
+.safety-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.safety-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.safety-card h3{margin:0 0 6px;font-size:19px}
+.safety-card p,.safety-card li{color:var(--ink2);font-size:15.5px}
+.safety-card ul{margin:6px 0 0;padding-left:18px}
+.disclaimer-box{background:var(--surface2);border:1.5px solid var(--purple);border-radius:var(--radius);padding:20px 22px;margin-top:16px}
+.disclaimer-box h3{margin:0 0 6px}
+.status-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.status-grid{grid-template-columns:1fr}}
+.check-list{list-style:none;margin:0;padding:0}
+.check-list li{padding:9px 0;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:flex-start}
+.check-list li:last-child{border-bottom:none}
+.badge-verified{background:var(--chip-s);color:var(--chip-s-ink);font-size:11.5px;font-weight:800;padding:3px 8px;border-radius:999px;white-space:nowrap;margin-top:2px}
+.badge-pending{background:var(--chip-i);color:var(--chip-i-ink);font-size:11.5px;font-weight:800;padding:3px 8px;border-radius:999px;white-space:nowrap;margin-top:2px}
+.badge-info{background:var(--chip-t);color:var(--chip-t-ink);font-size:11.5px;font-weight:800;padding:3px 8px;border-radius:999px;white-space:nowrap;margin-top:2px}
+</style>
+</head>
+<body>
+
+<nav class="top" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="moon">☾</span> Mindful Ones</a>
+    <a class="nl" href="#studio">Frequency Studio</a>
+    <a class="nl" href="#safety">Sound Safety</a>
+    <a class="nl" href="#body">Body Map</a>
+    <a class="nl" href="#chakras">Chakras</a>
+    <a class="nl" href="#evidence">Evidence</a>
+    <a class="nl" href="#astrology">Astrology</a>
+    <a class="nl" href="#bodygraph">BodyGraph</a>
+    <span class="free-pill">Free · No account · No ads</span>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="stars" width="100%" height="100%" aria-hidden="true">
+    <g fill="#ffffff">
+      <circle cx="6%" cy="18%" r="1.6" opacity=".8"/><circle cx="14%" cy="62%" r="1.2" opacity=".5"/>
+      <circle cx="24%" cy="26%" r="1" opacity=".6"/><circle cx="38%" cy="12%" r="1.5" opacity=".7"/>
+      <circle cx="52%" cy="30%" r="1" opacity=".45"/><circle cx="63%" cy="14%" r="1.7" opacity=".85"/>
+      <circle cx="74%" cy="40%" r="1.1" opacity=".5"/><circle cx="84%" cy="20%" r="1.4" opacity=".7"/>
+      <circle cx="92%" cy="55%" r="1.2" opacity=".55"/><circle cx="46%" cy="66%" r="1" opacity=".4"/>
+      <circle cx="70%" cy="72%" r="1.3" opacity=".5"/><circle cx="30%" cy="78%" r="1.1" opacity=".45"/>
+      <path class="moonshape" d="M88 30 a26 26 0 1 0 18 44 a21 21 0 1 1 -18 -44z" fill="#ffe9a8" opacity=".9" transform="translate(6,-4)"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <h1>Your Sanctuary</h1>
+    <p class="lede">A free place to explore sound, your body, and the traditions that have helped people feel at home in themselves — with the science shown honestly, right beside the tradition. You never have to pick a side to explore the other.</p>
+    <p class="principle">Knowledge should be accessible. Wellness should not depend on wealth.</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#studio">🎧 Open the Frequency Studio</a>
+      <a class="btn btn-ghost" href="#body">Explore the Body Map</a>
+    </div>
+    <p class="hero-note">Phase 1 is live below: the sound generator, body map, and chakra library all work right here in your browser. Astrology and Human Design are designed in and arrive in a later phase.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- FEELING CHECK -->
+  <section aria-label="How are you feeling" style="padding-top:34px">
+    <div class="feel">
+      <h3>How are you feeling today?</h3>
+      <p>Pick what’s closest. This only suggests a place to explore — it isn’t an assessment, and nothing is saved or sent anywhere.</p>
+      <div class="feel-row" id="feelRow">
+        <button class="feel-btn" data-feel="calm" aria-pressed="false">🌿 Calm</button>
+        <button class="feel-btn" data-feel="anxious" aria-pressed="false">🌧️ Anxious</button>
+        <button class="feel-btn" data-feel="tired" aria-pressed="false">🌙 Tired</button>
+        <button class="feel-btn" data-feel="curious" aria-pressed="false">✨ Curious</button>
+        <button class="feel-btn" data-feel="stressed" aria-pressed="false">🌊 Stressed</button>
+        <button class="feel-btn" data-feel="reflective" aria-pressed="false">🔮 Reflective</button>
+      </div>
+      <div class="feel-out" id="feelOut" role="status"></div>
+    </div>
+  </section>
+
+  <!-- EXPLORE -->
+  <section aria-label="Explore the sanctuary">
+    <div class="sec-head">
+      <h2>Explore at your own pace</h2>
+      <p>Four areas are open now. Two more are already designed into the Sanctuary and open in later phases — nothing here will ever need an account or a subscription.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="ic" style="background:#ece4fb"><svg viewBox="0 0 24 24" fill="none" stroke="#5b3a9e" stroke-width="2" stroke-linecap="round"><path d="M3 12h3l2.5-6 3 12 2.5-6h7"/></svg></div>
+        <span class="tag tag-live">Open now</span>
+        <h3>Frequency Studio</h3>
+        <p>A real tone generator — 432 Hz, 528 Hz, the full Solfeggio set, and true binaural beats, with volume and a session timer.</p>
+        <a class="go" href="#studio">Start listening →</a>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:#dcf2ec"><svg viewBox="0 0 24 24" fill="none" stroke="#0e7c74" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="2.4"/><path d="M12 8v6M8 10.5h8M9.5 21l2.5-6 2.5 6"/></svg></div>
+        <span class="tag tag-live">Open now</span>
+        <h3>Body &amp; Wellness Map</h3>
+        <p>Tap a region of the body to learn what it does, a gentle wellness practice, and its traditional chakra association.</p>
+        <a class="go" href="#body">Open the map →</a>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:#e3f2e7"><svg viewBox="0 0 24 24" fill="none" stroke="#3d8b5f" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></div>
+        <span class="tag tag-live">Open now</span>
+        <h3>Chakra Library</h3>
+        <p>All seven main chakras — traditional meanings, colors, everyday practices, and a “play its tone” button for each one.</p>
+        <a class="go" href="#chakras">Browse the library →</a>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:#fdf0d5"><svg viewBox="0 0 24 24" fill="none" stroke="#8a5c00" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></div>
+        <span class="tag tag-live">Open now</span>
+        <h3>Research &amp; Evidence</h3>
+        <p>How we label every claim on this site: what science supports, what’s still being studied, and what comes from spiritual tradition.</p>
+        <a class="go" href="#evidence">See how we label →</a>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:#ece4fb"><svg viewBox="0 0 24 24" fill="none" stroke="#5b3a9e" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1.6" fill="#5b3a9e"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+        <span class="tag tag-soon">Phase 2 · Designed in</span>
+        <h3>Astrology</h3>
+        <p>Western and Vedic natal charts, moon phases, and transits. The room is built — the chart calculations move in next phase.</p>
+        <a class="go" href="#astrology">Preview the design →</a>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:#dcf2ec"><svg viewBox="0 0 24 24" fill="none" stroke="#0e7c74" stroke-width="2" stroke-linecap="round"><path d="M12 3l7 9-7 9-7-9z"/><path d="M5 12h14"/></svg></div>
+        <span class="tag tag-soon">Phase 2 · Designed in</span>
+        <h3>Human Design BodyGraph</h3>
+        <p>Your Type, Strategy, Authority, Profile, and centers — kept separate from the anatomy map, because they are different systems.</p>
+        <a class="go" href="#bodygraph">Preview the design →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREQUENCY STUDIO -->
+  <section id="studio" aria-label="Frequency Studio">
+    <div class="sec-head">
+      <h2>Frequency Studio</h2>
+      <p>These tones are generated live in your browser at exactly the frequency shown — no recordings, no streaming. A frequency being measurable in Hz is science; what a tradition says it means is labeled as tradition, here and everywhere on this site.</p>
+    </div>
+
+    <div class="studio">
+      <h3>🎧 Tone Generator</h3>
+      <p class="sub">Start at a low volume. If a tone ever feels uncomfortable, lower it or stop — listening should always feel gentle. The player starts conservatively, fades in and out smoothly, and never stacks tones on top of each other. <a href="#safety" style="color:#ffe9a8;font-weight:800">Read Sound Safety &amp; Responsible Use →</a></p>
+      <div class="safety-banner" role="note"><strong>Listen safely:</strong> Begin low, take breaks, and stop if you notice discomfort, ringing, dizziness, or headache. No slider percentage can guarantee a safe level — actual loudness depends on your device, headphones, and system volume. See the <a href="#safety">full safety section</a> before a longer session.</div>
+
+      <label>Mode</label>
+      <div class="seg" role="group" aria-label="Listening mode">
+        <button id="modeSingle" aria-pressed="true">Single tone</button>
+        <button id="modeBinaural" aria-pressed="false">Binaural beats</button>
+      </div>
+      <div class="headnote" id="headNote">🎧 <strong>Headphones needed:</strong> binaural mode sends a <em>different</em> tone to each ear — your brain perceives the difference between them as a gentle pulsing beat. On speakers, the two tones just blend into one.</div>
+
+      <label>Solfeggio &amp; popular presets — tap one, then press Play</label>
+      <p style="font-size:13.5px;color:#cdbcf7;margin:-4px 0 10px">Pairings between a Solfeggio tone and a body part, theme, or chakra are <strong style="color:#fff">modern spiritual associations</strong> — meaningful in contemporary practice, not scientifically established treatments and not presented here as universally ancient teachings.</p>
+      <div class="preset-row" id="presetRow"></div>
+
+      <div class="cols">
+        <div>
+          <label for="freqRange"><span id="freqLabel">Frequency</span></label>
+          <div class="freq-read"><span id="freqVal">528</span> Hz <small id="freqName">· Transformation tone</small></div>
+          <input type="range" id="freqRange" min="60" max="1000" step="1" value="528">
+          <div style="display:flex;gap:10px;align-items:center;margin-top:6px">
+            <span style="font-size:14px;color:#cdbcf7">Exact Hz:</span>
+            <input type="number" id="freqNum" min="20" max="2000" step="1" value="528">
+          </div>
+        </div>
+        <div id="beatCol" style="display:none">
+          <label for="beatRange">Beat frequency (the difference between your ears)</label>
+          <div class="freq-read"><span id="beatVal">10</span> Hz <small id="beatName">· Alpha — relaxed focus</small></div>
+          <input type="range" id="beatRange" min="1" max="40" step="0.5" value="10">
+          <div class="preset-row" id="beatRow" style="margin-top:6px"></div>
+        </div>
+        <div>
+          <label for="volRange">Volume — <span id="volVal">20</span>%</label>
+          <input type="range" id="volRange" min="0" max="100" step="1" value="20" aria-describedby="volHelp">
+          <p id="volHelp" style="font-size:13px;color:#cdbcf7;margin:2px 0 0">Starts at a conservative 20% with a gentle fade-in. This percentage is not a guaranteed safe level — your device and headphones decide the real loudness, so always start low and adjust to comfort.</p>
+          <label for="waveSel">Tone shape</label>
+          <div class="seg" id="waveSeg" role="group" aria-label="Tone shape">
+            <button data-wave="sine" aria-pressed="true">Sine · soft</button>
+            <button data-wave="triangle" aria-pressed="false">Triangle · warm</button>
+          </div>
+        </div>
+      </div>
+
+      <label>Session timer — playback stops on its own when the timer ends</label>
+      <div class="timer-row" id="timerRow">
+        <button class="timer-btn" data-min="0" aria-pressed="true">No timer</button>
+        <button class="timer-btn" data-min="1" aria-pressed="false">1 min</button>
+        <button class="timer-btn" data-min="5" aria-pressed="false">5 min</button>
+        <button class="timer-btn" data-min="10" aria-pressed="false">10 min</button>
+        <button class="timer-btn" data-min="15" aria-pressed="false">15 min</button>
+        <button class="timer-btn" data-min="30" aria-pressed="false">30 min</button>
+        <span class="countdown" id="countdown" aria-live="polite"></span>
+      </div>
+
+      <div class="playrow">
+        <button class="btn play-btn" id="playBtn">▶&nbsp; Play tone</button>
+        <button class="btn stop-btn" id="stopBtn">■&nbsp; Stop</button>
+      </div>
+      <div class="nowplaying" id="nowPlaying" role="status"></div>
+
+      <div class="diag" id="diagBox" aria-label="Playback diagnostics">
+        <div>🔎 <b>Playback diagnostics</b> <span style="color:#a99cd4">— display only, for testing. It reports what the browser is doing; it never changes playback.</span></div>
+        <div style="margin-top:6px">Audio engine: <span class="dstate" id="diagState">not started yet</span> · Page: <span class="dstate" id="diagVis">visible</span> · Session: <span class="dstate" id="diagSession">stopped</span></div>
+        <p style="margin:8px 0 0">If the audio engine shows <b>suspended</b> after you switch apps or lock the screen, that is your browser or phone pausing web audio in the background — the session itself has not been cancelled. The session timer keeps counting down in real time while suspended, and the tone still ends at its scheduled time. Some browsers show <b>interrupted</b> when a phone call or a Bluetooth change takes over the audio. When you return to this page, the engine normally returns to <b>running</b> on its own. Watching this readout while you test is the easiest way to tell a browser restriction apart from a problem in the player itself.</p>
+      </div>
+    </div>
+
+    <div class="duo">
+      <div class="card">
+        <h3>What’s actually happening</h3>
+        <p>Your browser’s audio engine creates a pure wave oscillating at the exact rate shown — 528 times per second for 528 Hz. That part is plain physics, and you can verify it with any free frequency-analyzer app held near your speaker.</p>
+        <p style="margin-top:8px"><span class="ev ev-s">Supported</span> &nbsp;Sound and music can help many people relax, and music-based therapies have research support for stress and some symptoms.</p>
+      </div>
+      <div class="card">
+        <h3>What tradition says</h3>
+        <p>Solfeggio frequencies come from a tradition linking specific tones to healing themes — 528 Hz with transformation, 396 Hz with releasing fear, and so on. Those meanings are meaningful to many people, and you’re welcome to explore them here.</p>
+        <p style="margin-top:8px"><span class="ev ev-t">Tradition</span> &nbsp;<span class="ev ev-i">Still being studied</span> &nbsp;Clinical evidence that one specific audible Hz heals a specific organ is limited — we won’t claim otherwise.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOUND SAFETY & RESPONSIBLE USE -->
+  <section id="safety" aria-label="Sound Safety and Responsible Use">
+    <div class="sec-head">
+      <h2>Sound Safety &amp; Responsible Use</h2>
+      <p>Listening should feel gentle and be easy to stop. This section explains how to listen safely, what this site can and cannot do, and how we keep science and tradition honestly labeled.</p>
+    </div>
+
+    <div class="safety-grid">
+      <div class="safety-card">
+        <h3>🦻 Hearing protection</h3>
+        <ul>
+          <li>Always begin at a low volume and increase slowly only if it stays comfortable.</li>
+          <li>Avoid prolonged listening at high volume, and take regular breaks.</li>
+          <li>Stop listening and rest your ears if you notice discomfort, pain, ringing (tinnitus), muffled hearing, dizziness, or headache.</li>
+          <li>If ringing or hearing changes persist, seek advice from a qualified hearing professional.</li>
+        </ul>
+      </div>
+      <div class="safety-card">
+        <h3>🔉 A safe starting volume</h3>
+        <p>The generator now starts at a conservative <strong>20%</strong>, with a smooth fade-in when you press Play and a smooth fade-out when you press Stop or the timer ends, to reduce sudden sounds and clicks.</p>
+        <p style="margin-top:8px">No slider percentage guarantees a safe listening level. The same 20% can be quiet on one phone and loud through amplified headphones on another. Your device volume, headphone type, and surroundings all matter — when in doubt, turn it down.</p>
+      </div>
+      <div class="safety-card">
+        <h3>🎧 Headphones &amp; binaural beats</h3>
+        <p>Traditional binaural-beat playback <strong>requires stereo headphones or earbuds</strong>. It works by sending a slightly different frequency to the left ear and the right ear; your brain perceives the difference as a beat.</p>
+        <p style="margin-top:8px">On speakers, the two tones mix in the air before reaching your ears, so you hear a blended tone rather than a true binaural beat. Check that your headphones are in stereo and worn on the correct ears.</p>
+      </div>
+      <div class="safety-card">
+        <h3>♿ Accessibility</h3>
+        <p>Controls are built to be usable by keyboard, with visible labels, readable type, and good contrast in light and dark modes. Animations respect your device's <em>prefers-reduced-motion</em> setting. If any control is hard to use on your device, listening is always optional — every tone also has a text description of what it is.</p>
+      </div>
+      <div class="safety-card">
+        <h3>🔒 Privacy &amp; free access</h3>
+        <p>Mindful Ones is free, with no required account, no subscription, and no advertising in this Phase 1 build.</p>
+        <p style="margin-top:8px">What we can verify from this page's own code: sound is generated locally in your browser with the Web Audio API, the feeling check and body map selections are not saved, and this page contains no sign-up form and no analytics or ad code. We do not claim more than that — hosting and browser providers operate under their own policies, outside this page.</p>
+      </div>
+      <div class="safety-card">
+        <h3>⏹️ Audio stops reliably</h3>
+        <ul>
+          <li><strong>One generator at a time:</strong> starting a new tone first stops the previous oscillators, so tones do not stack and get louder.</li>
+          <li><strong>Stop:</strong> fades out and disconnects all oscillators in both ears.</li>
+          <li><strong>Timer:</strong> uses two stop paths — a page timer and a stop scheduled on the audio clock itself — so expiry stops playback even if the tab is backgrounded.</li>
+          <li><strong>Errors:</strong> if audio fails to start, playback state is reset so the Play button does not get stuck showing a tone that is not playing.</li>
+        </ul>
+      </div>
+      <div class="safety-card">
+        <h3>📱 Background listening &amp; the lock screen</h3>
+        <p>Mindful Ones runs as a web page, and your browser and phone — not this page — decide whether web audio may keep sounding after you press Home or lock the screen. Many browsers <strong>suspend</strong> the audio engine in the background: the tone goes silent, but the session is paused rather than cancelled.</p>
+        <p style="margin-top:8px">What we have observed so far: testing on Android inside the Muse app, the tone becomes inaudible on Home or lock, the session timer keeps counting down, and the tone is audible again when the app is reopened before the timer ends. In Android Chrome, outside Muse, all three background checks <strong>passed</strong>: audio continued through headphones after pressing Home, audio continued with the screen locked, and after the one-minute timer expired, playback stopped and remained stopped when returning to the page. That <strong>strongly suggests</strong> the earlier background-audio limitation was associated with Muse's embedded viewing environment rather than an inherent limitation of the sound generator, although the exact cause has not been technically proven. Background behavior can still vary by browser, device, and settings, so we do not promise uninterrupted background playback on every setup.</p>
+        <p style="margin-top:8px">Whatever the browser does, these safety rules hold: a suspended tone never restarts louder than you set it, tones never stack, and a session never runs past its timer — the stop is scheduled on the audio clock itself. The diagnostics readout in the Frequency Studio shows the audio engine's live state (running / suspended / interrupted) so you can see what your device is doing.</p>
+      </div>
+    </div>
+
+    <div class="disclaimer-box">
+      <h3>Medical disclaimer — please read</h3>
+      <p style="color:var(--ink2);margin:0">Mindful Ones is for <strong style="color:var(--ink)">education, relaxation, and spiritual exploration</strong>. It does <strong style="color:var(--ink)">not</strong> diagnose, treat, cure, or prevent any medical or mental-health condition, and it is not a substitute for medical care, diagnosis, or treatment from a qualified professional. We do not promise that any specific frequency heals organs, repairs DNA, or cures disease. If you have a health concern, please talk with a clinician who can examine you and know your history. In an emergency, contact your local emergency services.</p>
+    </div>
+
+    <div class="duo">
+      <div class="card">
+        <h3>Scientific transparency</h3>
+        <p>Every healing-related claim on this site carries one of three labels:</p>
+        <p style="margin-top:10px"><span class="ev ev-s">Supported by research</span> — findings studies have actually found, described without promises.<br><br>
+        <span class="ev ev-i">Still being studied</span> — early or mixed evidence, interesting but not settled.<br><br>
+        <span class="ev ev-t">Spiritual tradition</span> — belief-based teachings, presented as tradition, never as medical fact.</p>
+        <p style="margin-top:10px">A frequency being measurable in hertz is science. A claim that it heals a specific organ is not established science, and we label it accordingly wherever it appears.</p>
+      </div>
+      <div class="card">
+        <h3>About frequency associations</h3>
+        <p>Chakras themselves come from Indian spiritual traditions with a long history. The specific pairings you will see in modern books and apps — this chakra with that exact hertz value, this Solfeggio tone for that body part or theme — are largely <strong>modern spiritual associations</strong> developed in contemporary practice.</p>
+        <p style="margin-top:8px">We keep both layers visible: <span class="ev ev-t">Tradition</span> for the historical chakra meanings and practices, and an explicit “modern spiritual association” note for the exact Hz pairings, so nothing modern is presented as universally ancient or scientifically proven.</p>
+        <p style="margin-top:8px"><a href="#evidence">See the full Research &amp; Evidence labeling system →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BODY MAP -->
+  <section id="body" aria-label="Interactive body map">
+    <div class="sec-head">
+      <h2>Body &amp; Wellness Map</h2>
+      <p>Tap a region. Each one shows three things side by side: what that part of your body actually does, a gentle everyday wellness practice, and the traditional chakra association — clearly labeled, never blended together. This is learning, not diagnosis; for anything that worries you, a clinician who can actually examine you is the right next step.</p>
+    </div>
+    <div class="body-layout">
+      <div class="body-fig">
+        <svg viewBox="0 0 200 340" role="group" aria-label="Body regions">
+          <circle class="region" data-region="head" cx="100" cy="34" r="24" tabindex="0" role="button" aria-label="Head and mind"/>
+          <rect class="region" data-region="throat" x="86" y="58" width="28" height="18" rx="6" tabindex="0" role="button" aria-label="Throat and neck"/>
+          <ellipse class="region" data-region="heart" cx="100" cy="104" rx="34" ry="26" tabindex="0" role="button" aria-label="Heart and chest"/>
+          <ellipse class="region" data-region="core" cx="100" cy="150" rx="28" ry="22" tabindex="0" role="button" aria-label="Core and digestion"/>
+          <ellipse class="region" data-region="hips" cx="100" cy="192" rx="30" ry="18" tabindex="0" role="button" aria-label="Hips and pelvis"/>
+          <path class="region" data-region="legs" d="M78 208 h18 v74 a9 9 0 0 1 -18 0 z M104 208 h18 v74 a9 9 0 0 1 -18 0 z" tabindex="0" role="button" aria-label="Legs and knees"/>
+          <path class="region" data-region="feet" d="M68 288 h30 a6 6 0 0 1 0 12 h-24 a6 6 0 0 1 -6 -6 z M102 288 h30 a6 6 0 0 1 6 6 a6 6 0 0 1 -6 6 h-24 a6 6 0 0 1 0 -12 z" tabindex="0" role="button" aria-label="Feet and grounding"/>
+        </svg>
+        <div class="fig-note">Front view · 7 starter regions</div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:12px" id="regionChips"></div>
+      </div>
+      <div class="detail" id="regionDetail" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- CHAKRAS -->
+  <section id="chakras" aria-label="Chakra library">
+    <div class="sec-head">
+      <h2>Chakra Library</h2>
+      <p>The seven main chakras come from Indian spiritual traditions, where they’re described as energy centers along the spine. They aren’t anatomical structures — and they don’t need to be, to be worth exploring. Each card gives the traditional meaning, a simple practice, and its paired tone. The chakra meanings and practices are historical tradition; the exact hertz pairings are modern spiritual associations, and each card labels them that way.</p>
+    </div>
+    <div class="grid" id="chakraGrid"></div>
+  </section>
+
+  <!-- EVIDENCE -->
+  <section id="evidence" aria-label="Research and evidence">
+    <div class="sec-head">
+      <h2>Research &amp; Evidence — how we label everything</h2>
+      <p>This is the heart of Mindful Ones: science and spiritual tradition living side by side, each labeled for what it is, so <strong>you</strong> decide what it means to you. Neither side is hidden, and neither is dressed up as the other.</p>
+    </div>
+    <div class="ev-grid">
+      <div class="ev-card">
+        <span class="ev ev-s">Supported by research</span>
+        <h3>What studies have found</h3>
+        <p>Claims with real research behind them — for example, that music-based practices can reduce perceived stress for many people, or that slow breathing affects heart-rate variability. We describe the finding, not a promise.</p>
+      </div>
+      <div class="ev-card">
+        <span class="ev ev-i">Still being studied</span>
+        <h3>Interesting, not settled</h3>
+        <p>Areas with early or mixed results — like binaural beats for focus or sleep, where small studies point in different directions. Worth exploring, too soon to state as fact either way.</p>
+      </div>
+      <div class="ev-card">
+        <span class="ev ev-t">Spiritual tradition</span>
+        <h3>Meaning, held honestly</h3>
+        <p>Teachings carried by traditions — chakras, Solfeggio healing themes, astrology, Human Design. These are belief-based practices. Many people find real comfort and insight in them; we present them as tradition, never as medical fact.</p>
+      </div>
+    </div>
+    <div class="duo">
+      <div class="card">
+        <h3>Our plain-language promise</h3>
+        <p>· A tone’s frequency in Hz is measurable — that’s science.<br>
+        · “This frequency heals this organ” is <em>not</em> established — we never say it.<br>
+        · Nothing here diagnoses, treats, or replaces medical care.<br>
+        · If a claim can’t be sourced, it gets the Tradition label or it doesn’t ship.</p>
+      </div>
+      <div class="card">
+        <h3>Where to read more</h3>
+        <p>Good starting points for your own reading: <a href="https://www.cedars-sinai.org/blog/music-therapy-pain-management.html" target="_blank" rel="noopener">Cedars-Sinai on music therapy</a> for what music-based care can do, and your local library’s anatomy shelf for the body map material. Deeper source lists join each section as the library grows in Phase 2.</p>
+        <p style="margin-top:8px"><span class="badge-pending">Planned</span> Specific research citations attached to individual scientific claims — not yet added, so no claim on this page should be read as citing a particular study unless a source is named beside it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASTROLOGY (designed in) -->
+  <section id="astrology" aria-label="Astrology preview">
+    <div class="sec-head">
+      <h2>Astrology</h2>
+      <p><span class="tag tag-soon">Phase 2 · Designed in now, calculated later</span></p>
+      <p>The Sanctuary already has its room — layout, inputs, and reading style are settled now, so adding real chart calculations later needs no redesign. The astronomy (where planets actually are) can be calculated precisely; the interpretation is a belief-based tradition, and it will be labeled that way.</p>
+    </div>
+    <div class="future">
+      <div class="mockrow">
+        <svg viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Preview sketch of a natal chart wheel" style="max-width:100%">
+          <circle cx="100" cy="100" r="92" fill="none" stroke="var(--line2)" stroke-width="2"/>
+          <circle cx="100" cy="100" r="66" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+          <circle cx="100" cy="100" r="30" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+          <g stroke="var(--line2)" stroke-width="1.2">
+            <line x1="100" y1="8" x2="100" y2="34"/><line x1="100" y1="166" x2="100" y2="192"/>
+            <line x1="8" y1="100" x2="34" y2="100"/><line x1="166" y1="100" x2="192" y2="100"/>
+            <line x1="35" y1="35" x2="53" y2="53"/><line x1="147" y1="147" x2="165" y2="165"/>
+            <line x1="165" y1="35" x2="147" y2="53"/><line x1="53" y1="147" x2="35" y2="165"/>
+          </g>
+          <g fill="var(--purple)" font-size="15" text-anchor="middle" font-family="serif">
+            <text x="100" y="24">♈</text><text x="176" y="105">♋</text><text x="100" y="186">♎</text><text x="24" y="105">♑</text>
+          </g>
+          <text x="100" y="105" text-anchor="middle" fill="var(--muted)" font-size="11">natal wheel</text>
+        </svg>
+        <div>
+          <h3>What will live here</h3>
+          <ul>
+            <li><strong>Western natal charts</strong> — Sun, Moon, rising sign, houses, and aspects from your birth date, time, and place.</li>
+            <li><strong>Vedic (sidereal) charts</strong> — the same sky read through the Indian tradition, side by side with the Western view.</li>
+            <li><strong>Moon phases &amp; transits</strong> — a lunar calendar and what’s moving through your chart now.</li>
+            <li><strong>Side-by-side reading</strong> — the astronomical facts and the traditional interpretation in separate, labeled columns, as everywhere on this site.</li>
+          </ul>
+          <div class="disabled-form" aria-hidden="true">
+            <div><label>Birth date</label><input type="date" disabled></div>
+            <div><label>Birth time</label><input type="time" disabled></div>
+            <div><label>Birth place</label><input type="text" placeholder="City, State" disabled></div>
+            <div><label>System</label><select disabled><option>Western (tropical)</option><option>Vedic (sidereal)</option></select></div>
+          </div>
+          <p style="font-size:14px;margin-top:10px">Inputs are a design preview — they don’t collect or send anything yet. Chart calculation (with a properly licensed ephemeris) arrives in Phase 2.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BODYGRAPH (designed in) -->
+  <section id="bodygraph" aria-label="Human Design BodyGraph preview">
+    <div class="sec-head">
+      <h2>Human Design BodyGraph</h2>
+      <p><span class="tag tag-soon">Phase 2 · Designed in now, calculated later</span></p>
+      <p>A BodyGraph is <em>not</em> the anatomy map above — it’s a spiritual chart system built from your birth data, with nine centers, 64 gates, and 36 channels. Keeping the two maps separate is deliberate: one describes your physical body, the other is a tradition for reflecting on how you move through the world.</p>
+    </div>
+    <div class="future">
+      <div class="mockrow">
+        <svg viewBox="0 0 200 240" width="190" height="228" role="img" aria-label="Preview sketch of a Human Design BodyGraph with nine centers" style="max-width:100%">
+          <g stroke="var(--line2)" stroke-width="1.4" fill="var(--surface2)">
+            <path d="M100 8 l20 26 h-40 z" />
+            <rect x="78" y="46" width="44" height="30" rx="5"/>
+            <rect x="78" y="88" width="44" height="32" rx="5"/>
+            <path d="M100 128 l24 20 h-48 z"/>
+            <rect x="80" y="158" width="40" height="26" rx="5"/>
+            <rect x="84" y="194" width="32" height="24" rx="5"/>
+            <rect x="18" y="92" width="34" height="28" rx="5"/>
+            <rect x="148" y="92" width="34" height="28" rx="5"/>
+            <rect x="30" y="150" width="32" height="26" rx="5"/>
+            <rect x="138" y="150" width="32" height="26" rx="5"/>
+          </g>
+          <g stroke="var(--line2)"><line x1="52" y1="106" x2="78" y2="104"/><line x1="122" y1="104" x2="148" y2="106"/><line x1="100" y1="76" x2="100" y2="88"/><line x1="100" y1="120" x2="100" y2="128"/><line x1="100" y1="148" x2="100" y2="158"/><line x1="100" y1="184" x2="100" y2="194"/></g>
+        </svg>
+        <div>
+          <h3>What will live here</h3>
+          <ul>
+            <li><strong>Your chart at a glance</strong> — Type, Strategy, Authority, and Profile, explained in plain language.</li>
+            <li><strong>Nine centers</strong> — defined and open centers, and what the tradition says each one is about.</li>
+            <li><strong>Gates &amp; channels</strong> — the 64 gates and 36 channels, explored one at a time rather than dumped in a wall of text.</li>
+            <li><strong>Labeled as tradition</strong> — Human Design is a spiritual system, presented as one. It will never be used here to diagnose or assess anyone.</li>
+          </ul>
+          <p style="font-size:14px;margin-top:10px">Same birth-data inputs as Astrology, entered once. Calculation arrives in Phase 2 alongside the astrology engine; the design above is final so nothing needs rebuilding.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTING STATUS -->
+  <section aria-label="Testing status and next checks">
+    <div class="sec-head">
+      <h2>Testing status — what’s verified, what isn’t</h2>
+      <p>We only mark something tested when it has actually been checked. User listening tests and independent technical measurements are different things, and this page keeps them separate.</p>
+    </div>
+    <div class="status-grid">
+      <div class="testbox">
+        <h3 style="margin:0 0 6px">✅ Verified by the creator — in-person checks</h3>
+        <p style="color:var(--ink2);font-size:14.5px;margin:0 0 8px">Phase 1 round: <strong>7 of 7</strong> laptop checks passed. V2 round: <strong>9 of 9</strong> laptop checks passed, plus Android foreground checks through the Muse app. V3 round: <strong>3 of 3</strong> Android Chrome background tests passed. Frequency sweep: <strong>10 of 10</strong> presets passed preliminary independent acoustic verification (full table below). Tested in person, November 2026:</p>
+        <ul class="check-list">
+          <li><span class="badge-verified">Passed</span><span><strong>528 Hz preset</strong> — audible, steady tone.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Volume slider</strong> — adjusts sound, silent at 0%.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>432 Hz preset</strong> — noticeably lower than 528 Hz.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>1-minute timer</strong> — stopped playback automatically.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Binaural audio</strong> — sound through both headphones.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Left/right difference</strong> — each ear sounded slightly different when listened to separately.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Stop button</strong> — silenced both channels.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Gentle fades &amp; 20% start volume (V2)</strong> — smooth fade-in and fade-out, conservative starting level, confirmed in the nine-check V2 laptop round.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Android through the Muse app</strong> — foreground playback, volume, fades, timer, and binaural listening through Bluetooth headphones all passed.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Android Chrome — pressing Home (V3)</strong> — audio continued playing through headphones while Chrome was in the background.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Android Chrome — locking the phone (V3)</strong> — audio continued playing with the screen locked.</span></li>
+          <li><span class="badge-verified">Passed</span><span><strong>Android Chrome — timer expiration (V3)</strong> — after the one-minute session expired, playback stopped and remained stopped when returning to the page.</span></li>
+        </ul>
+      </div>
+      <div class="testbox">
+        <h3 style="margin:0 0 6px">Next testing phase — not yet verified</h3>
+        <p style="color:var(--ink2);font-size:14.5px;margin:0 0 8px">Implemented, but <strong>not</strong> claimed as passed until checked independently:</p>
+        <ul class="check-list">
+          <li><span class="badge-pending">Pending</span><span><strong>Custom frequency testing</strong> — entering and verifying custom Hz values in the Frequency Studio.</span></li>
+          <li><span class="badge-pending">Pending</span><span><strong>Binaural channel accuracy</strong> — electronic verification of the actual left/right frequencies, not just that they sound different.</span></li>
+          <li><span class="badge-pending">Pending</span><span><strong>Error handling</strong> — rapid Play/Stop, switching modes mid-play, changing presets while playing, stopping early.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="status-grid" style="margin-top:16px">
+      <div class="testbox">
+        <h3 style="margin:0 0 6px">📊 Frequency verification — all ten presets</h3>
+        <p style="color:var(--ink2);font-size:14.5px;margin:0 0 8px">Every preset was measured independently with the phyphox Audio Spectrum analyzer on a phone, and each reading was recorded by hand. The analyzer resolution was approximately 2.93 Hz.</p>
+        <p style="margin:0 0 10px"><span class="badge-info">Preliminary</span> <strong>Result: 10 of 10 frequency presets passed preliminary independent acoustic verification.</strong></p>
+        <table style="width:100%;border-collapse:collapse;font-size:15px" aria-label="Selected frequency versus measured frequency for all ten presets">
+          <thead>
+            <tr>
+              <th scope="col" style="text-align:left;padding:7px 8px;border-bottom:2px solid var(--line2);color:var(--ink)">Selected</th>
+              <th scope="col" style="text-align:left;padding:7px 8px;border-bottom:2px solid var(--line2);color:var(--ink)">Measured</th>
+              <th scope="col" style="text-align:left;padding:7px 8px;border-bottom:2px solid var(--line2);color:var(--ink)">Difference</th>
+            </tr>
+          </thead>
+          <tbody style="color:var(--ink2)">
+            <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line)"><strong style="color:var(--ink)">174 Hz</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">172.85 Hz</td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">−1.15 Hz</td></tr>
+            <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line)"><strong style="color:var(--ink)">285 Hz</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">284.18 Hz</td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">−0.82 Hz</td></tr>
+            <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line)"><strong style="color:var(--ink)">396 Hz</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">395.51 Hz</td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">−0.49 Hz</td></tr>
+            <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line)"><strong style="color:var(--ink)">417 Hz</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">416.02 Hz</td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">−0.98 Hz</td></tr>
+            <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line)"><strong style="color:var(--ink)">432 Hz</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">430.66 Hz</td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">−1.34 Hz</td></tr>
+            <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line)"><strong style="color:var(--ink)">528 Hz</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">527.34 Hz</td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">−0.66 Hz</td></tr>
+            <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line)"><strong style="color:var(--ink)">639 Hz</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">638.67 Hz</td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">−0.33 Hz</td></tr>
+            <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line)"><strong style="color:var(--ink)">741 Hz</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">741.21 Hz</td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">+0.21 Hz</td></tr>
+            <tr><td style="padding:6px 8px;border-bottom:1px solid var(--line)"><strong style="color:var(--ink)">852 Hz</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">852.54 Hz</td><td style="padding:6px 8px;border-bottom:1px solid var(--line)">+0.54 Hz</td></tr>
+            <tr><td style="padding:6px 8px"><strong style="color:var(--ink)">963 Hz</strong></td><td style="padding:6px 8px">963.87 Hz</td><td style="padding:6px 8px">+0.87 Hz</td></tr>
+          </tbody>
+        </table>
+        <p style="color:var(--ink2);font-size:14.5px;margin:10px 0 0">The largest absolute difference was <strong style="color:var(--ink)">1.34 Hz</strong>. All measurements were consistent with their targets within approximately half an analyzer frequency bin. These are <strong style="color:var(--ink)">preliminary acoustic measurements, not laboratory-grade certifications</strong> — they show the tones land where they should within the analyzer's resolution, not lab proof of exact oscillator accuracy.</p>
+      </div>
+      <div class="testbox">
+        <h3 style="margin:0 0 6px">📱 Android background behavior — observed inside Muse</h3>
+        <p style="color:var(--ink2);font-size:14.5px;margin:0 0 8px">Documented on Android through the Muse app with Bluetooth headphones. This is recorded as a limitation of that environment, <strong>not</strong> classified as a sound-engine bug — the cause (Muse's embedded preview vs. Android background-audio rules) is not yet determined:</p>
+        <ul class="check-list">
+          <li><span class="badge-info">Observed</span><span><strong>Pressing Home or switching apps</strong> — the tone becomes inaudible.</span></li>
+          <li><span class="badge-info">Observed</span><span><strong>Locking the phone</strong> — the tone also becomes inaudible.</span></li>
+          <li><span class="badge-info">Observed</span><span><strong>While in the background</strong> — the session timer keeps counting down; the session behaves as <em>suspended</em>, not cancelled.</span></li>
+          <li><span class="badge-info">Observed</span><span><strong>Reopening Muse before the timer ends</strong> — the tone becomes audible again, with the timer reflecting the elapsed time.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="testbox" style="margin-top:16px">
+      <h3 style="margin:0 0 6px">📱 Android Chrome background tests — user-verified</h3>
+      <p style="color:var(--ink2);font-size:14.5px;margin:0 0 8px">Tested in person on Android in Google Chrome, outside the Muse app, on the V3 build: <strong>3 of 3 passed</strong>. These are user-verified results. Together they <strong>strongly suggest</strong> the earlier background-audio limitation was associated with Muse's embedded viewing environment rather than an inherent limitation of the sound generator, although the exact cause has not been technically proven. No individual diagnostics-panel readings were reported for these tests, so none are recorded here.</p>
+      <ul class="check-list">
+        <li><span class="badge-verified">Passed</span><span><strong>Pressing Home</strong> — audio continued playing through headphones while Chrome was in the background.</span></li>
+        <li><span class="badge-verified">Passed</span><span><strong>Locking the phone</strong> — audio continued playing with the screen locked.</span></li>
+        <li><span class="badge-verified">Passed</span><span><strong>Timer expiration</strong> — after the one-minute session expired, playback stopped and remained stopped when returning to the page.</span></li>
+      </ul>
+    </div>
+    <div class="testbox" style="margin-top:16px">
+      <h3 style="margin:0 0 8px">Implementation notes that can affect those tests</h3>
+      <ul style="margin:0;padding-left:20px">
+        <li><strong>How tones are made:</strong> the Web Audio API generates the exact Hz value shown (e.g. an oscillator set to 528). A spectrum app held near a speaker measures your device's output, room, and microphone as well as the tone — small readings off the exact number usually come from the measuring setup, not the setting.</li>
+        <li><strong>Binaural channels:</strong> on modern browsers each ear is routed with a StereoPanner (−1 left, +1 right). Very old browsers fall back to a channel merger. A channel-accurate test should record left and right separately, not just listen.</li>
+        <li><strong>Timer:</strong> two mechanisms run together — a page countdown that calls Stop, and a stop scheduled directly on the audio clock. The audio-clock stop is there because browsers throttle page timers in background tabs.</li>
+        <li><strong>Background &amp; lock screen:</strong> browsers may pause, throttle, or suspend web audio when a tab is backgrounded or a phone locks, and the behavior differs between browsers and apps. Observed inside Muse on Android: audio goes silent in the background while the timer keeps counting — suspension, not cancellation. In Android Chrome, outside Muse, all three background tests passed (Home, lock screen, and timer expiration stopping and staying stopped). That strongly suggests the earlier limitation was associated with Muse's embedded viewing environment rather than an inherent limitation of the sound generator, although the exact cause has not been technically proven. This page still does not promise uninterrupted background playback on every browser or device. The diagnostics readout in the Studio shows the audio engine's live state while you test.</li>
+        <li><strong>Rapid actions:</strong> every Play, preset change, or mode switch first disconnects the previous oscillators, then starts fresh ones with a fade-in. If you hear any doubling or click during rapid switching, note the exact steps — that is exactly what the error-handling check is for.</li>
+        <li><strong>Try it yourself:</strong> play 528 Hz with an analyzer app nearby; in Binaural mode cover one ear then the other; set the 1-minute timer and let it expire; slide volume to 0% while playing. Repeat on your phone as well as your computer.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="principle">Knowledge should be accessible. Wellness should not depend on wealth.</p>
+    <p>Mindful Ones is free — no account, no subscription, no advertising in this build. Sound is generated locally on your own device with your browser's audio engine.</p>
+    <p style="margin:10px 0"><a href="#safety" style="color:#ffe9a8;font-weight:800">Sound Safety &amp; Responsible Use</a> · <a href="#studio" style="color:#ddd2fb">Frequency Studio</a> · <a href="#evidence" style="color:#ddd2fb">Research &amp; Evidence</a></p>
+    <p class="fine">Mindful Ones is for education, relaxation, and spiritual exploration. It does not diagnose, treat, cure, or replace care from qualified professionals, and it does not promise that any frequency heals organs, repairs DNA, or cures disease. Phase 1 baseline preserved · Sanctuary, Frequency Studio, Body Map, Chakra Library, Evidence system, Sound Safety — with Astrology &amp; BodyGraph designed in for Phase 2. Testing status is labeled honestly on this page: creator-verified checks are marked passed — including the 3 of 3 Android Chrome background tests — all ten frequency preset measurements are recorded as preliminary acoustic verification (10 of 10 within the analyzer's resolution, not laboratory-grade certification), the background behavior seen inside Muse is documented as observed, and custom frequency testing, electronic binaural verification, and error-handling tests are still marked pending — not passed.</p>
+  </div>
+</footer>
+
+<script>
+/* ============ DATA ============ */
+var SOLFEGGIO = [
+  {hz:174, name:"Foundation tone", theme:"Tradition links it to a sense of safety and grounding"},
+  {hz:285, name:"Renewal tone", theme:"Tradition links it to renewal and restoration"},
+  {hz:396, name:"Liberation tone", theme:"Tradition links it to releasing fear and guilt"},
+  {hz:417, name:"Change tone", theme:"Tradition links it to clearing old patterns and welcoming change"},
+  {hz:432, name:"Nature's tuning", theme:"A popular alternative tuning, said by many to feel warmer than standard 440"},
+  {hz:528, name:"Transformation tone", theme:"The best-known Solfeggio tone — tradition links it to transformation and love"},
+  {hz:639, name:"Connection tone", theme:"Tradition links it to relationships and connection"},
+  {hz:741, name:"Expression tone", theme:"Tradition links it to expression and speaking your truth"},
+  {hz:852, name:"Intuition tone", theme:"Tradition links it to intuition and inner seeing"},
+  {hz:963, name:"Oneness tone", theme:"Tradition links it to unity and spiritual connection"}
+];
+var BEATS = [
+  {hz:2, name:"Delta — deep sleep range"},
+  {hz:4, name:"Theta — meditation & dreams"},
+  {hz:8, name:"Alpha — calm & relaxed"},
+  {hz:10, name:"Alpha — relaxed focus"},
+  {hz:14, name:"Beta — alert & active"},
+  {hz:25, name:"Beta — concentration"}
+];
+var REGIONS = {
+  head:{title:"Head & Mind", chakra:"Crown & Third Eye chakras (tradition)", anatomy:"Your brain, eyes, ears, and sinuses live here. The brain coordinates thought, memory, senses, and signals to the whole body — and it uses a lot of energy doing it, even at rest.", wellness:"Try a 2-minute pause: close your eyes, relax your jaw and forehead, and breathe slowly out. Screen breaks and daylight help many people with eye strain and mental fatigue.", assoc:"Tradition associates the top of the head with the Crown chakra (connection) and the forehead with the Third Eye (intuition).", ev:[["ev-t","Tradition: chakra link"],["ev-s","Supported: rest & light breaks for eye strain"]]},
+  throat:{title:"Throat & Neck", chakra:"Throat chakra (tradition)", anatomy:"The throat carries air to your lungs and food to your stomach, houses your voice box (larynx) and thyroid gland, and the neck supports and turns your head while protecting the spinal cord and major blood vessels.", wellness:"Gentle neck rolls, humming, singing, and simply speaking your truth out loud — even to an empty room — are classic ways people care for this area.", assoc:"Tradition associates the throat with the Throat chakra — expression, honesty, and being heard.", ev:[["ev-t","Tradition: chakra link"],["ev-i","Being studied: humming & vagal tone"]]},
+  heart:{title:"Heart & Chest", chakra:"Heart chakra (tradition)", anatomy:"Your heart pumps blood through the body with every beat, and your lungs trade carbon dioxide for oxygen. Chest breathing patterns change with emotion — which is why breath and feelings are so closely linked.", wellness:"Slow breathing — in for 4, out for 6, for a minute — is one of the most studied simple relaxation practices there is.", assoc:"Tradition associates the chest with the Heart chakra — love, compassion, and grief held or released.", ev:[["ev-s","Supported: slow breathing & stress"],["ev-t","Tradition: chakra link"]]},
+  core:{title:"Core & Digestion", chakra:"Solar Plexus chakra (tradition)", anatomy:"The stomach and intestines break down food and absorb nutrients, closely tied to the nervous system through the gut–brain axis — stress very often shows up here first.", wellness:"Warm meals eaten slowly, a short walk after eating, and noticing which foods your own body likes are simple, evidence-friendly habits.", assoc:"Tradition associates the belly with the Solar Plexus chakra — personal power, confidence, and will.", ev:[["ev-s","Supported: gut–brain connection"],["ev-t","Tradition: chakra link"]]},
+  hips:{title:"Hips & Pelvis", chakra:"Sacral chakra (tradition)", anatomy:"The pelvis supports your spine, protects the bladder and reproductive organs, and anchors the strong muscles that let you stand, walk, and sit.", wellness:"Gentle hip circles, stretching after long sitting, and any movement that feels fluid and unforced — dancing in the kitchen absolutely counts.", assoc:"Tradition associates the pelvis with the Sacral chakra — creativity, feeling, and flow.", ev:[["ev-t","Tradition: chakra link"],["ev-s","Supported: movement breaks for sitters"]]},
+  legs:{title:"Legs & Knees", chakra:"Root energy, in motion (tradition)", anatomy:"Your legs carry you: quadriceps, hamstrings, calves, and the knee — the body's largest joint — handle standing, walking, climbing, and balance, and leg muscles help pump blood back up to the heart.", wellness:"Short walks, calf raises while the kettle boils, and resting with legs raised after a long day are all kind to this region.", assoc:"Tradition links the legs to the Root chakra's themes — stability and moving forward in life, literally and otherwise.", ev:[["ev-s","Supported: walking & circulation"],["ev-t","Tradition: root themes"]]},
+  feet:{title:"Feet & Grounding", chakra:"Root chakra (tradition)", anatomy:"Each foot has 26 bones and a dense network of nerves reporting pressure and position to your brain — your foundation for balance. Skin contact with the ground is how that system calibrates.", wellness:"Walking barefoot on grass or earth when it's safe to, rolling a ball under the foot, and a warm foot soak are simple grounding rituals people love.", assoc:"Tradition associates the feet with the Root chakra and the practice of 'grounding' or 'earthing' — feeling rooted and safe in your body.", ev:[["ev-t","Tradition: grounding practice"],["ev-i","Being studied: earthing claims"]]}
+};
+var CHAKRAS = [
+  {n:"Root", s:"Muladhara", color:"#c0392b", loc:"Base of the spine", means:"Safety, survival, and feeling rooted in your body and your life.", feels:"Steady, secure, at home in yourself.", practice:"Walk barefoot on the earth, eat a warm grounding meal, or try the Feet & Grounding practice on the body map.", hz:396},
+  {n:"Sacral", s:"Svadhisthana", color:"#e07b2a", loc:"Lower belly & pelvis", means:"Creativity, feeling, pleasure, and going with the flow.", feels:"Creative, emotionally fluid, able to enjoy things.", practice:"Make something just for the joy of it — draw, dance, cook something new — with no audience and no grade.", hz:417},
+  {n:"Solar Plexus", s:"Manipura", color:"#d9a514", loc:"Upper belly", means:"Personal power, confidence, and the will to act.", feels:"Capable, self-trusting, able to say 'I can' — and 'no.'", practice:"Finish one small thing you promised yourself. Kept promises to yourself are how this center learns trust.", hz:528},
+  {n:"Heart", s:"Anahata", color:"#3d8b5f", loc:"Center of the chest", means:"Love, compassion, grief, and connection — to others and to yourself.", feels:"Open-hearted, forgiving, able to receive as well as give.", practice:"Slow breathing with a hand on your chest (in 4, out 6), thinking of someone — including yourself — with kindness.", hz:639},
+  {n:"Throat", s:"Vishuddha", color:"#2f7fc4", loc:"Throat & neck", means:"Expression, honesty, and being heard — saying the true thing out loud.", feels:"Clear, truthful, unafraid of your own voice.", practice:"Hum, sing, or read something you wrote out loud. Peachkka's 'Throat Chakra' is a community favorite for this one.", hz:741},
+  {n:"Third Eye", s:"Ajna", color:"#5b3a9e", loc:"Forehead, between the eyes", means:"Intuition, insight, and seeing patterns — the inner knowing beneath the noise.", feels:"Perceptive, trusting of your own read on a situation.", practice:"Sit quietly and notice before you analyze: what's the first honest impression? Write it down before the second-guessing starts.", hz:852},
+  {n:"Crown", s:"Sahasrara", color:"#8e6cc9", loc:"Top of the head", means:"Connection, meaning, and feeling part of something larger than yourself.", feels:"Peaceful, connected, held by the bigger picture.", practice:"A few minutes of silence under the sky — no phone — just noticing stars, clouds, or weather moving through.", hz:963}
+];
+
+/* ============ FEELING CHECK ============ */
+var FEELINGS = {
+  calm:{t:"Lovely. A calm day is a good day to go deeper —", a:"try a longer 528 Hz session in the Frequency Studio, or wander the Chakra Library.", href:"#studio"},
+  anxious:{t:"You’re not alone in that. Start small and physical —", a:"the slow-breathing practice in the Heart & Chest region is one of the most research-supported calms there is.", href:"#body"},
+  tired:{t:"Rest is a practice too. If you listen to anything —", a:"try Binaural mode at a 2 Hz Delta beat with the 15-minute timer, low volume, lights low.", href:"#studio"},
+  curious:{t:"Perfect energy for this place. Start with —", a:"the Evidence page: how we label science vs. tradition is the key to everything else here.", href:"#evidence"},
+  stressed:{t:"Let’s lower the volume on the day first —", a:"a 10 Hz Alpha binaural session or the Core & Digestion region’s gentle practices are both good doors in.", href:"#studio"},
+  reflective:{t:"A reflective mood suits the upper chakras —", a:"try the Third Eye and Crown cards, with their tones, and see what surfaces.", href:"#chakras"}
+};
+document.getElementById('feelRow').addEventListener('click', function(e){
+  var b = e.target.closest('.feel-btn'); if(!b) return;
+  document.querySelectorAll('.feel-btn').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+  b.setAttribute('aria-pressed','true');
+  var f = FEELINGS[b.getAttribute('data-feel')];
+  var out = document.getElementById('feelOut');
+  out.innerHTML = '<strong>A gentle suggestion:</strong> ' + f.t + ' <a href="' + f.href + '">' + f.a + '</a>';
+  out.classList.add('show');
+});
+
+/* ============ FREQUENCY STUDIO ============ */
+var actx = null, master = null, oscNodes = [];
+var isPlaying = false, mode = 'single', wave = 'sine';
+var timerMinutes = 0, timerEnd = 0, timerInt = null;
+
+var freqRange = document.getElementById('freqRange'), freqNum = document.getElementById('freqNum');
+var freqVal = document.getElementById('freqVal'), freqName = document.getElementById('freqName'), freqLabel = document.getElementById('freqLabel');
+var beatRange = document.getElementById('beatRange'), beatVal = document.getElementById('beatVal'), beatName = document.getElementById('beatName');
+var volRange = document.getElementById('volRange'), volVal = document.getElementById('volVal');
+var nowPlaying = document.getElementById('nowPlaying'), countdownEl = document.getElementById('countdown');
+
+function presetName(hz){ for (var i=0;i<SOLFEGGIO.length;i++){ if (SOLFEGGIO[i].hz===hz) return SOLFEGGIO[i].name; } return ''; }
+function beatNameFor(hz){ var best=''; BEATS.forEach(function(b){ if (Math.abs(b.hz-hz)<0.01) best=b.name; }); return best || 'Custom beat'; }
+
+function markPreset(hz){
+  document.querySelectorAll('#presetRow .preset').forEach(function(p){
+    p.setAttribute('aria-pressed', parseFloat(p.getAttribute('data-hz'))===hz ? 'true' : 'false');
+  });
+}
+function setFreq(hz, fromSlider){
+  hz = Math.round(Math.max(20, Math.min(2000, hz)));
+  freqVal.textContent = hz;
+  freqName.textContent = presetName(hz) ? '· ' + presetName(hz) : '· custom frequency';
+  if (!fromSlider) freqRange.value = Math.min(1000, Math.max(60, hz));
+  freqNum.value = hz;
+  markPreset(hz);
+  if (isPlaying) startTone(true);
+}
+var presetRow = document.getElementById('presetRow');
+SOLFEGGIO.forEach(function(p){
+  var b = document.createElement('button');
+  b.className='preset'; b.setAttribute('data-hz', p.hz); b.setAttribute('aria-pressed','false');
+  b.innerHTML = p.hz + ' Hz · ' + p.name + '<small>' + p.theme + '</small>';
+  b.addEventListener('click', function(){ setFreq(p.hz); });
+  presetRow.appendChild(b);
+});
+var beatRow = document.getElementById('beatRow');
+BEATS.forEach(function(bt){
+  var b = document.createElement('button');
+  b.className='preset'; b.textContent = bt.hz + ' Hz';
+  b.title = bt.name;
+  b.addEventListener('click', function(){ beatRange.value = bt.hz; setBeat(bt.hz); });
+  beatRow.appendChild(b);
+});
+function setBeat(hz){
+  beatVal.textContent = hz;
+  beatName.textContent = '· ' + beatNameFor(parseFloat(hz));
+  if (isPlaying && mode==='binaural') startTone(true);
+}
+freqRange.addEventListener('input', function(){ setFreq(parseFloat(this.value), true); });
+freqNum.addEventListener('change', function(){ setFreq(parseFloat(this.value)); });
+beatRange.addEventListener('input', function(){ setBeat(this.value); });
+volRange.addEventListener('input', function(){
+  volVal.textContent = this.value;
+  if (master && actx) master.gain.setTargetAtTime(Math.pow(this.value/100, 1.6) * 0.9, actx.currentTime, 0.03);
+});
+document.getElementById('waveSeg').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#waveSeg button').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+  b.setAttribute('aria-pressed','true'); wave = b.getAttribute('data-wave');
+  if (isPlaying) startTone(true);
+});
+function setMode(m){
+  mode = m;
+  document.getElementById('modeSingle').setAttribute('aria-pressed', m==='single' ? 'true':'false');
+  document.getElementById('modeBinaural').setAttribute('aria-pressed', m==='binaural' ? 'true':'false');
+  document.getElementById('beatCol').style.display = m==='binaural' ? 'block' : 'none';
+  document.getElementById('headNote').classList.toggle('show', m==='binaural');
+  freqLabel.textContent = m==='binaural' ? 'Carrier frequency (center tone)' : 'Frequency';
+  if (isPlaying) startTone(true); else updateReadoutStopped();
+}
+document.getElementById('modeSingle').addEventListener('click', function(){ setMode('single'); });
+document.getElementById('modeBinaural').addEventListener('click', function(){ setMode('binaural'); });
+
+function ensureCtx(){
+  if (!actx){
+    var AC = window.AudioContext || window.webkitAudioContext;
+    actx = new AC();
+    master = actx.createGain();
+    master.gain.value = Math.pow(volRange.value/100, 1.6) * 0.9;
+    master.connect(actx.destination);
+  }
+  if (actx.state === 'suspended') actx.resume();
+}
+function killOscs(){
+  oscNodes.forEach(function(n){ try{ n.osc.onended = null; }catch(e){} try{ n.osc.stop(); }catch(e){} try{ n.osc.disconnect(); }catch(e){} if (n.gain){ try{ n.gain.disconnect(); }catch(e){} } });
+  oscNodes = [];
+}
+/* Schedule a hard stop on the audio clock itself, so the tone ends on time
+   even if the tab is backgrounded and JS timers are throttled. */
+function armTimerStop(){
+  if (!actx || !oscNodes.length || !timerMinutes || !timerEnd) return;
+  var remaining = Math.max(0, (timerEnd - Date.now())/1000);
+  var stopAt = actx.currentTime + remaining;
+  oscNodes.forEach(function(n){
+    try{ n.osc.stop(stopAt); }catch(e){}
+    if (n.gain){
+      try{
+        var fadeStart = Math.max(actx.currentTime + 0.05, stopAt - 0.45);
+        n.gain.gain.setValueAtTime(1, fadeStart);
+        n.gain.gain.linearRampToValueAtTime(0.0001, stopAt);
+      }catch(e){}
+    }
+    n.osc.onended = function(){
+      if (isPlaying && timerMinutes && Date.now() >= timerEnd - 600){ stopTone(); }
+    };
+  });
+}
+function makeOsc(freq, pan){
+  var osc = actx.createOscillator(); osc.type = wave; osc.frequency.value = freq;
+  var g = actx.createGain();
+  /* Smooth fade-in (0.8s) to prevent sudden loud starts and clicks */
+  try{
+    g.gain.setValueAtTime(0.0001, actx.currentTime);
+    g.gain.exponentialRampToValueAtTime(1, actx.currentTime + 0.8);
+  }catch(e){ g.gain.value = 1; }
+  if (typeof StereoPannerNode !== 'undefined' && pan !== 0){
+    var p = actx.createStereoPanner(); p.pan.value = pan;
+    osc.connect(g); g.connect(p); p.connect(master);
+  } else if (pan !== 0 && actx.createChannelMerger) {
+    var merger = actx.createChannelMerger(2);
+    osc.connect(g); g.connect(merger, 0, pan < 0 ? 0 : 1); merger.connect(master);
+  } else {
+    osc.connect(g); g.connect(master);
+  }
+  osc.start();
+  return {osc: osc, gain: g};
+}
+function startTone(keepTimer){
+  try{
+  ensureCtx();
+  killOscs(); /* one generator at a time — never stack tones */
+  var carrier = parseFloat(freqVal.textContent);
+  if (mode === 'binaural'){
+    var beat = parseFloat(beatVal.textContent);
+    var left = carrier - beat/2, right = carrier + beat/2;
+    oscNodes.push(makeOsc(left, -1));
+    oscNodes.push(makeOsc(right, 1));
+    var bn = beatNameFor(beat); var bnParts = bn.split('—'); var bnLabel = bnParts.length > 1 ? bnParts[1].trim() : bn;
+    nowPlaying.innerHTML = '<span class="wave-dot"></span><b>Now playing — binaural:</b> left ear <b>' + left.toFixed(1) + ' Hz</b> · right ear <b>' + right.toFixed(1) + ' Hz</b> · beat <b>' + beat + ' Hz</b> (' + bnLabel + '). Different tone in each ear — that’s what makes the beat.';
+  } else {
+    oscNodes.push(makeOsc(carrier, 0));
+    nowPlaying.innerHTML = '<span class="wave-dot"></span><b>Now playing:</b> a pure <b>' + carrier + ' Hz</b> ' + wave + ' tone' + (presetName(carrier) ? ' — the ' + presetName(carrier) : '') + '. Generated live at exactly ' + carrier + ' oscillations per second.';
+  }
+  nowPlaying.classList.add('show');
+  isPlaying = true;
+  document.getElementById('playBtn').innerHTML = '▶&nbsp; Restart tone';
+  if (!keepTimer) startTimer(); else armTimerStop();
+  }catch(e){
+    /* Error path: reset everything so no tone is left playing or stuck */
+    try{ killOscs(); }catch(err){}
+    isPlaying = false;
+    try{ stopTimer(); }catch(err){}
+    nowPlaying.innerHTML = '<b>Audio could not start on this device.</b> Check that sound is not muted, tap Play again, or reload the page. No tone is playing.';
+    nowPlaying.classList.add('show');
+    document.getElementById('playBtn').innerHTML = '▶&nbsp; Play tone';
+    countdownEl.textContent = '';
+  }
+}
+function stopTone(){
+  var nodesToFade = oscNodes; oscNodes = [];
+  isPlaying = false;
+  stopTimer();
+  nowPlaying.classList.remove('show');
+  document.getElementById('playBtn').innerHTML = '▶&nbsp; Play tone';
+  countdownEl.textContent = '';
+  if (actx && nodesToFade.length){
+    var t = actx.currentTime;
+    nodesToFade.forEach(function(n){
+      try{ n.osc.onended = null; }catch(e){}
+      if (n.gain){
+        try{ n.gain.gain.cancelScheduledValues(t); n.gain.gain.setTargetAtTime(0.0001, t, 0.09); }catch(e){}
+      }
+      try{ n.osc.stop(t + 0.5); }catch(e){}
+    });
+    setTimeout(function(){
+      nodesToFade.forEach(function(n){ try{ n.osc.disconnect(); }catch(e){} if (n.gain){ try{ n.gain.disconnect(); }catch(e){} } });
+    }, 560);
+  }
+}
+function updateReadoutStopped(){ /* readout is set on play */ }
+
+document.getElementById('playBtn').addEventListener('click', function(){ startTone(false); });
+document.getElementById('stopBtn').addEventListener('click', stopTone);
+
+document.getElementById('timerRow').addEventListener('click', function(e){
+  var b = e.target.closest('.timer-btn'); if(!b) return;
+  document.querySelectorAll('.timer-btn').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+  b.setAttribute('aria-pressed','true');
+  timerMinutes = parseFloat(b.getAttribute('data-min'));
+  if (isPlaying) startTimer();
+});
+function startTimer(){
+  stopTimer();
+  if (!timerMinutes) { countdownEl.textContent=''; return; }
+  timerEnd = Date.now() + timerMinutes*60000;
+  tickTimer();
+  timerInt = setInterval(tickTimer, 500);
+  armTimerStop();
+}
+function tickTimer(){
+  var left = Math.max(0, timerEnd - Date.now());
+  var s = Math.ceil(left/1000), m = Math.floor(s/60), r = s%60;
+  countdownEl.textContent = '⏳ ' + m + ':' + (r<10?'0':'') + r + ' left';
+  if (left <= 0){
+    /* Timer ending MUST stop playback */
+    stopTone();
+  }
+}
+function stopTimer(){ if (timerInt){ clearInterval(timerInt); timerInt = null; } }
+
+/* ============ DIAGNOSTICS (display only — reads state, never touches playback) ============ */
+function updateDiag(){
+  var s = document.getElementById('diagState'); if (!s) return;
+  s.textContent = actx ? actx.state : 'not started yet';
+  document.getElementById('diagVis').textContent = document.hidden ? 'in background (hidden)' : 'visible';
+  var sess = 'stopped';
+  if (isPlaying){
+    sess = 'playing';
+    if (timerMinutes && timerEnd){
+      var left = Math.max(0, Math.round((timerEnd - Date.now())/1000));
+      var lm = Math.floor(left/60), lr = left % 60;
+      sess += ' · ' + lm + ':' + (lr<10?'0':'') + lr + ' left on timer';
+    }
+  }
+  document.getElementById('diagSession').textContent = sess;
+}
+setInterval(updateDiag, 1000);
+document.addEventListener('visibilitychange', updateDiag);
+updateDiag();
+
+/* ============ BODY MAP ============ */
+var detail = document.getElementById('regionDetail');
+var chipsBox = document.getElementById('regionChips');
+Object.keys(REGIONS).forEach(function(key){
+  var c = document.createElement('button');
+  c.className='feel-btn'; c.style.fontSize='13.5px'; c.style.padding='6px 12px';
+  c.textContent = REGIONS[key].title; c.setAttribute('data-region', key); c.setAttribute('aria-pressed','false');
+  c.addEventListener('click', function(){ showRegion(key); });
+  chipsBox.appendChild(c);
+});
+function showRegion(key){
+  var r = REGIONS[key];
+  document.querySelectorAll('.region').forEach(function(el){ el.classList.toggle('sel', el.getAttribute('data-region')===key); });
+  document.querySelectorAll('#regionChips .feel-btn').forEach(function(el){ el.setAttribute('aria-pressed', el.getAttribute('data-region')===key ? 'true':'false'); });
+  var evs = r.ev.map(function(e){ return '<span class="ev ' + e[0] + '">' + e[1] + '</span>'; }).join(' ');
+  detail.innerHTML =
+    '<h3>' + r.title + '</h3>' +
+    '<p class="chakra-line">Traditional association: <strong>' + r.chakra + '</strong></p>' +
+    '<h4>🔬 What it does — the anatomy</h4><p>' + r.anatomy + '</p>' +
+    '<h4>🌿 A gentle wellness practice</h4><p>' + r.wellness + '</p>' +
+    '<h4>🔮 The traditional association</h4><p>' + r.assoc + '</p>' +
+    '<h4>How this is labeled</h4><div class="evrow">' + evs + '</div>';
+}
+document.querySelectorAll('.region').forEach(function(el){
+  el.addEventListener('click', function(){ showRegion(el.getAttribute('data-region')); });
+  el.addEventListener('keydown', function(e){ if (e.key==='Enter' || e.key===' '){ e.preventDefault(); showRegion(el.getAttribute('data-region')); } });
+});
+showRegion('heart');
+
+/* ============ CHAKRA LIBRARY ============ */
+var grid = document.getElementById('chakraGrid');
+CHAKRAS.forEach(function(c){
+  var card = document.createElement('div');
+  card.className = 'card chakra-card'; card.style.setProperty('--cc', c.color);
+  card.innerHTML =
+    '<div class="dotrow"><span class="cdot"></span><div><h3>' + c.n + ' Chakra</h3><div class="sans">' + c.s + ' · ' + c.loc + '</div></div></div>' +
+    '<dl>' +
+    '<dt>Traditional meaning</dt><dd>' + c.means + '</dd>' +
+    '<dt>When it feels in balance</dt><dd>' + c.feels + '</dd>' +
+    '<dt>A simple practice</dt><dd>' + c.practice + '</dd>' +
+    '<dt>Paired tone — modern spiritual association</dt><dd>' + c.hz + ' Hz — a contemporary pairing, not a scientifically established treatment and not presented as a universally ancient teaching.</dd>' +
+    '</dl>' +
+    '<span class="ev ev-t" style="margin-top:10px">Spiritual tradition</span> <span class="ev ev-t" style="margin-top:10px">Hz pairing: modern association</span>' +
+    '<div class="playtone"><button class="btn btn-soft" style="padding:10px 18px;font-size:15px">▶ Play ' + c.hz + ' Hz</button></div>';
+  card.querySelector('.playtone button').addEventListener('click', function(){
+    setMode('single');
+    setFreq(c.hz);
+    document.getElementById('studio').scrollIntoView({behavior:'smooth'});
+    startTone(false);
+  });
+  grid.appendChild(card);
+});
+markPreset(528);
+</script>
+</body>
+</html>
