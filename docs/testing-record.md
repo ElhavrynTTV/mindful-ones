@@ -81,8 +81,29 @@ The exported `index.html` was opened from the tester's own computer
 (D:\Download\mindful-ones-app) in Chrome; all checks passed as before. The
 site runs correctly as a local file with no hosting involved.
 
+## Electronic binaural channel verification (passed, 2026-11-08)
+
+Method: saved stereo WAV recorded through Windows WASAPI using the
+Elgato-routed website audio, analyzed independently by channel.
+
+In both the 10–15-second and 12–17-second sections:
+
+| Channel | Measured |
+|---|---|
+| Left | 523.000 Hz |
+| Right | 533.000 Hz |
+
+A 10.000 Hz separation centered on 528.000 Hz. Opposite-tone content was
+negligible in the analyzed sections. This verifies the captured digital
+channel frequencies and separation for this setup.
+
+Evidence file: `mindful-ones-binaural-528-10.wav` — stereo, 48 kHz, 16-bit
+PCM, 21.05 seconds (kept by the tester; identified here by name and spec).
+
 ## Still Pending
 
-- Electronic binaural channel verification (machine-measured left/right output
-  frequencies). The by-ear check passed earlier (left/right tones sound
-  slightly different per ear); that is the subjective check, not this one.
+None. With the binaural verification above, every Phase 1 test item has been
+verified: laptop functional checks, the ten-preset phyphox sweep, custom
+frequency testing, Android background behavior, error handling, the local-copy
+check, and electronic binaural channel verification. **Phase 1 testing is
+complete.**

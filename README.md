@@ -46,11 +46,13 @@ then open http://localhost:8000 in your browser or on your phone on the same net
 ## Testing status (honest labels only)
 
 User-performed checks that have **passed** are recorded in `docs/testing-record.md`
-and in the Testing Status section of the site itself. Custom frequency testing
-(corrected phyphox readings within ~1 Hz) and error-handling tests have passed,
-user-verified. The one item still marked **Pending** is electronic binaural
-channel verification. Preliminary phyphox acoustic measurements are labeled
-preliminary, not laboratory-grade certification.
+and in the Testing Status section of the site itself. As of November 8, 2026,
+**Phase 1 testing is complete**: functional checks, the ten-preset phyphox sweep,
+custom frequency testing (corrected readings within ~1 Hz), error handling,
+Android background behavior, the local-copy check, and electronic binaural
+channel verification (523.000 Hz left / 533.000 Hz right, measured from a WASAPI
+recording) have all been verified. Preliminary phyphox acoustic measurements
+are labeled preliminary, not laboratory-grade certification.
 
 ## Project layout
 
