@@ -53,6 +53,24 @@ nav.top .wrap{display:flex;align-items:center;gap:8px;padding-top:10px;padding-b
 nav.top a.nl{color:var(--ink2);text-decoration:none;font-weight:700;font-size:14.5px;padding:7px 11px;border-radius:999px}
 nav.top a.nl:hover{background:var(--surface2);color:var(--ink)}
 .free-pill{font-size:12.5px;font-weight:800;background:var(--chip-s);color:var(--chip-s-ink);padding:5px 10px;border-radius:999px}
+nav.top a:focus-visible,.nav-toggle:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+/* On larger screens the links container is transparent to layout — the header flex row works exactly as before */
+.nav-links{display:contents}
+/* Hamburger button — mobile only, hidden on larger screens */
+.nav-toggle{display:none;background:var(--surface);border:1.5px solid var(--line2);border-radius:10px;padding:10px 11px;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex:none}
+.nav-toggle .bar{display:block;width:22px;height:2.5px;border-radius:2px;background:var(--ink);transition:transform .2s ease,opacity .2s ease}
+.nav-toggle[aria-expanded="true"] .bar:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .bar:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] .bar:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+@media(max-width:900px){
+  nav.top .wrap{flex-wrap:nowrap}
+  .brand{margin-right:0}
+  .nav-toggle{display:inline-flex;margin-left:auto}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:var(--shadow);flex-direction:column;align-items:stretch;gap:2px;padding:10px 20px 14px}
+  .nav-links.open{display:flex}
+  .nav-links a.nl{padding:11px 12px;font-size:16px;border-radius:10px}
+  .nav-links .free-pill{align-self:flex-start;margin:8px 0 2px 12px}
+}
 
 /* HERO */
 .hero{background:radial-gradient(1000px 500px at 85% -10%, rgba(20,163,152,.35), transparent 60%),radial-gradient(900px 600px at 10% 0%, rgba(124,84,214,.5), transparent 55%),linear-gradient(160deg,#1c0d3d 0%,#2a1650 48%,#123f3a 130%);color:#f3efff;border-radius:0 0 34px 34px;position:relative;overflow:hidden}
@@ -221,6 +239,10 @@ footer .fine{color:#a99cd4;font-size:13.5px}
 <nav class="top" aria-label="Main">
   <div class="wrap">
     <a class="brand" href="#top"><span class="moon">☾</span> Mindful Ones</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <span class="bar" aria-hidden="true"></span><span class="bar" aria-hidden="true"></span><span class="bar" aria-hidden="true"></span>
+    </button>
+    <div class="nav-links" id="navLinks">
     <a class="nl" href="#studio">Frequency Studio</a>
     <a class="nl" href="#safety">Sound Safety</a>
     <a class="nl" href="#body">Body Map</a>
@@ -229,6 +251,7 @@ footer .fine{color:#a99cd4;font-size:13.5px}
     <a class="nl" href="#astrology">Astrology</a>
     <a class="nl" href="#bodygraph">BodyGraph</a>
     <span class="free-pill">Free · No account · No ads</span>
+    </div>
   </div>
 </nav>
 
@@ -1139,6 +1162,41 @@ CHAKRAS.forEach(function(c){
   grid.appendChild(card);
 });
 markPreset(528);
+</script>
+<script>
+/* ============ MOBILE NAV — menu toggle only; does not touch audio, playback, timer, or diagnostics ============ */
+(function(){
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if (!toggle || !links) return;
+  function setOpen(open){
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    links.classList.toggle('open', open);
+  }
+  toggle.addEventListener('click', function(){
+    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+  /* Close after choosing a destination */
+  links.addEventListener('click', function(e){
+    if (e.target.closest('a')) setOpen(false);
+  });
+  /* Escape closes the menu and returns focus to the button */
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true'){
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+  /* Tapping anywhere outside the header closes the menu */
+  document.addEventListener('click', function(e){
+    if (toggle.getAttribute('aria-expanded') === 'true' && !e.target.closest('nav.top')) setOpen(false);
+  });
+  /* Reset when the window grows back to desktop size */
+  window.addEventListener('resize', function(){
+    if (window.innerWidth > 900) setOpen(false);
+  });
+})();
 </script>
 </body>
 </html>
