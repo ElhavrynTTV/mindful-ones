@@ -16,6 +16,14 @@ Frequency Studio is only the foundation. The full platform will include:
 Astrology and Human Design already have their places designed into the website;
 their calculations are implemented in a later phase.
 
+Structure (Phase 2, decided 2026-11-09): move from the single long scrolling
+page to page-style views — each section opens like its own page inside the same
+self-contained file, with the Sanctuary as home. Triggered by first-visitor
+feedback and the owner's own preference (the same pattern as her Phasmophobia
+Field Guide). Design decision to settle when building: behavior for a tone
+that is playing while the visitor switches views, consistent with the site's
+sound-safety rules.
+
 Principles that do not change:
 
 - Free access. No required account, no subscription, no advertising.
