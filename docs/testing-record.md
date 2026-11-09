@@ -107,3 +107,26 @@ verified: laptop functional checks, the ten-preset phyphox sweep, custom
 frequency testing, Android background behavior, error handling, the local-copy
 check, and electronic binaural channel verification. **Phase 1 testing is
 complete.**
+
+## GitHub Pages host confirmation — 2026-11-08
+
+After the repository went public (owner's decision) and the GPL-3.0 license was
+added, the site was published on GitHub Pages at
+https://elhavrynttv.github.io/mindful-ones/ — the same `index.html` from this
+repository. A later navigation-only update (V8: mobile hamburger menu;
+audio code verified byte-for-byte identical to V7) was confirmed live on Pages
+from the tester's phone screenshots.
+
+Host-confirmation checks on the Pages site, on the tester's Android phone
+(user-verified, reported 2026-11-08):
+
+- **Audio plays** on the Pages host.
+- **Timer** stops playback as expected.
+- **Lock screen** — playback continues with the phone locked.
+- **Concurrent audio** — the frequencies remain listenable even while other
+  audio is playing in the background (observed by the tester).
+- **Menu navigation** — opening the hamburger menu and tapping "Frequency
+  Studio" scrolls to the section and closes the menu.
+
+These are confirmations that the new host serves the identical, already-tested
+file correctly — not a repeat of the Phase 1 test list.
