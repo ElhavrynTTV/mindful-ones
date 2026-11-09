@@ -71,7 +71,13 @@ source; Git history here serves the same protect-what-works purpose.
 
 ## License
 
-License not yet chosen. Until the project owner decides on an open-source license
-and this section is updated, all rights are reserved. Mindful Ones will remain free
-for people to use; the license discussion is about ownership, attribution, and reuse
-terms before the repository becomes public.
+Copyright © 2026 Elhavryn
+
+Mindful Ones is free software, licensed under the **GNU General Public License
+v3.0** — see the [LICENSE](LICENSE) file for the full text.
+
+In plain words: anyone may use, study, modify, and share this code, including
+commercially. If someone distributes a modified version, the people who receive
+it must receive the source code and the same freedoms under the GPL. The GPL
+protects access to the code; it does not set prices — the official Mindful Ones
+site itself remains free to use, as it always will be.
