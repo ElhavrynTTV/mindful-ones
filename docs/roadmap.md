@@ -43,8 +43,15 @@ Ideas added 2026-11-13 (owner; phase to be decided — Phase 2 or later):
   the Earth itself (for example brainwave bands and the Schumann resonance),
   all labeled with the site's evidence levels — measured science, still being
   studied, and tradition kept clearly separate.
-- A biometric / biofield scan feature, possibly based on a free online scan
-  the owner has in mind. Before any build: identify the specific tool, check
-  whether it allows embedding or only linking, and review it against this
-  project's principles — visitor data must stay private, no account required,
-  and the core site must not depend on an outside service.
+- A live Schumann resonance chart on the site — the continuously updating
+  spectrogram published by the Tomsk State University Space Observing System
+  (the feed behind most live Schumann charts), shown as an updating image or
+  a clearly credited link, labeled as live external scientific data. The
+  core site must keep working if the feed is ever down. (Corrected
+  2026-11-13: this is the feature the owner meant by "the scan that's
+  constantly going.")
+- Separately, the owner asked whether a biometric / biofield scan could be
+  added at all. Answer on record: possible in principle via embed or link,
+  but only after identifying a specific tool and reviewing it against this
+  project's principles — visitor data must stay private, no account
+  required, and the core site must not depend on an outside service.
