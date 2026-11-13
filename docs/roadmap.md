@@ -35,3 +35,16 @@ Principles that do not change:
 
 Future hosting goals (discuss before changing anything): a public website of
 its own, and an installable, offline-capable PWA.
+
+Ideas added 2026-11-13 (owner; phase to be decided — Phase 2 or later):
+
+- A comprehensive frequency reference: scientific information about
+  frequencies across the whole body, our surroundings and environment, and
+  the Earth itself (for example brainwave bands and the Schumann resonance),
+  all labeled with the site's evidence levels — measured science, still being
+  studied, and tradition kept clearly separate.
+- A biometric / biofield scan feature, possibly based on a free online scan
+  the owner has in mind. Before any build: identify the specific tool, check
+  whether it allows embedding or only linking, and review it against this
+  project's principles — visitor data must stay private, no account required,
+  and the core site must not depend on an outside service.
