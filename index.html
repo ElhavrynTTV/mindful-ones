@@ -271,6 +271,51 @@ body.has-mini{padding-bottom:78px}
 .earth-modes li{margin:4px 0}
 .earth-modes strong{color:var(--ink)}
 </style>
+<style id="phase2-bodygraph-style">
+/* Phase 2 step 3 — BodyGraph calculator (additive only) */
+.bg-calc{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:26px;box-shadow:var(--shadow);margin-bottom:16px}
+.bg-calc h3{font-size:25px;margin:0 0 6px}
+.bg-calc .bg-sub{color:var(--ink2);margin:0 0 6px}
+.bg-privacy{background:var(--chip-s);color:var(--chip-s-ink);border-radius:12px;padding:11px 14px;font-size:15px;font-weight:700;margin:12px 0 4px}
+.bg-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:14px}
+.bg-form label{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);display:block}
+.bg-form input,.bg-form select{width:100%;margin-top:5px;padding:11px;border-radius:10px;border:1.5px solid var(--line2);background:var(--surface);color:var(--ink);font-family:inherit;font-size:16px}
+.bg-form input:focus-visible,.bg-form select:focus-visible{outline:3px solid var(--teal);outline-offset:1px}
+.bg-check{display:flex;gap:10px;align-items:flex-start;margin-top:14px;background:var(--surface2);border-radius:12px;padding:12px 14px}
+.bg-check input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--purple)}
+.bg-check span{font-size:15px;color:var(--ink2)}
+.bg-check span strong{color:var(--ink)}
+.bg-warn{display:none;background:var(--chip-i);color:var(--chip-i-ink);border-radius:12px;padding:12px 14px;font-size:15px;margin-top:12px}
+.bg-warn.show{display:block}
+.bg-err{display:none;background:#fbe4e4;color:#7c1d1d;border-radius:12px;padding:12px 14px;font-size:15px;margin-top:12px}
+@media (prefers-color-scheme: dark){ .bg-err{background:#4a1414;color:#ffb4b4} }
+.bg-err.show{display:block}
+.bg-buildrow{margin-top:18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.bg-results{display:none;margin-top:26px}
+.bg-results.show{display:block}
+.bg-results h4{font-family:"Marcellus",serif;font-weight:400;font-size:22px;margin:24px 0 10px;color:var(--ink)}
+.bg-chartwrap{display:grid;grid-template-columns:minmax(280px,420px) 1fr;gap:22px;align-items:start}
+@media(max-width:760px){.bg-chartwrap{grid-template-columns:1fr}}
+.bg-chartbox{background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius);padding:16px;text-align:center}
+.bg-chartbox svg{max-width:100%;height:auto}
+.bg-sumgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.bg-sum{background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:16px}
+.bg-sum .k{font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.bg-sum .v{font-family:"Marcellus",serif;font-size:21px;color:var(--ink);margin-top:3px;line-height:1.3}
+.bg-sum .d{font-size:14.5px;color:var(--ink2);margin-top:4px}
+.bg-acts{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.bg-acts{grid-template-columns:1fr}}
+.bg-actlist{background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.bg-actlist h5{margin:0 0 8px;font-size:16.5px;font-family:"Nunito",sans-serif;font-weight:800}
+.bg-actlist table{width:100%;border-collapse:collapse;font-size:15px}
+.bg-actlist td{padding:4px 6px;border-bottom:1px solid var(--line);color:var(--ink2)}
+.bg-actlist td:last-child{text-align:right;font-weight:800;color:var(--ink);white-space:nowrap}
+.bg-actlist tr:last-child td{border-bottom:none}
+.bg-note{font-size:14.5px;color:var(--ink2);background:var(--surface2);border-radius:12px;padding:12px 14px;margin-top:16px}
+.bg-note strong{color:var(--ink)}
+.bg-pillrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.bg-pill{font-size:13.5px;font-weight:700;background:var(--surface);border:1.5px solid var(--line2);color:var(--ink);padding:4px 11px;border-radius:999px}
+</style>
 </head>
 <body>
 
@@ -388,10 +433,10 @@ body.has-mini{padding-bottom:78px}
       </div>
       <div class="card">
         <div class="ic" style="background:#dcf2ec"><svg viewBox="0 0 24 24" fill="none" stroke="#0e7c74" stroke-width="2" stroke-linecap="round"><path d="M12 3l7 9-7 9-7-9z"/><path d="M5 12h14"/></svg></div>
-        <span class="tag tag-soon">Phase 2 · Designed in</span>
+        <span class="tag tag-live">Open now</span>
         <h3>Human Design BodyGraph</h3>
-        <p>Your Type, Strategy, Authority, Profile, and centers — kept separate from the anatomy map, because they are different systems.</p>
-        <a class="go" href="#bodygraph">Preview the design →</a>
+        <p>Your full chart, calculated in your browser from your birth moment: Type, Strategy, Authority, Profile, centers, channels, and all 26 activations. Birth details never leave your device.</p>
+        <a class="go" href="#bodygraph">Build my chart →</a>
       </div>
     </div>
   </section>
@@ -737,8 +782,34 @@ body.has-mini{padding-bottom:78px}
   <section id="bodygraph" aria-label="Human Design BodyGraph preview">
     <div class="sec-head">
       <h2>Human Design BodyGraph</h2>
-      <p><span class="tag tag-soon">Phase 2 · Designed in now, calculated later</span></p>
+      <p><span class="tag tag-live">Phase 2 · Calculator live</span></p>
       <p>A BodyGraph is <em>not</em> the anatomy map above — it’s a spiritual chart system built from your birth data, with nine centers, 64 gates, and 36 channels. Keeping the two maps separate is deliberate: one describes your physical body, the other is a tradition for reflecting on how you move through the world.</p>
+    </div>
+        <div class="bg-calc" id="bgCalc">
+      <span class="ev ev-t">Spiritual tradition</span>
+      <h3 style="margin-top:10px">Build your BodyGraph</h3>
+      <p class="bg-sub">Enter your birth details and this page calculates your full Human Design chart — Type, Strategy, Authority, Profile, Definition, Incarnation Cross, all nine centers, the defined channels, and every Personality and Design activation with its gate and line.</p>
+      <p class="bg-privacy">🔒 Your birth details never leave this device. The whole calculation runs right here in your browser — nothing is sent anywhere, saved, or shared.</p>
+      <form id="bgForm" novalidate>
+        <div class="bg-form">
+          <div><label for="bgDate">Birth date</label><input type="date" id="bgDate" required></div>
+          <div><label for="bgTime">Birth time</label><input type="time" id="bgTime"></div>
+          <div><label for="bgPlace">Birth place (optional)</label><input type="text" id="bgPlace" placeholder="City, State" autocomplete="off"></div>
+          <div><label for="bgTz">Birth place timezone</label><select id="bgTz"></select></div>
+        </div>
+        <div class="bg-check">
+          <input type="checkbox" id="bgNoTime">
+          <span><label for="bgNoTime" style="display:inline;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink2)"><strong>I don’t know my birth time</strong> — we’ll use 12:00 noon. The Moon moves fast and gate lines turn on minutes, so your Moon gate, lines, Profile, and anything time-sensitive can shift with a different birth time. Treat those parts as approximate.</label></span>
+        </div>
+        <div class="bg-warn" id="bgNoTimeWarn" role="note">⚠️ <strong>No birth time:</strong> this chart is calculated for <strong>12:00 noon</strong>. Most of the chart is usually steady across a day, but the Moon’s gate, every line, and the Profile can change with the real birth time — if you find your birth time later (a birth certificate often has it), rebuild the chart with it.</div>
+        <div class="bg-err" id="bgError" role="alert"></div>
+        <div class="bg-buildrow">
+          <button type="submit" class="btn btn-purple" style="font-size:17px;padding:14px 28px">✦&nbsp; Build my chart</button>
+          <span style="font-size:14px;color:var(--muted)">Calculated from the planets’ actual positions at your birth moment, and at the Design moment — when the Sun stood exactly 88° of arc earlier, about three months before you were born.</span>
+        </div>
+      </form>
+      <div class="bg-results" id="bgResults" aria-live="polite"></div>
+      <p class="bg-note"><strong>How honest this is:</strong> the chart is <strong>calculated</strong> in your browser from astronomical positions, using a compact ephemeris accurate to a few minutes of arc — not looked up from any database. Because gates and lines are narrow slices of the sky, a birth that falls <strong>within a few minutes of arc of a gate or line boundary</strong> can land one gate or line differently between calculation systems. If your chart sits right on an edge, that’s worth knowing rather than hiding.</p>
     </div>
     <div class="future">
       <div class="mockrow">
@@ -779,6 +850,7 @@ body.has-mini{padding-bottom:78px}
     </div>
     <div class="phase2-note" role="note"><span class="badge-verified">Verified</span> &nbsp;<strong>Phase 2 update:</strong> the page-style views and mini player bar were added in this build and were verified by the owner on November 15, 2026 (laptop, Chrome): a 528 Hz tone kept playing across a view switch while the mini player bar showed the tone, its timer countdown, and a Stop button. No Phase 1 test results or statuses above or below have been changed by this addition.</div>
     <div class="phase2-note" role="note"><span class="badge-pending">Pending verification</span> &nbsp;<strong>Phase 2 update:</strong> an Earth view with the live Schumann resonance chart (Tomsk) was added in this build and is pending the owner’s verification.</div>
+    <div class="phase2-note" role="note"><span class="badge-pending">Pending verification</span> &nbsp;<strong>Phase 2 update:</strong> a full BodyGraph (Human Design) calculator was added in this build and is pending the owner’s verification against her own chart.</div>
     <div class="status-grid">
       <div class="testbox">
         <h3 style="margin:0 0 6px">✅ Verified by the creator — in-person checks</h3>
@@ -1478,6 +1550,404 @@ markPreset(528);
   setInterval(function(){
     img.src = BASE + '&t=' + Date.now();
   }, 10 * 60 * 1000);
+})();
+</script>
+<script>
+/* ============ PHASE 2 STEP 3 — Human Design BodyGraph calculator ============
+   Separate block only. Everything is calculated locally in the visitor's
+   browser from a compact low-precision ephemeris (Schlyter-style orbital
+   elements, ~1–2 arcminutes for the Sun and inner planets). No network
+   calls, no storage, nothing leaves the device. This code touches no
+   audio, no views, no other sections. */
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var form = $('bgForm'); if (!form) return;
+
+  /* ---------- math helpers ---------- */
+  var D2R = Math.PI / 180;
+  function rev(x){ x = x % 360; if (x < 0) x += 360; return x; }
+  function sind(x){ return Math.sin(rev(x) * D2R); }
+  function cosd(x){ return Math.cos(rev(x) * D2R); }
+  /* Schlyter day number: days since 1999 Dec 31.0 UT */
+  function dayNum(utcMs){ return utcMs / 86400000 - 10956.0; }
+
+  /* ---------- orbital elements (Schlyter) ----------
+     Each returns [N, i, w, a, e, M] at day d. a in AU (Moon: Earth radii). */
+  function elSun(d){ return [0, 0, 282.9404 + 4.70935E-5*d, 1.0000002, 0.016709 - 1.151E-9*d, 356.0470 + 0.9856002585*d]; }
+  function elMoon(d){ return [125.1228 - 0.0529538083*d, 5.1454, 318.0634 + 0.1643573223*d, 60.2666, 0.054900, 115.3654 + 13.0649929509*d]; }
+  function elMercury(d){ return [48.3313 + 3.24587E-5*d, 7.0047 + 5.00E-8*d, 29.1241 + 1.01444E-5*d, 0.387098, 0.205635 + 5.59E-10*d, 168.6562 + 4.0923344368*d]; }
+  function elVenus(d){ return [76.6799 + 2.46590E-5*d, 3.3946 + 2.75E-8*d, 54.8910 + 1.38374E-5*d, 0.723330, 0.006773 - 1.302E-9*d, 48.0052 + 1.6021302244*d]; }
+  function elMars(d){ return [49.5574 + 2.11081E-5*d, 1.8497 - 1.78E-8*d, 286.5016 + 2.92961E-5*d, 1.523688, 0.093405 + 2.516E-9*d, 18.6021 + 0.5240207766*d]; }
+  function elJupiter(d){ return [100.4542 + 2.76854E-5*d, 1.3032 - 1.557E-7*d, 273.8777 + 1.64505E-5*d, 5.20256, 0.048498 + 4.469E-9*d, 19.8950 + 0.0830853001*d]; }
+  function elSaturn(d){ return [113.6634 + 2.38980E-5*d, 2.4886 - 1.081E-7*d, 339.3939 + 2.97661E-5*d, 9.55475, 0.055546 - 9.499E-9*d, 316.9670 + 0.0334442282*d]; }
+  function elUranus(d){ return [74.0005 + 1.3978E-5*d, 0.7733 + 1.9E-8*d, 96.6612 + 3.0565E-5*d, 19.18171 - 1.55E-8*d, 0.047318 + 7.45E-9*d, 142.5905 + 0.011725806*d]; }
+  function elNeptune(d){ return [131.7806 + 3.0173E-5*d, 1.7700 - 2.55E-7*d, 272.8461 - 6.027E-6*d, 30.05826 + 3.313E-8*d, 0.008606 + 2.15E-9*d, 256.2285 + 0.005995147*d]; }
+  /* Pluto: J2000 elements (a, e, i, node, arg. peri., mean anomaly at J2000);
+     mean motion 360 / 247.94 years. Slow-moving: fixed elements are ample. */
+  function elPluto(d){ return [110.30347, 17.14175, 113.76544, 39.48169, 0.24881, 14.85990 + 0.0039757*(d - 1.5)]; }
+
+  /* Heliocentric ecliptic rectangular coordinates from elements */
+  function helioRect(el){
+    var N = el[0], i = el[1], w = el[2], a = el[3], e = el[4], M = rev(el[5]);
+    var E = M + (180/Math.PI) * e * sind(M) * (1 + e * cosd(M));
+    var k;
+    for (k = 0; k < 8; k++){
+      var E1 = E - (E - (180/Math.PI) * e * sind(E) - M) / (1 - e * cosd(E));
+      if (Math.abs(E1 - E) < 0.0005) { E = E1; break; }
+      E = E1;
+    }
+    var xv = a * (cosd(E) - e), yv = a * Math.sqrt(1 - e*e) * sind(E);
+    var v = Math.atan2(yv, xv) / D2R, r = Math.sqrt(xv*xv + yv*yv);
+    var xh = r * (cosd(N)*cosd(v+w) - sind(N)*sind(v+w)*cosd(i));
+    var yh = r * (sind(N)*cosd(v+w) + cosd(N)*sind(v+w)*cosd(i));
+    var zh = r * (sind(v+w) * sind(i));
+    return [xh, yh, zh];
+  }
+  function lonLat(x, y, z){
+    return [rev(Math.atan2(y, x) / D2R), Math.atan2(z, Math.sqrt(x*x + y*y)) / D2R];
+  }
+
+  /* Sun: geocentric longitude + rectangular position (for planet conversion) */
+  function sunPos(d){
+    var el = elSun(d), w = el[2], e = el[4], M = rev(el[5]);
+    var C = 1.9148*sind(M) + 0.0200*sind(2*M) + 0.0003*sind(3*M);
+    var lon = rev(M + C + w);
+    var E = M + (180/Math.PI) * e * sind(M) * (1 + e * cosd(M));
+    var xv = cosd(E) - e, yv = Math.sqrt(1 - e*e) * sind(E);
+    var r = Math.sqrt(xv*xv + yv*yv);
+    return { lon: lon, x: r * cosd(lon), y: r * sind(lon), r: r };
+  }
+  function sunLon(utcMs){ return sunPos(dayNum(utcMs)).lon; }
+
+  /* Moon: geocentric, with Schlyter's principal perturbation terms */
+  function moonLon(d){
+    var el = elMoon(d);
+    var rect = helioRect(el); /* Moon elements are geocentric already */
+    var ll = lonLat(rect[0], rect[1], rect[2]);
+    var lon = ll[0];
+    var sunEl = elSun(d), Ms = rev(sunEl[5]);
+    var Mm = rev(el[5]);
+    var Lm = rev(el[0] + el[2] + el[5]), Ls = rev(sunEl[2] + sunEl[5]);
+    var D = rev(Lm - Ls), F = rev(Lm - el[0]);
+    lon += -1.274*sind(Mm - 2*D) + 0.658*sind(2*D) - 0.186*sind(Ms)
+           - 0.059*sind(2*Mm - 2*D) - 0.057*sind(Mm - 2*D + Ms)
+           + 0.053*sind(Mm + 2*D) + 0.046*sind(2*D - Ms)
+           + 0.041*sind(Mm - Ms) - 0.035*sind(D) - 0.031*sind(Mm + Ms)
+           - 0.015*sind(2*F - 2*D) + 0.011*sind(Mm - 4*D);
+    return rev(lon);
+  }
+
+  /* True North Node: mean node plus the principal correction terms */
+  function nodeLon(d){
+    var sunEl = elSun(d), moonEl = elMoon(d);
+    var Ms = rev(sunEl[5]);
+    var Lm = rev(moonEl[0] + moonEl[2] + moonEl[5]), Ls = rev(sunEl[2] + sunEl[5]);
+    var D = rev(Lm - Ls);
+    var N = moonEl[0];
+    return rev(N - 1.497*sind(2*(Lm - N))); /* mean node + dominant true-node term */
+  }
+
+  function planetLon(elFn, d, sun){
+    var rect = helioRect(elFn(d));
+    return lonLat(rect[0] + sun.x, rect[1] + sun.y, rect[2])[0];
+  }
+
+  /* All 13 bodies' ecliptic longitudes at a UTC moment */
+  function allLongitudes(utcMs){
+    var d = dayNum(utcMs);
+    var sun = sunPos(d);
+    var node = nodeLon(d);
+    return {
+      'Sun': sun.lon,
+      'Earth': rev(sun.lon + 180),
+      'Moon': moonLon(d),
+      'North Node': node,
+      'South Node': rev(node + 180),
+      'Mercury': planetLon(elMercury, d, sun),
+      'Venus': planetLon(elVenus, d, sun),
+      'Mars': planetLon(elMars, d, sun),
+      'Jupiter': planetLon(elJupiter, d, sun),
+      'Saturn': planetLon(elSaturn, d, sun),
+      'Uranus': planetLon(elUranus, d, sun),
+      'Neptune': planetLon(elNeptune, d, sun),
+      'Pluto': planetLon(elPluto, d, sun)
+    };
+  }
+  var BODIES = ['Sun','Earth','Moon','North Node','South Node','Mercury','Venus','Mars','Jupiter','Saturn','Uranus','Neptune','Pluto'];
+
+  /* Design moment: Sun exactly 88° of arc before its birth longitude.
+     Scan back in half-day steps to bracket, then bisect to the second. */
+  function designMoment(birthMs){
+    var target = rev(sunLon(birthMs) - 88);
+    function diff(t){ var x = rev(sunLon(t) - target); return x > 180 ? x - 360 : x; }
+    var step = 12 * 3600 * 1000, prevT = birthMs, prevD = diff(birthMs), t, dd, i;
+    for (i = 1; i <= 260; i++){
+      t = birthMs - i * step;
+      dd = diff(t);
+      if (prevD > 0 && dd <= 0){
+        var lo = t, hi = prevT, mid;
+        for (var j = 0; j < 60; j++){
+          mid = (lo + hi) / 2;
+          if (diff(mid) > 0) hi = mid; else lo = mid;
+          if (hi - lo < 1000) break;
+        }
+        return (lo + hi) / 2;
+      }
+      prevT = t; prevD = dd;
+    }
+    return birthMs - 88 * 86400000; /* fallback; should not happen */
+  }
+
+  /* ---------- Human Design tables ---------- */
+  var GATE_ORDER = [41,19,13,49,30,55,37,63,22,36,25,17,21,51,42,3,27,24,2,23,8,20,16,35,45,12,15,52,39,53,62,56,31,33,7,4,29,59,40,64,47,6,46,18,48,57,32,50,28,44,1,43,14,34,9,5,26,11,10,58,38,54,61,60];
+  function gateLine(lon){
+    var rel = rev(lon - 302);
+    var idx = Math.floor(rel / 5.625);
+    var line = Math.floor((rel - idx * 5.625) / 0.9375) + 1;
+    return { gate: GATE_ORDER[idx], line: line };
+  }
+  var CENTER_GATES = {
+    'Head': [64,61,63], 'Ajna': [47,24,4,17,43,11],
+    'Throat': [62,23,56,35,12,45,33,8,31,20,16],
+    'G': [1,2,7,10,13,15,25,46], 'Heart': [21,26,40,51],
+    'Solar Plexus': [36,22,37,49,55,30,6], 'Sacral': [34,5,14,29,59,9,3,42,27],
+    'Spleen': [48,57,44,50,32,28,18], 'Root': [58,38,54,53,60,52,19,39,41]
+  };
+  var GATE_CENTER = {};
+  Object.keys(CENTER_GATES).forEach(function(c){ CENTER_GATES[c].forEach(function(g){ GATE_CENTER[g] = c; }); });
+  var CHANNELS = [[64,47],[61,24],[63,4],[17,62],[43,23],[11,56],[31,7],[8,1],[33,13],[20,10],[21,45],[35,36],[12,22],[16,48],[20,57],[20,34],[25,51],[46,29],[15,5],[2,14],[40,37],[26,44],[32,54],[28,38],[18,58],[30,41],[55,39],[49,19],[6,59],[57,34],[50,27],[53,42],[60,3],[52,9],[57,10],[10,34]];
+  var LINE_NAMES = {1:'Investigator',2:'Hermit',3:'Martyr',4:'Opportunist',5:'Heretic',6:'Role Model'};
+  var CENTER_INFO = {
+    'Head': 'Inspiration — the pressure to ask questions and make sense of things.',
+    'Ajna': 'Awareness — how you process, conceptualize, and hold viewpoints.',
+    'Throat': 'Expression & manifestation — voice, communication, and action.',
+    'G': 'Identity & direction — love, direction, and the sense of self.',
+    'Heart': 'Willpower — ego, promises, value, and the material world.',
+    'Solar Plexus': 'Emotions — the emotional wave, feelings, and sensitivity.',
+    'Sacral': 'Life force — work energy, response, fertility, and stamina.',
+    'Spleen': 'Intuition & health — instincts, survival, and wellbeing in the now.',
+    'Root': 'Fuel & pressure — adrenaline, momentum, and the drive to begin.'
+  };
+  /* SVG layout: anchor points + shapes per center */
+  var LAYOUT = {
+    'Head':         { cx: 180, cy: 42,  shape: '<polygon points="180,8 146,66 214,66" />' },
+    'Ajna':         { cx: 180, cy: 92,  shape: '<polygon points="148,74 212,74 180,122" />' },
+    'Throat':       { cx: 180, cy: 158, shape: '<rect x="150" y="132" width="60" height="52" rx="6" />' },
+    'G':            { cx: 180, cy: 232, shape: '<polygon points="180,192 220,232 180,272 140,232" />' },
+    'Heart':        { cx: 268, cy: 214, shape: '<polygon points="240,188 298,206 252,252" />' },
+    'Spleen':       { cx: 96,  cy: 322, shape: '<polygon points="124,292 50,326 124,360" />' },
+    'Solar Plexus': { cx: 264, cy: 322, shape: '<polygon points="236,292 310,326 236,360" />' },
+    'Sacral':       { cx: 180, cy: 306, shape: '<rect x="152" y="282" width="56" height="48" rx="6" />' },
+    'Root':         { cx: 180, cy: 386, shape: '<rect x="152" y="362" width="56" height="48" rx="6" />' }
+  };
+  var CENTER_FILL = {
+    'Head': '#c99a2e', 'Ajna': '#3d8b5f', 'Throat': '#0e7c74', 'G': '#e3b959',
+    'Heart': '#b3543f', 'Spleen': '#2f7fc4', 'Solar Plexus': '#8e6cc9',
+    'Sacral': '#c0392b', 'Root': '#5b3a9e'
+  };
+  var MOTORS = ['Heart','Solar Plexus','Root','Sacral'];
+
+  /* ---------- timezone handling (Intl, DST-aware) ---------- */
+  var FALLBACK_TZ = ['America/New_York','America/Chicago','America/Denver','America/Los_Angeles','America/Anchorage','Pacific/Honolulu','America/Toronto','America/Mexico_City','America/Sao_Paulo','Europe/London','Europe/Paris','Europe/Moscow','Africa/Cairo','Asia/Dubai','Asia/Karachi','Asia/Dhaka','Asia/Bangkok','Asia/Shanghai','Asia/Tokyo','Australia/Sydney','Pacific/Auckland','UTC'];
+  (function fillTz(){
+    var sel = $('bgTz'); if (!sel) return;
+    var zones = null;
+    try { if (Intl.supportedValuesOf) zones = Intl.supportedValuesOf('timeZone'); } catch(e){}
+    if (!zones || !zones.length) zones = FALLBACK_TZ;
+    zones.forEach(function(z){
+      var o = document.createElement('option'); o.value = z; o.textContent = z.replace(/_/g,' ');
+      sel.appendChild(o);
+    });
+    sel.value = zones.indexOf('America/New_York') !== -1 ? 'America/New_York' : zones[0];
+  })();
+
+  function tzOffsetMs(tz, utcMs){
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: tz, hour12: false,
+        year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', second:'2-digit' }).formatToParts(new Date(utcMs));
+      var p = {};
+      parts.forEach(function(x){ p[x.type] = x.value; });
+      var asUtc = Date.UTC(+p.year, +p.month - 1, +p.day, (+p.hour) % 24, +p.minute, +p.second);
+      return asUtc - Math.floor(utcMs / 1000) * 1000;
+    } catch(e){ return 0; }
+  }
+  function zonedToUtc(tz, y, mo, d, h, mi){
+    var guess = Date.UTC(y, mo - 1, d, h, mi, 0);
+    var utc = guess;
+    for (var i = 0; i < 3; i++){ utc = guess - tzOffsetMs(tz, utc); }
+    return utc;
+  }
+
+  /* ---------- unknown-time checkbox ---------- */
+  var noTime = $('bgNoTime'), warn = $('bgNoTimeWarn'), timeInput = $('bgTime');
+  noTime.addEventListener('change', function(){
+    warn.classList.toggle('show', noTime.checked);
+    timeInput.disabled = noTime.checked;
+    if (noTime.checked) timeInput.value = ''; else if (!timeInput.value) timeInput.value = '12:00';
+  });
+
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function fmtDate(ms){
+    var d = new Date(ms);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return months[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear();
+  }
+
+  /* ---------- chart derivation ---------- */
+  function derive(activeGates){
+    var definedChannels = CHANNELS.filter(function(ch){ return activeGates[ch[0]] && activeGates[ch[1]]; });
+    var defined = {};
+    definedChannels.forEach(function(ch){
+      defined[GATE_CENTER[ch[0]]] = true; defined[GATE_CENTER[ch[1]]] = true;
+    });
+    /* adjacency among defined centers via defined channels */
+    var adj = {};
+    definedChannels.forEach(function(ch){
+      var a = GATE_CENTER[ch[0]], b = GATE_CENTER[ch[1]];
+      (adj[a] = adj[a] || []).push(b); (adj[b] = adj[b] || []).push(a);
+    });
+    function componentOf(start){
+      var seen = {}, stack = [start];
+      while (stack.length){ var c = stack.pop(); if (seen[c]) continue; seen[c] = true;
+        (adj[c] || []).forEach(function(n){ if (!seen[n]) stack.push(n); }); }
+      return seen;
+    }
+    var defNames = Object.keys(defined);
+    /* Definition: connected groups of defined centers */
+    var groups = 0, visited = {};
+    defNames.forEach(function(c){ if (!visited[c]){ groups++; var comp = componentOf(c);
+      Object.keys(comp).forEach(function(x){ visited[x] = true; }); } });
+    var definition = ['None','Single','Split','Triple Split','Quadruple Split'][Math.min(groups, 4)];
+
+    /* Type */
+    var type, strategy, notSelf;
+    var throatComp = defined['Throat'] ? componentOf('Throat') : {};
+    var motorToThroat = MOTORS.some(function(m){ return throatComp[m]; });
+    if (!defNames.length){ type = 'Reflector'; strategy = 'Wait a lunar cycle'; notSelf = 'Disappointment'; }
+    else if (defined['Sacral'] && motorToThroat){ type = 'Manifesting Generator'; strategy = 'To respond'; notSelf = 'Frustration'; }
+    else if (defined['Sacral']){ type = 'Generator'; strategy = 'To respond'; notSelf = 'Frustration'; }
+    else if (motorToThroat){ type = 'Manifestor'; strategy = 'To inform'; notSelf = 'Anger'; }
+    else { type = 'Projector'; strategy = 'Wait for the invitation'; notSelf = 'Bitterness'; }
+
+    /* Authority */
+    var authority;
+    if (!defNames.length) authority = 'Lunar';
+    else if (defined['Solar Plexus']) authority = 'Emotional — Solar Plexus';
+    else if (defined['Sacral']) authority = 'Sacral';
+    else if (defined['Spleen']) authority = 'Splenic';
+    else if (defined['Heart']) authority = 'Ego';
+    else if (defined['G']) authority = 'Self-Projected';
+    else authority = 'Mental / Environmental';
+
+    return { definedChannels: definedChannels, defined: defined, defNames: defNames,
+             definition: definition, type: type, strategy: strategy, notSelf: notSelf, authority: authority };
+  }
+
+  /* ---------- SVG chart ---------- */
+  function buildSvg(derived){
+    var s = '<svg viewBox="0 0 360 424" role="img" aria-label="Your Human Design body graph: defined centers are filled in color, open centers are unfilled, and defined channels are drawn as strong lines between centers">';
+    CHANNELS.forEach(function(ch){
+      var a = LAYOUT[GATE_CENTER[ch[0]]], b = LAYOUT[GATE_CENTER[ch[1]]];
+      var isDef = derived.definedChannels.some(function(dc){ return dc[0] === ch[0] && dc[1] === ch[1]; });
+      if (isDef) s += '<line x1="' + a.cx + '" y1="' + a.cy + '" x2="' + b.cx + '" y2="' + b.cy + '" stroke="var(--purple)" stroke-width="7" stroke-linecap="round" opacity="0.85"/>';
+      else s += '<line x1="' + a.cx + '" y1="' + a.cy + '" x2="' + b.cx + '" y2="' + b.cy + '" stroke="var(--line2)" stroke-width="1.5" opacity="0.45"/>';
+    });
+    Object.keys(LAYOUT).forEach(function(name){
+      var L = LAYOUT[name], isDef = !!derived.defined[name];
+      var fill = isDef ? CENTER_FILL[name] : 'var(--surface)';
+      s += '<g fill="' + fill + '" stroke="var(--purple)" stroke-width="1.8">' + L.shape + '</g>';
+      s += '<text x="' + L.cx + '" y="' + (L.cy + 4) + '" text-anchor="middle" font-size="11.5" font-weight="800" fill="' + (isDef ? '#ffffff' : 'var(--muted)') + '" style="paint-order:stroke" stroke="' + (isDef ? 'rgba(0,0,0,.25)' : 'none') + '" stroke-width="2">' + name + '</text>';
+    });
+    s += '</svg>';
+    return s;
+  }
+
+  /* ---------- submit ---------- */
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var err = $('bgError'); err.classList.remove('show'); err.textContent = '';
+    var dateVal = $('bgDate').value;
+    if (!dateVal){ err.textContent = 'Please choose your birth date — the chart is calculated from it.'; err.classList.add('show'); return; }
+    var dp = dateVal.split('-');
+    var y = +dp[0], mo = +dp[1], d = +dp[2];
+    if (!(y >= 1800 && y <= 2100)){ err.textContent = 'This calculator covers birth years 1800–2100.'; err.classList.add('show'); return; }
+    var h = 12, mi = 0, usedNoon = noTime.checked;
+    if (!usedNoon){
+      var tv = timeInput.value;
+      if (!tv){ err.textContent = 'Please enter your birth time, or check “I don’t know my birth time” and we’ll use noon.'; err.classList.add('show'); return; }
+      var tp = tv.split(':'); h = +tp[0]; mi = +tp[1];
+    }
+    var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var birthLabel = MONTHS[mo - 1] + ' ' + d + ', ' + y;
+    var tz = $('bgTz').value || 'America/New_York';
+    var place = $('bgPlace').value.replace(/^\s+|\s+$/g, '');
+    var birthMs = zonedToUtc(tz, y, mo, d, h, mi);
+    var desMs = designMoment(birthMs);
+    var pers = allLongitudes(birthMs), des = allLongitudes(desMs);
+
+    function activations(lons){
+      var out = {};
+      BODIES.forEach(function(b){ out[b] = gateLine(lons[b]); });
+      return out;
+    }
+    var pAct = activations(pers), dAct = activations(des);
+    var activeGates = {};
+    BODIES.forEach(function(b){ activeGates[pAct[b].gate] = true; activeGates[dAct[b].gate] = true; });
+    var derived = derive(activeGates);
+
+    var pProfile = pAct['Sun'].line, dProfile = dAct['Sun'].line;
+    var profile = pProfile + '/' + dProfile;
+    var rightAngle = ['1/3','1/4','2/4','2/5','3/5','3/6','4/6'].indexOf(profile) !== -1;
+    var angle = profile === '4/1' ? 'Juxtaposition' : (rightAngle ? 'Right Angle' : 'Left Angle');
+    var crossGates = [pAct['Sun'].gate, pAct['Earth'].gate, dAct['Sun'].gate, dAct['Earth'].gate];
+
+    var daysBefore = Math.round((birthMs - desMs) / 86400000 * 10) / 10;
+
+    function actTable(act, when){
+      var rows = BODIES.map(function(b){
+        return '<tr><td>' + b + '</td><td>' + act[b].gate + '.' + act[b].line + '</td></tr>';
+      }).join('');
+      return '<div class="bg-actlist"><h5>' + when + '</h5><table>' + rows + '</table></div>';
+    }
+    function pillList(items){ return '<div class="bg-pillrow">' + items.map(function(x){ return '<span class="bg-pill">' + esc(x) + '</span>'; }).join('') + '</div>'; }
+
+    var chanLabels = derived.definedChannels.map(function(ch){ return ch[0] + '–' + ch[1] + ' (' + GATE_CENTER[ch[0]] + '–' + GATE_CENTER[ch[1]] + ')'; });
+    var centerLabels = derived.defNames.map(function(c){ return c; });
+    var openCenters = Object.keys(LAYOUT).filter(function(c){ return !derived.defined[c]; });
+
+    var html = '';
+    html += '<h4 style="margin-top:6px">Your chart' + (place ? ' — born in ' + esc(place) : '') + '</h4>';
+    html += '<p style="color:var(--ink2);margin:0 0 16px">Born ' + birthLabel + (usedNoon ? ' (time unknown — calculated for 12:00 noon ' : ' at ' + (h < 10 ? '0' : '') + h + ':' + (mi < 10 ? '0' : '') + mi + ' ') + esc(tz.replace(/_/g,' ')) + (usedNoon ? ')' : ')') +
+            ' · Design moment ' + fmtDate(desMs) + ' — ' + daysBefore + ' days earlier, when the Sun stood 88° of arc before your birth position.</p>';
+    if (usedNoon) html += '<div class="bg-warn show" style="margin:0 0 16px">⚠️ Calculated for <strong>12:00 noon</strong> because no birth time was given — time-sensitive results (Moon gate, lines, Profile) can shift with a different birth time.</div>';
+    html += '<div class="bg-chartwrap"><div class="bg-chartbox">' + buildSvg(derived) +
+            '<div style="font-size:13.5px;color:var(--muted);margin-top:8px">Filled centers are <strong>defined</strong> — consistent energy in the tradition. Unfilled centers are <strong>open</strong> — where you take in and amplify the world around you.</div></div>';
+    html += '<div><div class="bg-sumgrid">' +
+      '<div class="bg-sum"><div class="k">Type</div><div class="v">' + derived.type + '</div><div class="d"><strong>Strategy:</strong> ' + derived.strategy + '<br><strong>Not-self theme:</strong> ' + derived.notSelf + '</div></div>' +
+      '<div class="bg-sum"><div class="k">Authority</div><div class="v">' + derived.authority + '</div><div class="d">How the tradition says your clearest decisions are made.</div></div>' +
+      '<div class="bg-sum"><div class="k">Profile</div><div class="v">' + profile + '</div><div class="d">' + pProfile + ' — ' + LINE_NAMES[pProfile] + ' (Personality) · ' + dProfile + ' — ' + LINE_NAMES[dProfile] + ' (Design)</div></div>' +
+      '<div class="bg-sum"><div class="k">Definition</div><div class="v">' + derived.definition + '</div><div class="d">' + (derived.defNames.length ? derived.defNames.length + ' of 9 centers defined, in ' + (derived.definition === 'Single' ? 'one connected group' : 'separate groups') + '.' : 'No centers defined.') + '</div></div>' +
+      '<div class="bg-sum"><div class="k">Incarnation Cross</div><div class="v">' + angle + ' Cross</div><div class="d">Gates ' + crossGates.join(' · ') + ' — Personality Sun ' + crossGates[0] + ', Personality Earth ' + crossGates[1] + ', Design Sun ' + crossGates[2] + ', Design Earth ' + crossGates[3] + '.</div></div>' +
+      '</div>';
+    html += '<h4>Defined channels (' + derived.definedChannels.length + ' of 36)</h4>' +
+      (chanLabels.length ? pillList(chanLabels) : '<p style="color:var(--ink2)">No complete channels — both gates of a channel must be active for it to be defined.</p>');
+    html += '<h4>Centers</h4><p style="color:var(--ink2);margin:0 0 4px"><strong style="color:var(--ink)">Defined:</strong> ' + (centerLabels.length ? centerLabels.join(', ') : 'none') + '<br><strong style="color:var(--ink)">Open:</strong> ' + openCenters.join(', ') + '</p>';
+    html += '<div style="margin-top:10px">' + Object.keys(LAYOUT).map(function(c){
+        return '<p style="margin:5px 0;color:var(--ink2);font-size:15px"><strong style="color:var(--ink)">' + c + ' — ' + (derived.defined[c] ? 'Defined' : 'Open') + ':</strong> ' + CENTER_INFO[c] + '</p>';
+      }).join('') + '</div>';
+    html += '</div></div>';
+    html += '<h4>Activations — every gate &amp; line</h4><div class="bg-acts">' +
+      actTable(pAct, '☀️ Personality — at your birth, ' + birthLabel) +
+      actTable(dAct, '🌙 Design — ' + fmtDate(desMs) + ', ~' + Math.round(daysBefore) + ' days before') +
+      '</div>';
+    html += '<p class="bg-note"><strong>Reading your chart:</strong> Personality (black, conscious) is who you experience yourself to be; Design (red in printed charts, unconscious) is the body’s side of the story, calculated from about three months before birth. A gate is active when any of the 26 activations lands in it; a channel is defined when both of its gates are active; a center is defined when a defined channel touches it. Everything above follows from those rules — change the birth time and the fast-moving pieces (Moon, lines, Profile) are the first to move.</p>';
+
+    var box = $('bgResults');
+    box.innerHTML = html;
+    box.classList.add('show');
+    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 })();
 </script>
 </body>
