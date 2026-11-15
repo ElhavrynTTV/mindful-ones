@@ -130,3 +130,30 @@ Host-confirmation checks on the Pages site, on the tester's Android phone
 
 These are confirmations that the new host serves the identical, already-tested
 file correctly — not a repeat of the Phase 1 test list.
+
+## Phase 2 structure (V9) — owner verification, 2026-11-15
+
+V9 restructured the site into page-style views (Sanctuary home; each section
+opens as its own view) and added a mini player bar, under the owner's chosen
+rule: a playing tone keeps playing across view switches, with the bar visible
+on every view. The original audio/playback script was verified byte-for-byte
+identical to V8 before release; all view and mini-bar logic lives in a
+separate script, and the bar's Stop button activates the Studio's existing
+Stop control.
+
+Owner verification (user-verified, reported 2026-11-15, on the owner's
+laptop in Chrome on the live Pages site):
+
+- **View switching** — the Chakras view opened as its own page (#chakras),
+  with the Chakras nav item highlighted.
+- **Tone keeps playing across views** — a 528 Hz tone started in the Studio
+  was still playing after switching to the Chakras view.
+- **Mini player bar** — visible at the bottom of the Chakras view showing
+  "Now playing: a pure 528 Hz sine tone — the Transformation tone", a live
+  countdown ("0:48 left" in the owner's screenshot), and a Stop button.
+- Owner's verdict on the check: "it worked fine."
+
+Scope: verified on the owner's laptop Chrome setup. The screenshot captures
+the bar mid-countdown; the timer-expiry bar-hide was part of the owner's
+check as reported, and phone verification of the new structure has not been
+separately recorded.
