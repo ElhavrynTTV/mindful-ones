@@ -233,6 +233,30 @@ footer .fine{color:#a99cd4;font-size:13.5px}
 .badge-pending{background:var(--chip-i);color:var(--chip-i-ink);font-size:11.5px;font-weight:800;padding:3px 8px;border-radius:999px;white-space:nowrap;margin-top:2px}
 .badge-info{background:var(--chip-t);color:var(--chip-t-ink);font-size:11.5px;font-weight:800;padding:3px 8px;border-radius:999px;white-space:nowrap;margin-top:2px}
 </style>
+<style id="phase2-views-style">
+/* Phase 2 step 1 — page-style views + mini player (additive only) */
+.view-hidden{display:none !important}
+nav.top a.nl.view-active{background:var(--purple);color:#fff}
+nav.top a.nl.view-active:hover{background:var(--purple);color:#fff}
+@media (prefers-color-scheme: dark){ nav.top a.nl.view-active{background:var(--purple);color:#140b28} }
+.phase2-note{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 16px;font-size:15px;color:var(--ink2);margin-bottom:16px}
+.phase2-note strong{color:var(--ink)}
+#miniPlayer{position:fixed;left:0;right:0;bottom:0;z-index:90;background:#2a1650;color:#f3efff;border-top:1px solid rgba(255,255,255,.22);box-shadow:0 -10px 30px rgba(0,0,0,.28);display:none;padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+#miniPlayer.show{display:block}
+#miniPlayer .mini-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:12px}
+#miniPlayer .mini-dot{width:10px;height:10px;border-radius:50%;background:#4ade80;flex:none;animation:miniPulse 1.6s infinite}
+@keyframes miniPulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion: reduce){ #miniPlayer .mini-dot{animation:none} }
+#miniPlayer .mini-info{flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+#miniPlayer .mini-info b{color:#ffe9a8}
+#miniPlayer .mini-timer{font-family:"Marcellus",serif;font-size:17px;color:#ffe9a8;white-space:nowrap;flex:none}
+#miniPlayer .mini-timer:empty{display:none}
+#miniPlayer .mini-stop{flex:none;background:#e9b949;color:#2a1650;border:none;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:10px 20px;border-radius:999px}
+#miniPlayer .mini-stop:active{transform:scale(.97)}
+#miniPlayer .mini-stop:focus-visible{outline:3px solid #fff;outline-offset:2px}
+body.has-mini{padding-bottom:78px}
+@media(max-width:560px){ #miniPlayer .mini-info{font-size:13.5px} body.has-mini{padding-bottom:92px} }
+</style>
 </head>
 <body>
 
@@ -669,25 +693,13 @@ footer .fine{color:#a99cd4;font-size:13.5px}
     </div>
   </section>
 
-  <!-- COMMUNITY -->
-  <section id="community" aria-label="Community — the private Facebook group">
-    <div class="sec-head">
-      <h2>Our private corner 🌿</h2>
-      <p>The Mindful Ones Healing Universe is also a <strong>private Facebook group</strong> — a members-only space to talk astrology, dreams, frequencies and healing, without trolls, spam or ads. Everyone who joins is screened by a real human first.</p>
-    </div>
-    <div class="card">
-      <h3 style="margin:0 0 6px">The group is the quiet room behind this site</h3>
-      <p style="color:var(--ink2);margin:0 0 14px">This website is open to everyone, always. The group is the private place attached to it: request to join, answer two short questions so we know you're a real person, and what you share there stays there.</p>
-      <p style="margin:0"><a class="btn btn-gold" href="https://www.facebook.com/groups/352844342821622/" target="_blank" rel="noopener">Request to join the group</a></p>
-    </div>
-  </section>
-
   <!-- TESTING STATUS -->
   <section aria-label="Testing status and next checks">
     <div class="sec-head">
       <h2>Testing status — what’s verified, what isn’t</h2>
       <p>We only mark something tested when it has actually been checked. User listening tests and independent technical measurements are different things, and this page keeps them separate.</p>
     </div>
+    <div class="phase2-note" role="note"><span class="badge-pending">Pending verification</span> &nbsp;<strong>Phase 2 update:</strong> the page-style views and mini player bar were added in this build and are pending the owner’s verification — no Phase 1 test results or statuses above or below have been changed by this addition.</div>
     <div class="status-grid">
       <div class="testbox">
         <h3 style="margin:0 0 6px">✅ Verified by the creator — in-person checks</h3>
@@ -826,10 +838,19 @@ footer .fine{color:#a99cd4;font-size:13.5px}
   <div class="wrap">
     <p class="principle">Knowledge should be accessible. Wellness should not depend on wealth.</p>
     <p>Mindful Ones is free — no account, no subscription, no advertising in this build. Sound is generated locally on your own device with your browser's audio engine.</p>
-    <p style="margin:10px 0"><a href="#safety" style="color:#ffe9a8;font-weight:800">Sound Safety &amp; Responsible Use</a> · <a href="#studio" style="color:#ddd2fb">Frequency Studio</a> · <a href="#evidence" style="color:#ddd2fb">Research &amp; Evidence</a> · <a href="https://www.facebook.com/groups/352844342821622/" target="_blank" rel="noopener" style="color:#ddd2fb">Private Facebook group</a></p>
+    <p style="margin:10px 0"><a href="#safety" style="color:#ffe9a8;font-weight:800">Sound Safety &amp; Responsible Use</a> · <a href="#studio" style="color:#ddd2fb">Frequency Studio</a> · <a href="#evidence" style="color:#ddd2fb">Research &amp; Evidence</a></p>
     <p class="fine">Mindful Ones is for education, relaxation, and spiritual exploration. It does not diagnose, treat, cure, or replace care from qualified professionals, and it does not promise that any frequency heals organs, repairs DNA, or cures disease. Phase 1 baseline preserved · Sanctuary, Frequency Studio, Body Map, Chakra Library, Evidence system, Sound Safety — with Astrology &amp; BodyGraph designed in for Phase 2. Testing status is labeled honestly on this page: creator-verified checks are marked passed — including the 3 of 3 Android Chrome background tests — all ten frequency preset measurements are recorded as preliminary acoustic verification (10 of 10 within the analyzer's resolution, not laboratory-grade certification), the background behavior seen inside Muse is documented as observed, custom frequency testing and error handling are now recorded as passed — user-verified (custom measurements preliminary, 3 of 3 within about 1 Hz), and electronic binaural channel verification passed on November 8, 2026 (stereo WAV via Windows WASAPI / Elgato-routed audio, left 523.000 Hz and right 533.000 Hz in both analyzed sections) — no items remain pending and Phase 1 testing is complete.</p>
   </div>
 </footer>
+
+<div id="miniPlayer" role="region" aria-label="Now playing mini player" aria-hidden="true">
+  <div class="mini-inner">
+    <span class="mini-dot" aria-hidden="true"></span>
+    <div class="mini-info" id="miniInfo" role="status" aria-live="polite"></div>
+    <span class="mini-timer" id="miniTimer" aria-hidden="true"></span>
+    <button class="mini-stop" id="miniStop" type="button">■&nbsp; Stop</button>
+  </div>
+</div>
 
 <script>
 /* ============ DATA ============ */
@@ -1209,6 +1230,141 @@ markPreset(528);
   window.addEventListener('resize', function(){
     if (window.innerWidth > 900) setOpen(false);
   });
+})();
+</script>
+<script>
+/* ============ PHASE 2 STEP 1 — page-style views + mini player ============
+   Separate block only. This code does NOT create audio, change playback,
+   volume, fades, or timers. It only: (1) shows/hides existing sections as
+   views, and (2) mirrors the existing #nowPlaying / #countdown readout into
+   a fixed mini bar whose Stop button clicks the existing #stopBtn. */
+(function(){
+  function byId(id){ return document.getElementById(id); }
+  var hero = document.querySelector('.hero');
+  var mainEl = document.querySelector('main');
+  var sections = mainEl ? Array.prototype.slice.call(mainEl.querySelectorAll(':scope > section')) : [];
+  var testingSec = null;
+  sections.forEach(function(s){ if ((s.getAttribute('aria-label')||'').toLowerCase().indexOf('testing status') === 0) testingSec = s; });
+  if (!testingSec && sections.length) testingSec = sections[sections.length - 1];
+
+  var views = {
+    home: [hero, sections[0], sections[1]],
+    studio: [byId('studio')],
+    safety: [byId('safety')],
+    body: [byId('body')],
+    chakras: [byId('chakras')],
+    evidence: [byId('evidence'), testingSec],
+    astrology: [byId('astrology')],
+    bodygraph: [byId('bodygraph')]
+  };
+  function isValid(name){ return Object.prototype.hasOwnProperty.call(views, name); }
+  function hashToView(hash){
+    if (!hash || hash === '#' || hash === '#top') return 'home';
+    var key = hash.replace('#','');
+    if (key === 'top' || key === '') return 'home';
+    return isValid(key) ? key : null;
+  }
+  var allEls = [];
+  Object.keys(views).forEach(function(k){
+    views[k].forEach(function(el){ if (el && allEls.indexOf(el) === -1) allEls.push(el); });
+  });
+  var currentView = 'home';
+
+  function showView(name, opts){
+    opts = opts || {};
+    if (!isValid(name)) name = 'home';
+    currentView = name;
+    var visible = views[name];
+    allEls.forEach(function(el){
+      el.classList.toggle('view-hidden', visible.indexOf(el) === -1);
+    });
+    document.querySelectorAll('nav.top a.nl').forEach(function(a){
+      var target = hashToView(a.getAttribute('href') || '');
+      var active = target === name;
+      a.classList.toggle('view-active', active);
+      if (active) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+    });
+    if (opts.updateHash !== false){
+      var newHash = name === 'home' ? '#top' : '#' + name;
+      if (window.location.hash !== newHash){
+        try { history.pushState(null, '', newHash); } catch(e){}
+      }
+    }
+    if (opts.scroll !== false) window.scrollTo(0,0);
+    if (opts.focusHeading){
+      var first = visible[0];
+      var heading = first ? first.querySelector('h1, h2, h3') : null;
+      if (heading){
+        heading.setAttribute('tabindex','-1');
+        try { heading.focus({preventScroll:true}); } catch(e){ try{ heading.focus(); }catch(err){} }
+      }
+    }
+  }
+
+  /* All in-page # links switch views instead of scrolling */
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var view = hashToView(a.getAttribute('href'));
+    if (view === null) return;
+    e.preventDefault();
+    var inNav = !!a.closest('nav.top');
+    showView(view, {focusHeading: !inNav});
+  });
+
+  window.addEventListener('hashchange', function(){
+    var v = hashToView(window.location.hash);
+    if (v && v !== currentView) showView(v, {updateHash:false});
+  });
+
+  /* Chakra "Play its tone" buttons: the original handler already starts the
+     tone and tries to scroll to the Studio — follow it to the Studio view. */
+  document.querySelectorAll('.playtone button').forEach(function(btn){
+    btn.addEventListener('click', function(){ showView('studio', {focusHeading:false}); });
+  });
+
+  /* Initial view from the URL hash, otherwise Sanctuary home */
+  var initial = hashToView(window.location.hash) || 'home';
+  showView(initial, {scroll:false, updateHash:false});
+  window.scrollTo(0,0);
+
+  /* ---- Mini player bar: observe existing UI, call existing Stop only ---- */
+  var bar = byId('miniPlayer'), miniInfo = byId('miniInfo'), miniTimer = byId('miniTimer'), miniStop = byId('miniStop');
+  var np = byId('nowPlaying'), cd = byId('countdown'), existingStop = byId('stopBtn');
+  if (bar && np){
+    function syncMini(){
+      var playing = np.classList.contains('show') && np.textContent.indexOf('Now playing') !== -1;
+      if (playing){
+        var html = np.innerHTML.replace(/<span class="wave-dot"[^>]*><\/span>/, '');
+        if (miniInfo.innerHTML !== html) miniInfo.innerHTML = html;
+        var t = cd ? cd.textContent.replace(/^\s+|\s+$/g,'') : '';
+        if (miniTimer.textContent !== t) miniTimer.textContent = t;
+        bar.classList.add('show');
+        bar.setAttribute('aria-hidden','false');
+        document.body.classList.add('has-mini');
+      } else {
+        bar.classList.remove('show');
+        bar.setAttribute('aria-hidden','true');
+        document.body.classList.remove('has-mini');
+        if (miniInfo.innerHTML) miniInfo.innerHTML = '';
+        if (miniTimer.textContent) miniTimer.textContent = '';
+      }
+    }
+    if (miniStop){
+      miniStop.addEventListener('click', function(){
+        if (existingStop) existingStop.click();
+        setTimeout(syncMini, 60);
+        setTimeout(syncMini, 300);
+      });
+    }
+    if (window.MutationObserver){
+      var obs = new MutationObserver(syncMini);
+      obs.observe(np, {attributes:true, attributeFilter:['class'], childList:true, subtree:true, characterData:true});
+      if (cd) obs.observe(cd, {childList:true, subtree:true, characterData:true});
+    }
+    setInterval(syncMini, 300);
+    syncMini();
+  }
 })();
 </script>
 </body>
