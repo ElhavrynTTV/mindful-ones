@@ -257,6 +257,20 @@ nav.top a.nl.view-active:hover{background:var(--purple);color:#fff}
 body.has-mini{padding-bottom:78px}
 @media(max-width:560px){ #miniPlayer .mini-info{font-size:13.5px} body.has-mini{padding-bottom:92px} }
 </style>
+<style id="phase2-earth-style">
+/* Phase 2 step 2 — Earth view: live Schumann chart (additive only) */
+.earth-chart-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.earth-chart-card img{max-width:100%;height:auto;display:block;width:100%;border-radius:10px;border:1px solid var(--line);background:#0b0618}
+.earth-caption{font-size:14px;color:var(--muted);margin:12px 0 0}
+.earth-note{font-size:14.5px;color:var(--ink2);background:var(--surface2);border-radius:12px;padding:11px 14px;margin:12px 0 0}
+.earth-note strong{color:var(--ink)}
+.earth-fallback{display:none;background:var(--surface2);border:1.5px dashed var(--line2);border-radius:12px;padding:16px 18px;color:var(--ink2);font-size:15.5px}
+.earth-fallback.show{display:block}
+.earth-fallback strong{color:var(--ink)}
+.earth-modes{margin:10px 0 0;padding-left:20px;color:var(--ink2);font-size:15.5px}
+.earth-modes li{margin:4px 0}
+.earth-modes strong{color:var(--ink)}
+</style>
 </head>
 <body>
 
@@ -272,6 +286,7 @@ body.has-mini{padding-bottom:78px}
     <a class="nl" href="#body">Body Map</a>
     <a class="nl" href="#chakras">Chakras</a>
     <a class="nl" href="#evidence">Evidence</a>
+    <a class="nl" href="#earth">Earth</a>
     <a class="nl" href="#astrology">Astrology</a>
     <a class="nl" href="#bodygraph">BodyGraph</a>
     <span class="free-pill">Free · No account · No ads</span>
@@ -326,7 +341,7 @@ body.has-mini{padding-bottom:78px}
   <section aria-label="Explore the sanctuary">
     <div class="sec-head">
       <h2>Explore at your own pace</h2>
-      <p>Four areas are open now. Two more are already designed into the Sanctuary and open in later phases — nothing here will ever need an account or a subscription.</p>
+      <p>Five areas are open now. Two more are already designed into the Sanctuary and open in later phases — nothing here will ever need an account or a subscription.</p>
     </div>
     <div class="grid">
       <div class="card">
@@ -356,6 +371,13 @@ body.has-mini{padding-bottom:78px}
         <h3>Research &amp; Evidence</h3>
         <p>How we label every claim on this site: what science supports, what’s still being studied, and what comes from spiritual tradition.</p>
         <a class="go" href="#evidence">See how we label →</a>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:#dcf2ec"><svg viewBox="0 0 24 24" fill="none" stroke="#0e7c74" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.7 3.9 9s-1.4 6.4-3.9 9c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z"/></svg></div>
+        <span class="tag tag-live">Open now</span>
+        <h3>Earth Frequencies</h3>
+        <p>The Schumann resonance — Earth’s own electromagnetic background hum near 7.83 Hz — with the live spectrogram from Tomsk State University, drawn fresh every few minutes.</p>
+        <a class="go" href="#earth">See the live chart →</a>
       </div>
       <div class="card">
         <div class="ic" style="background:#ece4fb"><svg viewBox="0 0 24 24" fill="none" stroke="#5b3a9e" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1.6" fill="#5b3a9e"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
@@ -611,6 +633,62 @@ body.has-mini{padding-bottom:78px}
     </div>
   </section>
 
+  <!-- EARTH -->
+  <section id="earth" aria-label="Earth frequencies and the live Schumann resonance chart">
+    <div class="sec-head">
+      <h2>Earth Frequencies</h2>
+      <p>The Schumann resonance is Earth’s own background hum — a real, measurable electromagnetic rhythm in the air around the whole planet, excited around the clock by lightning. Below is the live chart from the station that measures it, shown exactly as they publish it.</p>
+    </div>
+
+    <div class="ev-grid" style="grid-template-columns:1fr;margin-bottom:16px">
+      <div class="ev-card">
+        <span class="ev ev-s">Supported by research</span>
+        <h3>What the Schumann resonance is</h3>
+        <p>The space between Earth’s surface and the ionosphere — the charged upper layer of the atmosphere — acts like a giant hollow shell that rings at certain very low frequencies. Lightning strikes somewhere on Earth roughly 50 times a second, and each strike gives that shell a tiny push, so the ringing never stops. These are called <strong>electromagnetic standing waves</strong>: the wave pattern stands in place and pulses in strength rather than traveling. The deepest note sits near <strong>7.83 Hz</strong>, with higher harmonics above it:</p>
+        <ul class="earth-modes">
+          <li><strong>≈ 7.83 Hz</strong> — the fundamental, the strongest and best-known mode</li>
+          <li><strong>≈ 14.3 Hz</strong> — second mode</li>
+          <li><strong>≈ 20.8 Hz</strong> — third mode</li>
+          <li><strong>≈ 27.3 Hz</strong> — fourth mode</li>
+          <li><strong>≈ 33.8 Hz</strong> — fifth mode</li>
+        </ul>
+        <p style="margin-top:10px">The exact values drift a little from day to day and season to season as the ionosphere changes — that wobble is part of what the chart below shows.</p>
+      </div>
+    </div>
+
+    <div class="earth-chart-card">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+        <h3 style="margin:0;font-size:21px">The live chart</h3>
+        <span class="tag tag-live" style="margin:0">Live external data</span>
+      </div>
+      <img id="schumannChart" src="https://sos70.ru/provider.php?file=shm.jpg" alt="Live Schumann resonance spectrogram from the Space Observing System at Tomsk State University: the last 3 days of measurements, frequency from 0 to 40 Hz up the side, time in Tomsk local time (UTC+7) along the top. Bright horizontal bands near 7.83, 14.3, 20.8, 27.3 and 33.8 Hz are the resonance itself." referrerpolicy="no-referrer">
+      <div class="earth-fallback" id="schumannFallback" role="note">
+        <p style="margin:0 0 8px"><strong>The live chart isn’t reachable right now.</strong> The Tomsk feed has outages sometimes — the station’s server has had rough stretches, and when it’s down there is no honest chart to show, so we show none rather than an old one. The rest of this site works fine without it.</p>
+        <p style="margin:0">You can try the source directly: <a href="https://sos70.ru" target="_blank" rel="noopener">View the chart at the source (sos70.ru)</a>. This page also retries on its own every 10 minutes while it stays open.</p>
+      </div>
+      <p class="earth-caption">Live spectrogram — Space Observing System, Tomsk State University, Russia (sos70.ru). The last 3 days, 0–40 Hz. Chart times are Tomsk local time (UTC+7). <a href="https://sos70.ru" target="_blank" rel="noopener">View the chart at the source</a></p>
+      <p class="earth-note"><strong>A note on freshness:</strong> if the chart ever looks frozen, check the dates printed along its top — that’s the data’s real timestamp. This site never shows a fake or stale chart as if it were live.</p>
+    </div>
+
+    <div class="duo">
+      <div class="card">
+        <h3>How to read the chart</h3>
+        <ul style="margin:6px 0 0;padding-left:20px;color:var(--ink2);font-size:15.5px">
+          <li style="margin:5px 0"><strong style="color:var(--ink)">Bright horizontal bands</strong> at the mode frequencies are the resonance itself. Brightness means energy (amplitude) — the frequencies themselves don’t move; they glow stronger or weaker.</li>
+          <li style="margin:5px 0"><strong style="color:var(--ink)">Black vertical bars</strong> mean no data was recorded for that stretch — a gap in the recording, not an event on Earth.</li>
+          <li style="margin:5px 0"><strong style="color:var(--ink)">Bright vertical streaks</strong> are usually nearby lightning or local interference at the station in Tomsk — a flash across all frequencies at once, not a change in the resonance.</li>
+          <li style="margin:5px 0"><strong style="color:var(--ink)">The daily texture</strong> comes from the world’s three great lightning centers — Africa, Asia, and the Americas — taking turns as the planet rotates and each region’s stormy afternoon rolls around.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Earth’s hum &amp; your brainwaves</h3>
+        <p><span class="ev ev-s">Supported</span> &nbsp;The fundamental, ≈ 7.83 Hz, sits right at the boundary of the <strong>theta</strong> (about 4–8 Hz) and <strong>alpha</strong> (about 8–13 Hz) brainwave ranges. That overlap is a measured fact about the numbers — two real rhythms that happen to live in the same neighborhood.</p>
+        <p style="margin-top:10px"><span class="ev ev-t">Spiritual tradition</span> &nbsp;<span class="ev ev-i">Still being studied</span></p>
+        <p style="margin-top:6px">Many people in spiritual and wellness communities watch this chart daily, and you’ll see claims that Schumann “spikes” change mood, energy, or consciousness, or that the resonance rising means something is shifting for humanity. Those ideas are meaningful to the people who hold them, and the honest label for them is <strong>tradition and open inquiry</strong>: the overlap in frequencies is real, but a proven effect of the Schumann resonance on how you feel has not been established. We make no promises and no health claims here — just the live data, and room to make of it what you will.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ASTROLOGY (designed in) -->
   <section id="astrology" aria-label="Astrology preview">
     <div class="sec-head">
@@ -700,6 +778,7 @@ body.has-mini{padding-bottom:78px}
       <p>We only mark something tested when it has actually been checked. User listening tests and independent technical measurements are different things, and this page keeps them separate.</p>
     </div>
     <div class="phase2-note" role="note"><span class="badge-verified">Verified</span> &nbsp;<strong>Phase 2 update:</strong> the page-style views and mini player bar were added in this build and were verified by the owner on November 15, 2026 (laptop, Chrome): a 528 Hz tone kept playing across a view switch while the mini player bar showed the tone, its timer countdown, and a Stop button. No Phase 1 test results or statuses above or below have been changed by this addition.</div>
+    <div class="phase2-note" role="note"><span class="badge-pending">Pending verification</span> &nbsp;<strong>Phase 2 update:</strong> an Earth view with the live Schumann resonance chart (Tomsk) was added in this build and is pending the owner’s verification.</div>
     <div class="status-grid">
       <div class="testbox">
         <h3 style="margin:0 0 6px">✅ Verified by the creator — in-person checks</h3>
@@ -1254,6 +1333,7 @@ markPreset(528);
     body: [byId('body')],
     chakras: [byId('chakras')],
     evidence: [byId('evidence'), testingSec],
+    earth: [byId('earth')],
     astrology: [byId('astrology')],
     bodygraph: [byId('bodygraph')]
   };
@@ -1365,6 +1445,39 @@ markPreset(528);
     setInterval(syncMini, 300);
     syncMini();
   }
+})();
+</script>
+<script>
+/* ============ PHASE 2 STEP 2 — Earth view: live Schumann chart ============
+   Separate block only. Loads nothing at start (the <img> in the Earth view
+   carries the plain source URL). Every 10 minutes while the page is open it
+   reloads the chart image with a cache-busting parameter so the browser
+   fetches a fresh copy from Tomsk. If the image fails to load — at first or
+   on any refresh — the broken image is hidden and an honest fallback note
+   is shown in its place; if a later refresh succeeds, the chart returns.
+   This code touches nothing else: no audio, no views, no other sections. */
+(function(){
+  var img = document.getElementById('schumannChart');
+  var fallback = document.getElementById('schumannFallback');
+  if (!img || !fallback) return;
+  var BASE = 'https://sos70.ru/provider.php?file=shm.jpg';
+  function showFallback(){
+    img.style.display = 'none';
+    fallback.classList.add('show');
+  }
+  function showChart(){
+    img.style.display = '';
+    fallback.classList.remove('show');
+  }
+  img.addEventListener('error', showFallback);
+  img.addEventListener('load', function(){
+    if (img.naturalWidth > 0) showChart();
+  });
+  /* The first load may already have failed before this script ran */
+  if (img.complete && img.naturalWidth === 0) showFallback();
+  setInterval(function(){
+    img.src = BASE + '&t=' + Date.now();
+  }, 10 * 60 * 1000);
 })();
 </script>
 </body>
