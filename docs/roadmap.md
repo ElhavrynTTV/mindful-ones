@@ -24,6 +24,16 @@ Field Guide). Design decision to settle when building: behavior for a tone
 that is playing while the visitor switches views, consistent with the site's
 sound-safety rules.
 
+Phase 2 progress (2026-11-15): the page-style structure shipped (V9; the
+playing tone keeps playing across views, with a mini player bar — the
+owner's choice) and was owner-verified. The Earth view with the live
+Schumann chart shipped (V11). The Human Design BodyGraph calculator shipped
+(V12), was accuracy-fixed (V13), and is verified against Swiss Ephemeris —
+see the testing record. The owner chose BodyGraph before Astrology
+(2026-11-15): its answers come from a bounded set that is easier to narrow
+down and verify. Astrology calculations (Western and Vedic) remain the next
+major piece, on the owner's timing.
+
 Principles that do not change:
 
 - Free access. No required account, no subscription, no advertising.
@@ -49,7 +59,11 @@ Ideas added 2026-11-13 (owner; phase to be decided — Phase 2 or later):
   a clearly credited link, labeled as live external scientific data. The
   core site must keep working if the feed is ever down. (Corrected
   2026-11-13: this is the feature the owner meant by "the scan that's
-  constantly going.")
+  constantly going.") **Built 2026-11-15 (V11): the Earth view embeds the
+  live image from the station's current home, sos70.ru, with credit, a
+  "Live external data" label, 10-minute refresh, and an honest
+  feed-unavailable fallback. Confirmed live the same day; the owner's own
+  verification is recorded separately in the testing record.**
 - Separately, the owner asked whether a biometric / biofield scan could be
   added at all. Answer on record: possible in principle via embed or link,
   but only after identifying a specific tool and reviewing it against this

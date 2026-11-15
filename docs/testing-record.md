@@ -157,3 +157,67 @@ Scope: verified on the owner's laptop Chrome setup. The screenshot captures
 the bar mid-countdown; the timer-expiry bar-hide was part of the owner's
 check as reported, and phone verification of the new structure has not been
 separately recorded.
+
+## Phase 2 Earth view (V11) — live confirmation, 2026-11-15
+
+V11 added an Earth view embedding the live Schumann resonance spectrogram
+from the Tomsk State University Space Observing System (sos70.ru), credited
+and labeled "Live external data", refreshing every 10 minutes, with an
+honest fallback message if the feed is unreachable (the feed's old address
+has been frozen since 2025-09-01 and is not used).
+
+Live confirmation (checked on the live Pages site, 2026-11-15):
+
+- **Earth in navigation** — present on desktop nav and mobile menu.
+- **Chart rendering** — the spectrogram loaded and displayed, showing the
+  dates 14, 15 and 16 November 2026 along its top (current data, not the
+  frozen legacy feed), with the source credit and "View the chart at the
+  source" link present.
+- **Fallback not triggered** — the feed was up at check time, so no
+  fallback message was shown.
+
+Scope: the Earth view's own owner verification has not been separately
+recorded yet; the Testing Status note for this addition remains "Pending
+verification" until it is.
+
+## Phase 2 BodyGraph calculator (V12–V13) — verification, 2026-11-15
+
+V12 added a full Human Design BodyGraph calculator to the BodyGraph view:
+birth date, time, place and timezone in; Type, Strategy, Authority, Profile,
+Definition, Incarnation Cross, defined channels and centers, an SVG body
+graph, and all 26 Personality/Design activations out — calculated entirely
+in the visitor's browser (no data leaves the device).
+
+Owner's live run (user-performed, 2026-11-15, owner's laptop Chrome on the
+live Pages site; birth data: 2 February 1991, 06:55, Charleston WV,
+America/New_York): Generator; Sacral authority; Profile 6/3; Single
+definition; Left Angle Cross (gates 19·33·1·2); one defined channel (2–14);
+defined centers G and Sacral. The Design moment resolved to 7 November
+1990, 86.7 days before birth.
+
+Independent cross-check (2026-11-15): the same birth data was computed with
+Swiss Ephemeris 2.10 (apparent longitudes, true node) — the library most
+Human Design software uses — and compared activation by activation.
+
+- 20 of 26 activations matched the site to the exact gate and line, and the
+  derived chart (Type, Authority, Profile, Definition, channel, centers,
+  Cross) was identical under both ephemerides.
+- 6 differed, all in Neptune (~3–4°) and the lunar Nodes (~1–2°). In this
+  chart none of those gates completes a channel in either version, so no
+  derived result changed; the errors were still treated as real defects.
+- Root causes: Neptune's epoch mean anomaly had been transcribed as
+  256.2285 instead of the published 260.2471; the Node's main correction
+  term had been applied to the wrong argument. V13 corrected the element
+  and replaced the Node formula (standard mean-node polynomial plus a
+  22-term periodic series).
+- Fix validation: at five fixture moments spanning 1980–2015, the fixed
+  code matches Swiss Ephemeris within 0.009° (Neptune) and 0.022° (Node);
+  across 600 random moments from 1800–2100 the worst error was 0.040°.
+- Live re-check (2026-11-15): the same chart rebuilt on the live Pages
+  site (V13) reproduced all 26 Swiss Ephemeris activations exactly, with
+  derived results unchanged.
+
+With the owner's approval, the Testing Status note for the calculator was
+flipped from "Pending verification" to "Verified" (V14, text-only; all
+script blocks verified byte-for-byte identical, including the calculator's
+own).
