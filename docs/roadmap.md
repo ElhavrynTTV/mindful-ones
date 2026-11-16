@@ -59,6 +59,20 @@ each measurement on the site means, 36 individual research citations
 each with a "what this shows" line, and a claim-by-claim labelling
 table. Every citation was verified against its publisher, journal, or
 DOI before inclusion; items that could not be verified were excluded.
+A review pass relayed by the owner the same evening (independently
+checked by a second AI reviewer, then re-verified against PubMed
+before anything changed) corrected three precisions in V21: the
+432 Hz review gained the 2020 spinal-cord-injury sleep study
+(Calamassi et al., Acta Biomedica, PMID 33263352) alongside the 2019
+and 2022 trials; the 528 Hz entry now says "the one human study we
+could identify" rather than claiming the only one ever conducted; and
+Human Design is described as having no established credible
+peer-reviewed validation of its predictive or health claims, rather
+than an absolute claim about all literature. The same pass set the
+section's standard that every entry answers what was studied, how
+many people or observations, what was found, and what it does not
+establish — and that the "No credible evidence" label attaches to
+specific claims, never to whole traditions or personal experiences.
 Still ahead, in the owner's chosen order: the comprehensive frequency
 reference (which draws on this citation base), then the biofield-scan
 question.
