@@ -176,9 +176,23 @@ Live confirmation (checked on the live Pages site, 2026-11-15):
 - **Fallback not triggered** — the feed was up at check time, so no
   fallback message was shown.
 
-Scope: the Earth view's own owner verification has not been separately
-recorded yet; the Testing Status note for this addition remains "Pending
-verification" until it is.
+Scope at that check: the Earth view's own owner verification had not been
+separately recorded yet.
+
+Owner verification (user-verified, reported 2026-11-15, on the owner's
+laptop in Chrome on the live Pages site; owner's screenshots show the
+chart rendering with the dates 14, 15 and 16 November 2026 along its top,
+the "Live external data" badge, the source credit and link, the
+how-to-read section and the labeled tradition section):
+
+- Owner's verdict: "it looks okay."
+- The owner noted the chart appears almost still — correct behavior for a
+  three-day spectrogram: it visibly changes over hours, not seconds,
+  which the owner already knew about this chart.
+
+With the owner's verification recorded, the Testing Status note for the
+Earth view was flipped from "Pending verification" to "Verified" (V18,
+text-only).
 
 ## Phase 2 BodyGraph calculator (V12–V13) — verification, 2026-11-15
 
@@ -262,3 +276,37 @@ data, manual coordinates):
 With the owner's approval, the Testing Status note for the calculator was
 flipped from "Pending verification" to "Verified" (V17, text-only; all
 seven script blocks verified byte-for-byte identical).
+
+## Phase 2 follow-on: Transits + Moon phases (V18) — built 2026-11-15
+
+V18 added, inside the Astrology view, a "Sky right now" card driven by a
+pick-a-moment control: a Moon phases section (phase name, illumination,
+Moon age, tropical and sidereal Moon signs, a drawn moon disc, the next
+New and Full Moons, and the four quarter events of the current lunation)
+and a Transits section (the moment's sky, and every transit aspect within
+3° of the visitor's natal points, tightest first). All computed in the
+browser; a Testing Status note marks the addition "Pending verification."
+
+Phase-name convention (chosen for coherence with the listed event times):
+the four quarter names apply for about ±12° of elongation around the exact
+quarter moment; crescent and gibbous names fill the spans between. So the
+evening of 2026-11-15 reads Waxing Crescent (elongation 74.03°,
+illumination 36.2%) with the First Quarter event listed at its exact
+moment, 2026-11-17 11:47 UTC.
+
+Builder fixture results against Swiss Ephemeris 2.10 (run at build time):
+the Moon fixture reproduced (Sun exact, Moon within 1′, illumination
+exact, ayanamsa within 0.001°); quarter events within 1–2 minutes except
+the two Full Moons (2026-11-24: 15:02 vs 14:53 UTC; 2026-12-24: 01:34 vs
+01:28 UTC — the compact lunar series' limit near full). Transit
+positions: 10 of 12 within 0.02°; Lilith within 0.116° (the known
+mean-apogee limit); transit Pluto within 0.38° at 2026 dates — the
+two-body Pluto orbit drifts against Swiss over decades (its residual was
++0.13° at 1991, −0.38° at 2026) and no compact published correction
+exists; an empirical fit was considered and rejected as indefensible.
+Consequence: 15 of the 16 fixture transit aspects reproduce with orbs
+within ~0.11°; the Pluto–Mars trine's orb reads 0.45° instead of 0.07°,
+and a borderline Pluto–Ascendant conjunction (2.63°) can appear that
+exact positions place just outside the 3° limit. These residuals are
+recorded here rather than smoothed over; the owner's verification is
+still to come.

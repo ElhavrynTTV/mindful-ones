@@ -373,6 +373,26 @@ body.has-mini{padding-bottom:78px}
 .as-table tr.as-current td{background:var(--chip-s);color:var(--chip-s-ink);font-weight:700}
 .as-table tr.as-current td:first-child{color:var(--chip-s-ink)}
 </style>
+<style id="phase2-transits-style">
+/* Phase 2 step 6 — Transits + Moon phases, inside the Astrology view (additive only) */
+.tm-card{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:26px;box-shadow:var(--shadow);margin-top:16px}
+.tm-card h3{font-size:25px;margin:10px 0 6px}
+.tm-card h4{font-family:"Marcellus",serif;font-weight:400;font-size:22px;margin:26px 0 10px;color:var(--ink)}
+.tm-moment{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-top:14px}
+.tm-moment label{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);display:block}
+.tm-moment input{margin-top:5px;padding:11px;border-radius:10px;border:1.5px solid var(--line2);background:var(--surface);color:var(--ink);font-family:inherit;font-size:16px}
+.tm-moment input:focus-visible{outline:3px solid var(--teal);outline-offset:1px}
+.tm-tznote{font-size:14px;color:var(--muted);margin:10px 0 0}
+.tm-moonwrap{display:grid;grid-template-columns:190px 1fr;gap:22px;align-items:center;margin-top:8px}
+@media(max-width:640px){.tm-moonwrap{grid-template-columns:1fr;justify-items:center}}
+.tm-moonfacts{width:100%}
+.tm-fact{display:flex;justify-content:space-between;gap:14px;padding:7px 2px;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--ink2)}
+.tm-fact:last-child{border-bottom:none}
+.tm-fact strong{color:var(--ink);text-align:right}
+.tm-events{margin:8px 0 0;padding-left:20px;color:var(--ink2);font-size:15.5px}
+.tm-events li{margin:4px 0}
+.tm-events strong{color:var(--ink)}
+</style>
 
 </head>
 <body>
@@ -856,6 +876,24 @@ body.has-mini{padding-bottom:78px}
       </div>
       <p class="bg-note"><strong>How honest this is:</strong> Positions are calculated on this device with a compact ephemeris, accurate to a few hundredths of a degree for most bodies. A placement within about 0.1° of a sign or house edge is borderline. The Rising sign depends on birth time — a few minutes can move it, especially near a sign boundary.</p>
     </div>
+
+    <div class="tm-card" id="tmCard">
+      <span class="ev ev-s">Supported by research</span>
+      <h3>The sky right now — Moon phases &amp; transits</h3>
+      <p class="bg-sub" style="color:var(--ink2);margin:0">Pick any moment — past, present, or future — and this page works out where the Moon and planets stand at that moment, in the same timezone you picked in the birth form above. The positions and phase are astronomy, calculated here; what tradition makes of them is labeled as tradition.</p>
+      <div class="tm-moment">
+        <div><label for="tmDate">Date</label><input type="date" id="tmDate"></div>
+        <div><label for="tmTime">Time</label><input type="time" id="tmTime"></div>
+        <button type="button" class="btn btn-soft" id="tmNow" style="padding:11px 18px">Now</button>
+      </div>
+      <p class="tm-tznote" id="tmTzNote" role="status"></p>
+
+      <h4 style="margin-top:22px">🌙 The Moon at this moment</h4>
+      <div id="tmMoon" aria-live="polite"></div>
+
+      <h4>✦ Transits — the current sky against your chart</h4>
+      <div id="tmTransits" aria-live="polite"></div>
+    </div>
   </section>
 
   <!-- BODYGRAPH (designed in) -->
@@ -971,10 +1009,11 @@ body.has-mini{padding-bottom:78px}
       <p>We only mark something tested when it has actually been checked. User listening tests and independent technical measurements are different things, and this page keeps them separate.</p>
     </div>
     <div class="phase2-note" role="note"><span class="badge-verified">Verified</span> &nbsp;<strong>Phase 2 update:</strong> the page-style views and mini player bar were added in this build and were verified by the owner on November 15, 2026 (laptop, Chrome): a 528 Hz tone kept playing across a view switch while the mini player bar showed the tone, its timer countdown, and a Stop button. No Phase 1 test results or statuses above or below have been changed by this addition.</div>
-    <div class="phase2-note" role="note"><span class="badge-pending">Pending verification</span> &nbsp;<strong>Phase 2 update:</strong> an Earth view with the live Schumann resonance chart (Tomsk) was added in this build and is pending the owner’s verification.</div>
+    <div class="phase2-note" role="note"><span class="badge-verified">Verified</span> &nbsp;<strong>Phase 2 update:</strong> an Earth view with the live Schumann resonance chart (Tomsk) was added in this build. The owner verified it on November 15, 2026: the live chart renders with current dates along its top, and the chart's slow movement across its three-day window is expected — it changes over hours, not seconds.</div>
     <div class="phase2-note" role="note"><span class="badge-verified">Verified</span> &nbsp;<strong>Phase 2:</strong> the BodyGraph (Human Design) calculator was verified on November 15, 2026. The owner ran her own chart on the live site. An independent cross-check against Swiss Ephemeris matched 20 of 26 activations and caught two astronomy errors (Neptune and the Moon’s Nodes); both were fixed, re-validated against 600 test moments spanning 1800–2100 (worst error 0.04°), and the live site then reproduced all 26 activations and every derived result exactly. No other test results or notes were changed by this update.</div>
     <div class="phase2-note" role="note"><span class="badge-pending">Pending verification</span> &nbsp;<strong>Phase 2:</strong> a Feedback view was added in this build — a form that relays visitor messages to the owner's inbox via FormSubmit. It is pending the owner's one-time activation and a delivered test message.</div>
     <div class="phase2-note" role="note"><span class="badge-verified">Verified</span> &nbsp;<strong>Phase 2:</strong> the Astrology calculator (Western and Vedic, with Vimshottari dashas) was verified on November 15, 2026. The owner's own chart, run on the live site, matched her reference chart and an independent Swiss Ephemeris computation: every sign, house, nakshatra and pada correct, most positions within a few arcminutes (largest residuals: Pluto about 0.13°, Lilith about 0.10°, Jupiter about 0.08° — none changes any sign, house or nakshatra), and the dasha dates within a day. No other test results or notes were changed by this update.</div>
+    <div class="phase2-note" role="note"><span class="badge-pending">Pending verification</span> &nbsp;<strong>Phase 2:</strong> Transits and a Moon phases section were added to the Astrology view in this build and are pending the owner's verification.</div>
     <div class="status-grid">
       <div class="testbox">
         <h3 style="margin:0 0 6px">✅ Verified by the creator — in-person checks</h3>
@@ -2844,6 +2883,480 @@ markPreset(528);
   });
 })();
 
+</script>
+<script>
+/* ============ PHASE 2 STEP 6 — Transits + Moon phases (Astrology view) ============
+   Separate block only. Its own Schlyter-style ephemeris (the same approach
+   as the Astrology calculator, including the corrected Neptune element and
+   the true-node series) — it does not touch the other scripts. The Moon
+   section works on its own; the Transits section reads the natal positions
+   from the chart the visitor has already built above (parsed from the
+   rendered placements table) and never changes that chart. No network
+   calls except none at all, no storage, nothing leaves the device. */
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+
+  /* ---------- math helpers ---------- */
+  var D2R = Math.PI / 180;
+  function rev(x){ x = x % 360; if (x < 0) x += 360; return x; }
+  function sind(x){ return Math.sin(rev(x) * D2R); }
+  function cosd(x){ return Math.cos(rev(x) * D2R); }
+  function dayNum(utcMs){ return utcMs / 86400000 - 10956.0; }
+  function jdOf(utcMs){ return utcMs / 86400000 + 2440587.5; }
+
+  /* ---------- orbital elements (Schlyter) ---------- */
+  function elSun(d){ return [0, 0, 282.9404 + 4.70935E-5*d, 1.0000002, 0.016709 - 1.151E-9*d, 356.0470 + 0.9856002585*d]; }
+  function elMoon(d){ return [125.1228 - 0.0529538083*d, 5.1454, 318.0634 + 0.1643573223*d, 60.2666, 0.054900, 115.3654 + 13.0649929509*d]; }
+  function elMercury(d){ return [48.3313 + 3.24587E-5*d, 7.0047 + 5.00E-8*d, 29.1241 + 1.01444E-5*d, 0.387098, 0.205635 + 5.59E-10*d, 168.6562 + 4.0923344368*d]; }
+  function elVenus(d){ return [76.6799 + 2.46590E-5*d, 3.3946 + 2.75E-8*d, 54.8910 + 1.38374E-5*d, 0.723330, 0.006773 - 1.302E-9*d, 48.0052 + 1.6021302244*d]; }
+  function elMars(d){ return [49.5574 + 2.11081E-5*d, 1.8497 - 1.78E-8*d, 286.5016 + 2.92961E-5*d, 1.523688, 0.093405 + 2.516E-9*d, 18.6021 + 0.5240207766*d]; }
+  function elJupiter(d){ return [100.4542 + 2.76854E-5*d, 1.3032 - 1.557E-7*d, 273.8777 + 1.64505E-5*d, 5.20256, 0.048498 + 4.469E-9*d, 19.8950 + 0.0830853001*d]; }
+  function elSaturn(d){ return [113.6634 + 2.38980E-5*d, 2.4886 - 1.081E-7*d, 339.3939 + 2.97661E-5*d, 9.55475, 0.055546 - 9.499E-9*d, 316.9670 + 0.0334442282*d]; }
+  function elUranus(d){ return [74.0005 + 1.3978E-5*d, 0.7733 + 1.9E-8*d, 96.6612 + 3.0565E-5*d, 19.18171 - 1.55E-8*d, 0.047318 + 7.45E-9*d, 142.5905 + 0.011725806*d]; }
+  function elNeptune(d){ return [131.7806 + 3.0173E-5*d, 1.7700 - 2.55E-7*d, 272.8461 - 6.027E-6*d, 30.05826 + 3.313E-8*d, 0.008606 + 2.15E-9*d, 260.2471 + 0.005995147*d]; }
+  function elPluto(d){ return [110.30347, 17.14175, 113.76544, 39.48169, 0.24881, 14.85990 + 0.0039757*(d - 1.5)]; }
+
+  function helioRect(el){
+    var N = el[0], i = el[1], w = el[2], a = el[3], e = el[4], M = rev(el[5]);
+    var E = M + (180/Math.PI) * e * sind(M) * (1 + e * cosd(M));
+    var k;
+    for (k = 0; k < 8; k++){
+      var E1 = E - (E - (180/Math.PI) * e * sind(E) - M) / (1 - e * cosd(E));
+      if (Math.abs(E1 - E) < 0.0005) { E = E1; break; }
+      E = E1;
+    }
+    var xv = a * (cosd(E) - e), yv = a * Math.sqrt(1 - e*e) * sind(E);
+    var v = Math.atan2(yv, xv) / D2R, r = Math.sqrt(xv*xv + yv*yv);
+    var xh = r * (cosd(N)*cosd(v+w) - sind(N)*sind(v+w)*cosd(i));
+    var yh = r * (sind(N)*cosd(v+w) + cosd(N)*sind(v+w)*cosd(i));
+    var zh = r * (sind(v+w) * sind(i));
+    return [xh, yh, zh];
+  }
+  function lonLat(x, y, z){
+    return [rev(Math.atan2(y, x) / D2R), Math.atan2(z, Math.sqrt(x*x + y*y)) / D2R];
+  }
+  function sunPos(d){
+    var el = elSun(d), w = el[2], e = el[4], M = rev(el[5]);
+    var C = 1.9148*sind(M) + 0.0200*sind(2*M) + 0.0003*sind(3*M);
+    var lon = rev(M + C + w);
+    var E = M + (180/Math.PI) * e * sind(M) * (1 + e * cosd(M));
+    var xv = cosd(E) - e, yv = Math.sqrt(1 - e*e) * sind(E);
+    var r = Math.sqrt(xv*xv + yv*yv);
+    return { lon: lon, x: r * cosd(lon), y: r * sind(lon), r: r };
+  }
+  function moonLon(d){
+    var el = elMoon(d);
+    var rect = helioRect(el);
+    var ll = lonLat(rect[0], rect[1], rect[2]);
+    var lon = ll[0];
+    var sunEl = elSun(d), Ms = rev(sunEl[5]);
+    var Mm = rev(el[5]);
+    var Lm = rev(el[0] + el[2] + el[5]), Ls = rev(sunEl[2] + sunEl[5]);
+    var D = rev(Lm - Ls), F = rev(Lm - el[0]);
+    lon += -1.274*sind(Mm - 2*D) + 0.658*sind(2*D) - 0.186*sind(Ms)
+           - 0.059*sind(2*Mm - 2*D) - 0.057*sind(Mm - 2*D + Ms)
+           + 0.053*sind(Mm + 2*D) + 0.046*sind(2*D - Ms)
+           + 0.041*sind(Mm - Ms) - 0.035*sind(D) - 0.031*sind(Mm + Ms)
+           - 0.015*sind(2*F - 2*D) + 0.011*sind(Mm - 4*D);
+    return rev(lon);
+  }
+  var NODE_TERMS = [
+    [1.4978, 0, -2, 0, 0, 2], [0.1501, 0, 0, -1, 0, 0], [0.1226, 0, -2, 0, 0, 0],
+    [-0.1176, 0, 0, 0, 0, -2], [0.0804, 0, 0, 0, -2, 2], [0.0613, 0, -2, 1, 0, 2],
+    [-0.0490, 0, -2, 0, 1, 0], [-0.0410, 0, 0, 0, -1, 2], [-0.0327, 0, 0, 0, -1, 0],
+    [-0.0322, 0, -2, -1, 0, 2], [-0.0222, 1, -1, -1, 0, 1], [-0.0180, 0, -2, 0, 1, 2],
+    [0.0150, 0, -2, 0, -1, 2], [-0.0150, 0, -2, 0, 2, 0], [0.0078, 0, -2, 1, 0, 0],
+    [0.0045, 0, -2, 0, -1, 0], [-0.0043, 0, 0, 0, -1, -2], [0.0038, 0, -1, 0, 1, 0],
+    [0.0031, 0, 0, -1, 0, 2], [-0.0031, 0, -2, 1, 1, 0], [-0.0029, 0, -2, 0, 0, 4],
+    [-0.0028, 0, 0, -1, 0, -2]
+  ];
+  function nodeLon(d){
+    var T = (d - 1.5) / 36525;
+    var T2 = T * T, T3 = T2 * T, T4 = T2 * T2;
+    var D  = rev(297.8501921 + 445267.1114034*T - 0.0018819*T2 + T3/545868 - T4/113065209);
+    var M  = rev(357.5291092 + 35999.0502909*T - 0.0001536*T2 + T3/24490000);
+    var Mp = rev(134.9633964 + 477198.8675055*T + 0.0087414*T2 + T3/69699 - T4/14712000);
+    var F  = rev(93.2720950 + 483202.0175233*T - 0.0036539*T2 - T3/3526000 + T4/863310000);
+    var lon = 125.04452 - 1934.136261*T + 0.0020608*T2 + T3/450000;
+    for (var k = 0; k < NODE_TERMS.length; k++){
+      var t = NODE_TERMS[k];
+      var ang = t[2]*D + t[3]*M + t[4]*Mp + t[5]*F;
+      lon += t[0] * (t[1] ? cosd(ang) : sind(ang));
+    }
+    return rev(lon);
+  }
+  function lilithLon(d){
+    var T = (d - 1.5) / 36525;
+    var T2 = T * T, T3 = T2 * T, T4 = T2 * T2;
+    var perigee = 83.3532465 + 4069.0137287*T - 0.0103200*T2 - T3/32741 + T4/15299000;
+    return rev(perigee + 180);
+  }
+  function planetLon(elFn, d, sun){
+    var rect = helioRect(elFn(d));
+    return lonLat(rect[0] + sun.x, rect[1] + sun.y, rect[2])[0];
+  }
+  var BODIES = ['Sun','Moon','Mercury','Venus','Mars','Jupiter','Saturn','Uranus','Neptune','Pluto','North Node','Lilith'];
+  function allLongitudes(utcMs){
+    var d = dayNum(utcMs);
+    var sun = sunPos(d);
+    var out = {
+      'Sun': sun.lon,
+      'Moon': moonLon(d),
+      'Mercury': planetLon(elMercury, d, sun),
+      'Venus': planetLon(elVenus, d, sun),
+      'Mars': planetLon(elMars, d, sun),
+      'Jupiter': planetLon(elJupiter, d, sun),
+      'Saturn': planetLon(elSaturn, d, sun),
+      'Uranus': planetLon(elUranus, d, sun),
+      'Neptune': planetLon(elNeptune, d, sun),
+      'Pluto': planetLon(elPluto, d, sun),
+      'North Node': nodeLon(d),
+      'Lilith': lilithLon(d)
+    };
+    /* Schlyter's published perturbation terms for Jupiter and Saturn — the
+       two giants pull on each other enough (the "great inequality") that a
+       bare Kepler orbit drifts ~0.1° for Saturn in the 2020s; these standard
+       terms bring both back within a few hundredths of a degree. Pluto has
+       no such compact correction in this method and keeps the wider
+       tolerance the Astrology view already discloses. */
+    var Mj = rev(elJupiter(d)[5]), Msa = rev(elSaturn(d)[5]);
+    out['Jupiter'] = rev(out['Jupiter']
+      - 0.332*sind(2*Mj - 5*Msa - 67.6) - 0.056*sind(2*Mj - 2*Msa + 21)
+      + 0.042*sind(3*Mj - 5*Msa + 21) - 0.036*sind(Mj - 2*Msa)
+      + 0.022*cosd(Mj - Msa) + 0.023*sind(2*Mj - 3*Msa + 52)
+      - 0.016*sind(Mj - 5*Msa - 69));
+    out['Saturn'] = rev(out['Saturn']
+      + 0.812*sind(2*Mj - 5*Msa - 67.6) - 0.229*cosd(2*Mj - 4*Msa - 2)
+      + 0.119*sind(Mj - 2*Msa - 3) + 0.046*sind(2*Mj - 6*Msa - 69)
+      + 0.014*sind(Mj - 3*Msa + 32));
+    return out;
+  }
+  function ayanamsa(utcMs){
+    var years = (jdOf(utcMs) - 2451545.0) / 365.25;
+    return 23.8571 + 0.013968 * years;
+  }
+
+  /* ---------- signs & formatting ---------- */
+  var SIGNS = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+  var BODY_GLYPHS = { 'Sun':'☉', 'Moon':'☽', 'Mercury':'☿', 'Venus':'♀', 'Mars':'♂', 'Jupiter':'♃', 'Saturn':'♄', 'Uranus':'♅', 'Neptune':'♆', 'Pluto':'♇', 'North Node':'☊', 'Lilith':'⚸' };
+  function signIdx(lon){ return Math.floor(rev(lon) / 30); }
+  function fmtDegInSign(lon){
+    var deg = rev(lon) - signIdx(lon) * 30;
+    var dd = Math.floor(deg), mm = Math.floor((deg - dd) * 60);
+    return dd + '°' + (mm < 10 ? '0' : '') + mm + '′';
+  }
+  function fmtSignDeg(lon){ return SIGNS[signIdx(lon)] + ' ' + fmtDegInSign(lon); }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  /* ---------- Moon phases ---------- */
+  function sunMoon(utcMs){
+    var d = dayNum(utcMs);
+    return { sun: sunPos(d).lon, moon: moonLon(d) };
+  }
+  function signedDiff(a, b){ return rev(a - b + 180) - 180; }
+  function targetDiff(utcMs, target){
+    var sm = sunMoon(utcMs);
+    return signedDiff(rev(sm.moon - sm.sun), target);
+  }
+  /* Step forward in 6-hour strides until the elongation crosses the target
+     (0/90/180/270), then bisect the crossing to the minute. The elongation
+     only ever grows, so exactly one crossing exists per target per lunation;
+     the ±180° wrap sits at the opposite phase and is guarded against. */
+  function findCrossingAfter(t0, target){
+    var step = 6 * 3600000;
+    var prev = t0, prevV = targetDiff(prev, target);
+    for (var k = 0; k < 200; k++){
+      var cur = prev + step, curV = targetDiff(cur, target);
+      if (prevV < 0 && curV >= 0 && Math.abs(curV - prevV) < 180){
+        var lo = prev, hi = cur;
+        for (var i = 0; i < 48; i++){
+          var mid = (lo + hi) / 2;
+          if (targetDiff(mid, target) < 0) lo = mid; else hi = mid;
+        }
+        return (lo + hi) / 2;
+      }
+      prev = cur; prevV = curV;
+    }
+    return null;
+  }
+  function findCrossingBefore(t0, target){
+    var step = 6 * 3600000;
+    var prev = t0, prevV = targetDiff(prev, target);
+    for (var k = 0; k < 200; k++){
+      var cur = prev - step, curV = targetDiff(cur, target);
+      if (curV < 0 && prevV >= 0 && Math.abs(prevV - curV) < 180){
+        var lo = cur, hi = prev;
+        for (var i = 0; i < 48; i++){
+          var mid = (lo + hi) / 2;
+          if (targetDiff(mid, target) < 0) lo = mid; else hi = mid;
+        }
+        return (lo + hi) / 2;
+      }
+      prev = cur; prevV = curV;
+    }
+    return null;
+  }
+  /* Phase names the way almanacs use them: a quarter name (New, First
+     Quarter, Full, Last Quarter) belongs to about a day either side of the
+     exact quarter moment — within 12° of elongation of it — and the
+     crescent / gibbous names fill the stretches in between. */
+  function phaseName(elong){
+    var e = rev(elong);
+    if (e < 12 || e >= 348) return 'New Moon';
+    if (e < 78) return 'Waxing Crescent';
+    if (e < 102) return 'First Quarter';
+    if (e < 168) return 'Waxing Gibbous';
+    if (e < 192) return 'Full Moon';
+    if (e < 258) return 'Waning Gibbous';
+    if (e < 282) return 'Last Quarter';
+    return 'Waning Crescent';
+  }
+  function phaseInfo(utcMs){
+    var sm = sunMoon(utcMs);
+    var elong = rev(sm.moon - sm.sun);
+    var illum = (1 - Math.cos(elong * D2R)) / 2 * 100;
+    var prevNew = findCrossingBefore(utcMs, 0);
+    return { sun: sm.sun, moon: sm.moon, elong: elong, illum: illum,
+             name: phaseName(elong),
+             ageDays: prevNew === null ? null : (utcMs - prevNew) / 86400000,
+             prevNew: prevNew };
+  }
+  function moonSvg(elong){
+    var R = 70, C = 80;
+    var rx = Math.max(Math.abs(Math.cos(elong * D2R)) * R, 0.5);
+    var waxing = elong <= 180;
+    var outerSweep = waxing ? 1 : 0;
+    var termSweep = waxing ? (elong < 90 ? 0 : 1) : (elong < 270 ? 0 : 1);
+    var d = 'M ' + C + ' ' + (C - R) +
+            ' A ' + R + ' ' + R + ' 0 0 ' + outerSweep + ' ' + C + ' ' + (C + R) +
+            ' A ' + rx.toFixed(1) + ' ' + R + ' 0 0 ' + termSweep + ' ' + C + ' ' + (C - R) + ' Z';
+    return '<svg viewBox="0 0 160 160" width="170" height="170" role="img" aria-label="Drawing of the Moon at this moment: ' + esc(phaseName(elong)) + ', lit on the ' + (waxing ? 'right' : 'left') + ' side as seen from the Northern Hemisphere">' +
+      '<circle cx="80" cy="80" r="70" fill="var(--purple-deep)" stroke="var(--line2)" stroke-width="1.5"/>' +
+      '<path d="' + d + '" fill="#f2d06b"/>' +
+      '<circle cx="80" cy="80" r="70" fill="none" stroke="var(--line2)" stroke-width="1.5"/></svg>';
+  }
+
+  /* ---------- transit aspects ---------- */
+  var ASPECTS = [
+    { angle: 0, name: 'Conjunction', glyph: '☌' },
+    { angle: 60, name: 'Sextile', glyph: '⚹' },
+    { angle: 90, name: 'Square', glyph: '□' },
+    { angle: 120, name: 'Trine', glyph: '△' },
+    { angle: 180, name: 'Opposition', glyph: '☍' }
+  ];
+  function transitAspects(tLons, natalPoints){
+    var found = [];
+    BODIES.forEach(function(tb){
+      natalPoints.forEach(function(np){
+        var sep = Math.abs(signedDiff(tLons[tb], np.lon));
+        var best = null;
+        ASPECTS.forEach(function(asp){
+          var orb = Math.abs(sep - asp.angle);
+          if (orb <= 3.0 && (!best || orb < best.orb)) best = { asp: asp, orb: orb };
+        });
+        if (best) found.push({ t: tb, n: np.name, name: best.asp.name, glyph: best.asp.glyph, orb: best.orb });
+      });
+    });
+    found.sort(function(x, y){ return x.orb - y.orb; });
+    return found;
+  }
+
+  /* ---------- UI ---------- */
+  var dateInput = $('tmDate'), timeInput = $('tmTime'), nowBtn = $('tmNow'),
+      tzNote = $('tmTzNote'), moonBox = $('tmMoon'), transitBox = $('tmTransits'),
+      tzSel = $('asTz');
+  if (!dateInput || !timeInput || !moonBox || !transitBox) return;
+
+  function getTz(){ return (tzSel && tzSel.value) || 'America/New_York'; }
+  function tzOffsetMs(tz, utcMs){
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: tz, hour12: false,
+        year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', second:'2-digit' }).formatToParts(new Date(utcMs));
+      var p = {};
+      parts.forEach(function(x){ p[x.type] = x.value; });
+      var asUtc = Date.UTC(+p.year, +p.month - 1, +p.day, (+p.hour) % 24, +p.minute, +p.second);
+      return asUtc - Math.floor(utcMs / 1000) * 1000;
+    } catch(e){ return 0; }
+  }
+  function zonedToUtc(tz, y, mo, d, h, mi){
+    var guess = Date.UTC(y, mo - 1, d, h, mi, 0);
+    var utc = guess;
+    for (var i = 0; i < 3; i++){ utc = guess - tzOffsetMs(tz, utc); }
+    return utc;
+  }
+  function zonedParts(tz, utcMs){
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: tz, hour12: false,
+        year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' }).formatToParts(new Date(utcMs));
+      var p = {};
+      parts.forEach(function(x){ p[x.type] = x.value; });
+      return { y: +p.year, mo: +p.month, d: +p.day, h: (+p.hour) % 24, mi: +p.minute };
+    } catch(e){
+      var dt = new Date(utcMs);
+      return { y: dt.getUTCFullYear(), mo: dt.getUTCMonth() + 1, d: dt.getUTCDate(), h: dt.getUTCHours(), mi: dt.getUTCMinutes() };
+    }
+  }
+  function pad2(n){ return (n < 10 ? '0' : '') + n; }
+  function fmtZoned(utcMs, tz){
+    try {
+      return new Intl.DateTimeFormat('en-US', { timeZone: tz, month: 'short', day: 'numeric', year: 'numeric',
+        hour: 'numeric', minute: '2-digit', timeZoneName: 'short' }).format(new Date(utcMs));
+    } catch(e){ return new Date(utcMs).toUTCString(); }
+  }
+  function setInputsFromMs(utcMs){
+    var p = zonedParts(getTz(), utcMs);
+    dateInput.value = p.y + '-' + pad2(p.mo) + '-' + pad2(p.d);
+    timeInput.value = pad2(p.h) + ':' + pad2(p.mi);
+  }
+  function readMomentMs(){
+    if (!dateInput.value || !timeInput.value) return null;
+    var dp = dateInput.value.split('-'), tp = timeInput.value.split(':');
+    var y = +dp[0], mo = +dp[1], d = +dp[2], h = +tp[0], mi = +tp[1];
+    if (!(y >= 1800 && y <= 2100) || !isFinite(h) || !isFinite(mi)) return null;
+    return zonedToUtc(getTz(), y, mo, d, h, mi);
+  }
+
+  /* Read the natal chart back from the Western placements table the
+     Astrology calculator rendered — the only honest bridge between the two
+     separate calculators, and it changes nothing in that chart. */
+  function parseSignDeg(text){
+    for (var s = 0; s < 12; s++){
+      if (text.indexOf(SIGNS[s]) === 0 || text.indexOf(SIGNS[s] + ' ') !== -1){
+        var m = text.match(/(\d+)°(\d+)′/);
+        if (m) return s * 30 + (+m[1]) + (+m[2]) / 60;
+      }
+    }
+    return null;
+  }
+  function readNatal(){
+    var res = $('asResults'), panel = $('asPanelW');
+    if (!res || !panel || !res.classList.contains('show')) return null;
+    var table = panel.querySelector('table.as-table');
+    if (!table) return null;
+    var points = [];
+    var rows = table.querySelectorAll('tbody tr');
+    for (var r = 0; r < rows.length; r++){
+      var cells = rows[r].querySelectorAll('td');
+      if (cells.length < 2) continue;
+      var label = cells[0].textContent, lon = parseSignDeg(cells[1].textContent);
+      if (lon === null) continue;
+      for (var b = 0; b < BODIES.length; b++){
+        if (label.indexOf(BODIES[b]) !== -1){ points.push({ name: BODIES[b], lon: lon }); break; }
+      }
+    }
+    if (points.length !== BODIES.length) return null;
+    var txt = panel.textContent || '';
+    var ascM = txt.match(/Ascendant ([A-Za-z]+ \d+°\d+′)/), mcM = txt.match(/Midheaven \(MC\) ([A-Za-z]+ \d+°\d+′)/);
+    if (ascM){ var a = parseSignDeg(ascM[1]); if (a !== null) points.push({ name: 'Ascendant', lon: a }); }
+    if (mcM){ var mc = parseSignDeg(mcM[1]); if (mc !== null) points.push({ name: 'MC', lon: mc }); }
+    return points;
+  }
+
+  function renderMoon(ms, tz){
+    var info = phaseInfo(ms);
+    var aya = ayanamsa(ms);
+    var moonSid = rev(info.moon - aya);
+    var h = '';
+    h += '<p style="color:var(--ink2);margin:0 0 6px">The phase, illumination, and event times here are <strong style="color:var(--ink)">calculated astronomy — measured fact</strong>, worked out from the Sun and Moon’s real positions at the moment you picked.</p>';
+    h += '<div class="tm-moonwrap"><div style="text-align:center">' + moonSvg(info.elong) +
+         '<div style="font-family:Marcellus,serif;font-size:19px;color:var(--ink);margin-top:6px">' + esc(info.name) + '</div></div>';
+    h += '<div class="tm-moonfacts">' +
+      '<div class="tm-fact"><span>Phase</span><strong>' + esc(info.name) + '</strong></div>' +
+      '<div class="tm-fact"><span>Illumination</span><strong>' + info.illum.toFixed(1) + '% lit</strong></div>' +
+      '<div class="tm-fact"><span>Moon’s age</span><strong>' + (info.ageDays === null ? '—' : info.ageDays.toFixed(1) + ' days since the last new moon') + '</strong></div>' +
+      '<div class="tm-fact"><span>Moon sign (tropical)</span><strong>' + fmtSignDeg(info.moon) + '</strong></div>' +
+      '<div class="tm-fact"><span>Moon sign (sidereal, Lahiri)</span><strong>' + fmtSignDeg(moonSid) + '</strong></div>' +
+      '</div></div>';
+    var nextNew = findCrossingAfter(ms, 0), nextFull = findCrossingAfter(ms, 180);
+    h += '<h4 style="font-size:19px">Coming up</h4><ul class="tm-events">';
+    if (nextNew !== null) h += '<li><strong>Next New Moon</strong> — ' + esc(fmtZoned(nextNew, tz)) + '</li>';
+    if (nextFull !== null) h += '<li><strong>Next Full Moon</strong> — ' + esc(fmtZoned(nextFull, tz)) + '</li>';
+    h += '</ul>';
+    if (info.prevNew !== null){
+      var fq = findCrossingAfter(info.prevNew + 3600000, 90);
+      var fm = findCrossingAfter(info.prevNew + 3600000, 180);
+      var lq = findCrossingAfter(info.prevNew + 3600000, 270);
+      h += '<h4 style="font-size:19px">This lunation’s four quarters</h4><ul class="tm-events">' +
+        '<li><strong>New Moon</strong> — ' + esc(fmtZoned(info.prevNew, tz)) + '</li>' +
+        (fq !== null ? '<li><strong>First Quarter</strong> — ' + esc(fmtZoned(fq, tz)) + '</li>' : '') +
+        (fm !== null ? '<li><strong>Full Moon</strong> — ' + esc(fmtZoned(fm, tz)) + '</li>' : '') +
+        (lq !== null ? '<li><strong>Last Quarter</strong> — ' + esc(fmtZoned(lq, tz)) + '</li>' : '') +
+        '</ul>';
+    }
+    h += '<p style="color:var(--ink2);margin:14px 0 0"><span class="ev ev-t">Spiritual tradition</span> &nbsp;In many traditions the new moon is a moment for setting intentions and the full moon a moment for release — a rhythm for reflection, offered here as tradition, with no promises attached.</p>';
+    moonBox.innerHTML = h;
+  }
+
+  function renderTransits(ms, tz){
+    var natal = readNatal();
+    if (!natal){
+      transitBox.innerHTML = '<p style="color:var(--ink2);margin:0">Build your chart above first — transits are read against your natal positions.</p>';
+      return;
+    }
+    var tLons = allLongitudes(ms);
+    var h = '';
+    h += '<p style="color:var(--ink2);margin:0 0 12px"><span class="ev ev-t">Spiritual tradition</span> &nbsp;Transits are read in the tradition as the current sky’s conversation with your birth chart — where today’s planets are touching the points you were born with. They are shown here as that tradition keeps them: a lens for reflection, not a prediction, and no promises are made from them.</p>';
+    h += '<h4 style="font-size:19px;margin-top:0">The sky at this moment — tropical</h4>';
+    h += '<div class="bg-pillrow">';
+    BODIES.forEach(function(b){
+      h += '<span class="bg-pill">' + BODY_GLYPHS[b] + ' ' + (b === 'Lilith' ? 'Lilith (Black Moon)' : b) + ' — ' + fmtSignDeg(tLons[b]) + '</span>';
+    });
+    h += '</div>';
+    var asps = transitAspects(tLons, natal);
+    h += '<h4 style="font-size:19px">Transit aspects to your natal chart — within 3°</h4>';
+    if (asps.length){
+      h += '<table class="as-table"><thead><tr><th>Transiting</th><th>Aspect</th><th>Natal</th><th>Orb</th></tr></thead><tbody>';
+      asps.forEach(function(a){
+        h += '<tr><td>' + esc(a.t) + '</td><td>' + a.glyph + ' ' + esc(a.name) + '</td><td>' + esc(a.n) + '</td><td>' + a.orb.toFixed(1) + '°</td></tr>';
+      });
+      h += '</tbody></table>';
+      h += '<p style="color:var(--ink2);font-size:14.5px;margin:10px 0 0">The orb is how far the pair sits from the exact angle — smaller means closer to exact, and the tightest contacts are listed first.</p>';
+    } else {
+      h += '<p style="color:var(--ink2);margin:0">No transit aspects fall within 3° of your natal points at this moment — the sky is quiet against your chart right now. Try a moment a few days either side; the Moon alone moves about 13° a day, so contacts come and go quickly.</p>';
+    }
+    transitBox.innerHTML = h;
+  }
+
+  var renderTimer = null;
+  function render(){
+    var tz = getTz();
+    if (tzNote) tzNote.textContent = 'Times are read in ' + tz.replace(/_/g, ' ') + ' — the timezone selected in the birth form above — and moon event times are shown in that same timezone.';
+    var ms = readMomentMs();
+    if (ms === null){
+      moonBox.innerHTML = '<p style="color:var(--ink2);margin:0">Pick a date and a time above to see the Moon at that moment.</p>';
+      transitBox.innerHTML = '<p style="color:var(--ink2);margin:0">Pick a date and a time above to see the transits for that moment.</p>';
+      return;
+    }
+    renderMoon(ms, tz);
+    renderTransits(ms, tz);
+  }
+  function renderSoon(){
+    if (renderTimer) clearTimeout(renderTimer);
+    renderTimer = setTimeout(render, 150);
+  }
+
+  dateInput.addEventListener('change', render);
+  timeInput.addEventListener('change', render);
+  if (nowBtn) nowBtn.addEventListener('click', function(){ setInputsFromMs(Date.now()); render(); });
+  if (tzSel) tzSel.addEventListener('change', render);
+  /* When the visitor builds (or rebuilds) their natal chart, refresh the
+     transit table against the new positions. */
+  var panelW = $('asPanelW'), results = $('asResults');
+  if (window.MutationObserver){
+    var obs = new MutationObserver(renderSoon);
+    if (panelW) obs.observe(panelW, { childList: true, subtree: true, characterData: true });
+    if (results) obs.observe(results, { attributes: true, attributeFilter: ['class'] });
+  }
+  setInterval(function(){
+    /* Keep the transit table in step if a chart appears without a mutation
+       we caught (belt and braces, once a minute). */
+    if (readNatal()) renderTransits(readMomentMs() || Date.now(), getTz());
+  }, 60000);
+
+  setInputsFromMs(Date.now());
+  render();
+})();
 </script>
 </body>
 </html>

@@ -44,6 +44,14 @@ owner's one-time test message. All eight areas of the site are now open.
 From the vision list, transits and moon phases remain future ideas, not
 yet scheduled.
 
+Follow-on (2026-11-15): at the owner's word, Transits and Moon phases —
+the two remaining items from the vision list's astrology line — shipped
+inside the Astrology view (V18) and were checked against Swiss Ephemeris
+fixtures with disclosed residuals; see the testing record. The Earth
+view's owner verification was recorded the same evening (V18). Still
+ahead, in the owner's chosen order: the comprehensive frequency
+reference, then the biofield-scan question.
+
 Principles that do not change:
 
 - Free access. No required account, no subscription, no advertising.
