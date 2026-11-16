@@ -46,11 +46,12 @@ yet scheduled.
 
 Follow-on (2026-11-15): at the owner's word, Transits and Moon phases —
 the two remaining items from the vision list's astrology line — shipped
-inside the Astrology view (V18) and were checked against Swiss Ephemeris
-fixtures with disclosed residuals; see the testing record. The Earth
-view's owner verification was recorded the same evening (V18). Still
-ahead, in the owner's chosen order: the comprehensive frequency
-reference, then the biofield-scan question.
+inside the Astrology view (V18), were checked against Swiss Ephemeris
+fixtures with disclosed residuals, and were verified by the owner the
+same evening (V19); see the testing record. The Earth view's owner
+verification was recorded the same evening (V18). Still ahead, in the
+owner's chosen order: the comprehensive frequency reference, then the
+biofield-scan question.
 
 Principles that do not change:
 

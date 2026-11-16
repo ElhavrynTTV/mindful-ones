@@ -308,5 +308,21 @@ Consequence: 15 of the 16 fixture transit aspects reproduce with orbs
 within ~0.11°; the Pluto–Mars trine's orb reads 0.45° instead of 0.07°,
 and a borderline Pluto–Ascendant conjunction (2.63°) can appear that
 exact positions place just outside the 3° limit. These residuals are
-recorded here rather than smoothed over; the owner's verification is
-still to come.
+recorded here rather than smoothed over.
+
+Live-site check (2026-11-15, ~20:15 ET, on the live Pages site): the
+owner's chart was built and the sections were run at the fixture moments.
+The Moon at 2026-11-15 20:00 ET read Waxing Crescent, 36.2% lit, Moon
+Aquarius 7°41′ tropical / Capricorn 13°27′ sidereal (fixtures 7°42′ /
+13°28′); the lunation's quarters read within 1–2 minutes of Swiss except
+the Full Moon (Nov 24, 10:02 AM ET shown vs 9:53 AM exact — the recorded
+~9-minute limit). Transits at 2026-11-15 noon ET: all 16 fixture aspects
+present with matching orbs, plus the two disclosed Pluto-residual edge
+rows (Pluto conjunct Ascendant 2.6°, Sun conjunct natal Pluto at the
+3.0° edge).
+
+Owner verification (user-verified, reported 2026-11-15 ~21:00 ET): the
+owner ran the Transits and Moon sections herself on the live site and
+reported "it works." With that, the Testing Status note for this
+addition was flipped from "Pending verification" to "Verified" (V19,
+text-only; all eight script blocks verified byte-for-byte identical).
