@@ -221,3 +221,44 @@ With the owner's approval, the Testing Status note for the calculator was
 flipped from "Pending verification" to "Verified" (V14, text-only; all
 script blocks verified byte-for-byte identical, including the calculator's
 own).
+
+## Phase 2 Astrology calculator (V16) — verification, 2026-11-15
+
+V16 filled in the Astrology view with a full natal-chart calculator: one
+birth form (date, time, timezone; birthplace coordinates via an
+OpenStreetMap place-name lookup — only the place name is sent — or manual
+entry) producing a Western chart (SVG wheel, Placidus houses, placements,
+major aspects) and a Vedic chart (Lahiri sidereal positions, nakshatras
+and padas, whole-sign houses, Vimshottari dashas) — all calculated in the
+visitor's browser.
+
+Reference computation (2026-11-15): the owner's chart (2 February 1991,
+06:55, Charleston WV, 38.3498 / −81.6326) was computed independently with
+Swiss Ephemeris 2.10. That reference also matches the owner's own chart
+list from her astrology app (kept since 2026-11-07) almost exactly —
+Rising Aquarius 0°16′ against her listed 0°17′, Saturn Capricorn 29°30′
+exact — and it settled an open choice: the Lilith her tradition uses is
+the MEAN lunar apogee (Sagittarius 20°50′, exactly her handwritten
+value), not the true/osculating apogee.
+
+Live-site run (checked on the live Pages site, 2026-11-15, same birth
+data, manual coordinates):
+
+- Every sign, Placidus house, nakshatra, pada and retrograde mark matched
+  the Swiss reference, in both the Western and Vedic panels.
+- Most positions matched within 1–2 arcminutes (Moon 25°28′ Virgo,
+  Ascendant 0°16′ Aquarius, North Node 27°58′ Capricorn exact to the
+  minute). Known residuals: Jupiter ~5′, Lilith ~6′, Pluto ~8′ (0.13° —
+  a known limit of the compact fixed-element Pluto formula). None of the
+  residuals changes any sign, house or nakshatra in this chart.
+- Vimshottari dashas: all nine mahadasha boundaries within one day of the
+  reference (Rahu 2011-10-23 → 2029-10-22 on the site; current antardasha
+  Rahu/Sun to 2027-04-05). The site states its 365.25-day-year
+  convention.
+- Degraded modes behave honestly: with no birth time or no coordinates,
+  the Ascendant, houses and Lagna are hidden rather than guessed, and
+  the Moon sign is flagged as able to shift.
+
+With the owner's approval, the Testing Status note for the calculator was
+flipped from "Pending verification" to "Verified" (V17, text-only; all
+seven script blocks verified byte-for-byte identical).

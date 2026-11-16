@@ -34,6 +34,16 @@ see the testing record. The owner chose BodyGraph before Astrology
 down and verify. Astrology calculations (Western and Vedic) remain the next
 major piece, on the owner's timing.
 
+Phase 2 completion (2026-11-15): the Astrology calculator shipped (V16) —
+Western (Placidus chart wheel, placements, major aspects) and Vedic
+(Lahiri sidereal positions, nakshatras, Vimshottari dashas) — and was
+verified against Swiss Ephemeris and the owner's own reference chart; see
+the testing record. A Feedback view (V15) also shipped, relaying visitor
+messages to the owner's inbox via FormSubmit; it activates with the
+owner's one-time test message. All eight areas of the site are now open.
+From the vision list, transits and moon phases remain future ideas, not
+yet scheduled.
+
 Principles that do not change:
 
 - Free access. No required account, no subscription, no advertising.
