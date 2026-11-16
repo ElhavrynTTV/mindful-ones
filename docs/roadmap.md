@@ -73,6 +73,11 @@ section's standard that every entry answers what was studied, how
 many people or observations, what was found, and what it does not
 establish — and that the "No credible evidence" label attaches to
 specific claims, never to whole traditions or personal experiences.
+A final precision the same evening (V22): the tuning references now
+carry an explicit scope note that those studies tested music tuned to
+a reference pitch (for example A = 432 Hz), not isolated continuous
+pure tones like the ones the Frequency Studio plays, so results from
+music studies are never presented as evidence about the generator.
 Still ahead, in the owner's chosen order: the comprehensive frequency
 reference (which draws on this citation base), then the biofield-scan
 question.
