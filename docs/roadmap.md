@@ -49,9 +49,19 @@ the two remaining items from the vision list's astrology line — shipped
 inside the Astrology view (V18), were checked against Swiss Ephemeris
 fixtures with disclosed residuals, and were verified by the owner the
 same evening (V19); see the testing record. The Earth view's owner
-verification was recorded the same evening (V18). Still ahead, in the
-owner's chosen order: the comprehensive frequency reference, then the
-biofield-scan question.
+verification was recorded the same evening (V18).
+
+Evidence & References (2026-11-15): at the owner's direction, the
+Evidence view was expanded into "Evidence & References" (V20) — the
+label framework spelled out (Supported / Still being studied /
+Spiritual tradition / No credible evidence), plain explainers of what
+each measurement on the site means, 36 individual research citations
+each with a "what this shows" line, and a claim-by-claim labelling
+table. Every citation was verified against its publisher, journal, or
+DOI before inclusion; items that could not be verified were excluded.
+Still ahead, in the owner's chosen order: the comprehensive frequency
+reference (which draws on this citation base), then the biofield-scan
+question.
 
 Principles that do not change:
 

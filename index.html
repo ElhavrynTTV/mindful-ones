@@ -393,6 +393,32 @@ body.has-mini{padding-bottom:78px}
 .tm-events li{margin:4px 0}
 .tm-events strong{color:var(--ink)}
 </style>
+<style id="phase2-evidence-refs-style">
+/* Evidence & References expansion (additive only) */
+.ev-n{background:#fbe4e4;color:#7c1d1d}
+@media (prefers-color-scheme: dark){ .ev-n{background:#4a1414;color:#ffb4b4} }
+.ref-subhead{font-family:"Marcellus",serif;font-weight:400;font-size:26px;color:var(--ink);margin:34px 0 6px}
+.ref-subhead:first-of-type{margin-top:26px}
+.ref-lede{color:var(--ink2);margin:0 0 14px;max-width:720px}
+.ref-group{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin-top:16px}
+.ref-group h4{margin:0 0 4px;font-size:20px;font-family:"Marcellus",serif;font-weight:400;color:var(--ink)}
+.ref-group .ref-bottom{margin:12px 0 0;font-size:15px;color:var(--ink2);background:var(--surface2);border-radius:12px;padding:11px 14px}
+.ref-group .ref-bottom strong{color:var(--ink)}
+.ref-entry{padding:13px 0;border-bottom:1px solid var(--line)}
+.ref-entry:last-of-type{border-bottom:none;padding-bottom:2px}
+.ref-cite{margin:0;font-size:15.5px;color:var(--ink)}
+.ref-cite .ref-title{font-style:italic}
+.ref-shows{margin:4px 0 0;font-size:15px;color:var(--ink2)}
+.ref-shows strong{color:var(--ink)}
+.claim-table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.claim-table th{text-align:left;padding:10px 14px;border-bottom:2px solid var(--line2);color:var(--ink);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+.claim-table td{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top}
+.claim-table tr:last-child td{border-bottom:none}
+.claim-table td:first-child{color:var(--ink)}
+.claim-table td:last-child{white-space:nowrap}
+@media(max-width:560px){ .claim-table td:last-child{white-space:normal} .claim-table td,.claim-table th{padding:9px 10px} }
+.measure-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+</style>
 
 </head>
 <body>
@@ -726,10 +752,10 @@ body.has-mini{padding-bottom:78px}
   </section>
 
   <!-- EVIDENCE -->
-  <section id="evidence" aria-label="Research and evidence">
+  <section id="evidence" aria-label="Evidence and references">
     <div class="sec-head">
-      <h2>Research &amp; Evidence — how we label everything</h2>
-      <p>This is the heart of Mindful Ones: science and spiritual tradition living side by side, each labeled for what it is, so <strong>you</strong> decide what it means to you. Neither side is hidden, and neither is dressed up as the other.</p>
+      <h2>Evidence &amp; References</h2>
+      <p>This is the heart of Mindful Ones: science and spiritual tradition living side by side, each labeled for what it is, so <strong>you</strong> decide what it means to you. Neither side is hidden, and neither is dressed up as the other. Below you’ll find exactly how we label claims, plain-language explainers for every measurement this site shows, and the individual research citations behind the labels — including the honest negatives, stated in the same words the research supports. Citation base checked November 2026.</p>
     </div>
     <div class="ev-grid">
       <div class="ev-card">
@@ -758,10 +784,279 @@ body.has-mini{padding-bottom:78px}
       </div>
       <div class="card">
         <h3>Where to read more</h3>
-        <p>Good starting points for your own reading: <a href="https://www.cedars-sinai.org/blog/music-therapy-pain-management.html" target="_blank" rel="noopener">Cedars-Sinai on music therapy</a> for what music-based care can do, and your local library’s anatomy shelf for the body map material. Deeper source lists join each section as the library grows in Phase 2.</p>
-        <p style="margin-top:8px"><span class="badge-pending">Planned</span> Specific research citations attached to individual scientific claims — not yet added, so no claim on this page should be read as citing a particular study unless a source is named beside it.</p>
+        <p>Every scientific claim on this site now traces to an individual citation in the <a href="#evidence-references">References</a> below — authors, year, journal, and a DOI or link, plus one plain line on what each source actually shows. A further starting point for your own reading: <a href="https://www.cedars-sinai.org/blog/music-therapy-pain-management.html" target="_blank" rel="noopener">Cedars-Sinai on music therapy</a> for what music-based care can do, and your local library’s anatomy shelf for the body map material.</p>
+        <p style="margin-top:8px"><span class="badge-verified">Added</span> Individual research citations, checked November 2026, are listed below. Where the research says the evidence is mixed or absent, this page says so in those words.</p>
       </div>
     </div>
+    <h3 class="ref-subhead">How this site labels claims</h3>
+    <p class="ref-lede">Every claim on Mindful Ones carries one of four labels. The label describes the <em>claim</em>, not the topic — a single topic can hold a Supported measurement and a Spiritual tradition meaning at the same time, and the two never share a label.</p>
+    <div class="ev-grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+      <div class="ev-card">
+        <span class="ev ev-s">Supported</span>
+        <h3>Measured or established</h3>
+        <p>The claim has been measured or established in the research, and a citation below backs it. Example: lightning excites resonances near 7.83 Hz in the Earth–ionosphere cavity. Supported describes a finding — it is never a promise that something will help you.</p>
+      </div>
+      <div class="ev-card">
+        <span class="ev ev-i">Still being studied</span>
+        <h3>Preliminary or mixed</h3>
+        <p>Real studies exist, but they are small, inconsistent, unreplicated, or point in different directions. Example: binaural beats and anxiety, where a pooled analysis finds a medium effect but the studies vary a lot. Interesting and worth exploring — too soon to state as fact either way.</p>
+      </div>
+      <div class="ev-card">
+        <span class="ev ev-t">Spiritual tradition</span>
+        <h3>A practice or belief</h3>
+        <p>The claim comes from a meaningful practice or belief system — chakras, astrology, Human Design, solfeggio healing themes. Tradition is presented as tradition: valued for the meaning people find in it, never dressed up as a scientific finding.</p>
+      </div>
+      <div class="ev-card">
+        <span class="ev ev-n">No credible evidence</span>
+        <h3>Tested and failed, or never supported</h3>
+        <p>The claim has been tested under controlled conditions and failed, or it is asserted without credible support behind it. Example: “528 Hz repairs DNA” — no human study tests that. We say so plainly rather than leaving the claim in a grey area.</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>The rule behind the labels</h3>
+      <p>A claim’s label follows the <strong>strongest honest reading of the research</strong> — not the most hopeful one, and not the most dismissive one. A measurement (a resonance peak, an EEG band, a planet’s longitude, a sleep time) can be Supported while the meaning attached to it (“therefore you are calm, creative, or destined”) is Still being studied or Spiritual tradition. And <strong>labels move when the evidence does</strong>: if a preliminary finding is replicated in large, well-controlled studies, its label goes up; if it fails replication, its label comes down. This page is re-checked as the research changes.</p>
+    </div>
+
+    <h3 class="ref-subhead">What the measurements mean</h3>
+    <p class="ref-lede">Each measurement on this site, in plain language — what is actually being measured, and where the measurement stops and interpretation begins.</p>
+    <div class="measure-grid">
+      <div class="card">
+        <h3>Frequency, in hertz</h3>
+        <p>A frequency in hertz (Hz) is a count of cycles per second. When the Frequency Studio shows 528 Hz, your browser’s audio engine is producing a wave that oscillates 528 times per second — plain physics, and you can verify it with any free frequency-analyzer app held near your speaker.</p>
+        <p style="margin-top:8px">What playing a tone <em>does</em>: it makes a sound at that rate, and listening to music or sound can help many people relax. What it does <em>not</em> do, on current evidence: a tone at one specific audible frequency has not been shown to heal a specific organ or condition. The number is science; a healing assignment attached to the number is tradition, or — where it has been tested — addressed claim by claim below.</p>
+      </div>
+      <div class="card">
+        <h3>Binaural beats</h3>
+        <p>A binaural beat is not a sound in the air. Headphones send two different tones — say 200 Hz to one ear and 210 Hz to the other — and your own auditory system produces the perception of a gentle pulsing beat at the 10 Hz difference. The beat is a <em>percept</em>, created by the listener, which is why speakers can’t produce a true one: the tones mix in the air first.</p>
+        <p style="margin-top:8px">The open question is <strong>entrainment</strong> — the idea that the brain’s own rhythms shift to match the beat frequency. That mechanism is <span class="ev ev-i">Still being studied</span> at best: in the 2023 systematic review below, 8 of 14 EEG studies contradicted it, 5 supported it, and 1 was mixed. Any benefit people feel may reflect relaxation, expectation, or simply listening to structured sound.</p>
+      </div>
+      <div class="card">
+        <h3>Reading the Schumann spectrogram</h3>
+        <p>The live chart on the Earth view is a spectrogram from one station — the Space Observing System in Tomsk — not a single “frequency reading.” The horizontal axis is <strong>time</strong> (Tomsk local time, UTC+7). The vertical axis is <strong>frequency, 0–40 Hz</strong>. <strong>Colour is signal power — amplitude</strong> — at that frequency and moment: dark blue or black is weak, green and yellow moderate, red and white strongest.</p>
+        <p style="margin-top:8px">The bright horizontal bands <em>are</em> the resonance modes. A bright “spike” or “whiteout” means <strong>amplitude went up</strong> — more lightning energy in the cavity, or local interference — <strong>not</strong> that the resonance’s frequency rose; the fundamental stays near 7.8 Hz. Black vertical bars mean <strong>no data was recorded</strong> for that stretch — a gap in the recording, not the resonance “stopping.” It is one station’s local record, affected by local noise — not a global mood, consciousness, or health meter.</p>
+      </div>
+      <div class="card">
+        <h3>EEG brainwave bands</h3>
+        <p>An EEG records tiny voltage fluctuations (microvolts) from electrodes on the scalp — the summed electrical activity of large populations of neurons, blurred by skull and scalp. The trace is mathematically split into how much power sits in each frequency range. A “band” is a descriptive slice of that spectrum — not a substance, a place in the brain, or a state of mind. The standard ranges (IFCN glossary, Kane et al. 2017, below): delta 0.1 to &lt;4 Hz · theta 4 to &lt;8 Hz · alpha 8–13 Hz · beta &gt;13–30 Hz · gamma &gt;30–80 Hz.</p>
+        <p style="margin-top:8px">Why a band is not a mental state: more alpha does not <em>mean</em> “relaxed” (alpha also rises with eyes closed, idling, and inhibition); more theta does not <em>mean</em> “meditating” (it also rises with drowsiness and memory load); gamma does not <em>mean</em> “higher consciousness.” Inferring a specific mental state from band power alone is the classic <strong>reverse-inference</strong> error (Poldrack 2006, below). Band definitions and measurement: <span class="ev ev-s">Supported</span>. “This band pattern shows you are in state X,” as a general readout: <span class="ev ev-n">No credible evidence</span>.</p>
+      </div>
+      <div class="card">
+        <h3>Moon illumination %</h3>
+        <p>The illumination percentage in the Astrology view is pure Sun–Moon geometry: the share of the Moon’s Earth-facing disc that sunlight is falling on at that moment, worked out from the angle between the Sun and the Moon as seen from Earth. Near 0% the lit side faces away from us (new moon); near 100% the whole face we see is lit (full moon); near 50% we see a half-lit disc (the quarter phases).</p>
+        <p style="margin-top:8px">That is all the number measures — geometry, calculated from positions. It does not measure any influence on sleep, mood, or behaviour. What the sleep research itself found is mixed, and it is set out study by study in the Moon &amp; sleep references below.</p>
+      </div>
+      <div class="card">
+        <h3>Ephemeris positions &amp; residuals</h3>
+        <p>An <strong>ephemeris</strong> is a calculation of where a body stands at a given moment, given as a longitude — degrees along the zodiac or the ecliptic. Positions are measured finely: one degree holds 60 <strong>arcminutes</strong> (60′), and one arcminute holds 60 arcseconds (60″). A difference of a few arcminutes is a few sixtieths of a degree — far too small to change a sign, house, or nakshatra in almost every chart.</p>
+        <p style="margin-top:8px">This site’s calculators use a compact on-device ephemeris, checked against the Swiss Ephemeris (see Testing Status). Most positions land within a few arcminutes of the reference. The disclosed exception is <strong>Pluto</strong>: about 0.13° off in the natal checks, and up to about 0.4° off at 2026 dates in the transit checks. In practice that means a Pluto placement or a Pluto aspect’s orb can read slightly differently here than in professional software, and a borderline Pluto aspect right at the 3° cutoff can appear or drop out. It is disclosed rather than hidden — and it changes the <em>arithmetic</em> only at the edges; it does not change what label the interpretation carries.</p>
+      </div>
+    </div>
+
+    <h3 class="ref-subhead" id="evidence-references">References</h3>
+    <p class="ref-lede">Individual citations, grouped by area. Every entry was checked against its publisher, PubMed/PMC, DOI record, or issuing organisation in November 2026. Each carries one plain line — <strong>what this shows</strong> — describing what the source actually demonstrates, not what wellness marketing says it demonstrates.</p>
+
+    <div class="ref-group">
+      <h4>Schumann resonance &amp; the Earth view</h4>
+      <div class="ref-entry">
+        <p class="ref-cite">Schumann, W. O. (1952). <span class="ref-title">Über die strahlungslosen Eigenschwingungen einer leitenden Kugel, die von einer Luftschicht und einer Ionosphärenhülle umgeben ist.</span> Zeitschrift für Naturforschung A, 7(2), 149–154. <a href="https://doi.org/10.1515/zna-1952-0202" target="_blank" rel="noopener">doi:10.1515/zna-1952-0202</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> the original theoretical prediction of Earth–ionosphere cavity resonances. For an idealised cavity the lowest mode comes out around 10–11 Hz — Schumann did not predict the precise modern value of 7.83 Hz.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Schumann, W. O., &amp; König, H. (1954). <span class="ref-title">Über die Beobachtung von ‘atmospherics’ bei geringsten Frequenzen.</span> Die Naturwissenschaften, 41(8), 183–184. <a href="https://doi.org/10.1007/BF00638174" target="_blank" rel="noopener">doi:10.1007/BF00638174</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> early attempts to observe the predicted lowest-frequency signals; the signal could not yet be cleanly separated from noise.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Balser, M., &amp; Wagner, C. A. (1960). <span class="ref-title">Observations of Earth-ionosphere cavity resonances.</span> Nature, 188, 638–641. <a href="https://doi.org/10.1038/188638a0" target="_blank" rel="noopener">doi:10.1038/188638a0</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> the first clear measurements of the resonance peaks — near 8, 14.1, 20.3, 26.4, and 32.5 Hz — confirming Schumann’s prediction.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Besser, B. P. (2007). <span class="ref-title">Synopsis of the historical development of Schumann resonances.</span> Radio Science, 42, RS2S02. <a href="https://doi.org/10.1029/2006RS003495" target="_blank" rel="noopener">doi:10.1029/2006RS003495</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> the authoritative history — who predicted what, when measurement succeeded, and how contemporaries received it.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Price, C. (2016). <span class="ref-title">ELF electromagnetic waves from lightning: The Schumann resonances.</span> Atmosphere, 7(9), 116. <a href="https://doi.org/10.3390/atmos7090116" target="_blank" rel="noopener">doi:10.3390/atmos7090116</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> a readable modern review — lightning excites resonances near 8, 14, 20 Hz and upward, used scientifically as a remote-sensing tool for global lightning and the lower ionosphere.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Nickolaenko, A. P., &amp; Hayakawa, M. (2002). <span class="ref-title">Resonances in the Earth-Ionosphere Cavity.</span> Kluwer Academic Publishers (Modern Approaches in Geophysics).</p>
+        <p class="ref-shows"><strong>What this shows:</strong> the standard textbook treatment of the cavity, its detection, and the receiving equipment.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Cherry, N. (2002). <span class="ref-title">Schumann resonances, a plausible biophysical mechanism for the human health effects of solar/geomagnetic activity.</span> Natural Hazards, 26(3), 279–331. <a href="https://doi.org/10.1023/A:1015637127504" target="_blank" rel="noopener">doi:10.1023/A:1015637127504</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> a <strong>hypothesis and review paper</strong> — note “plausible” in its own title — proposing that Schumann signals <em>could</em> mediate solar/geomagnetic health associations, largely via melatonin. It is not an experiment demonstrating that the Schumann resonance changes human mood, cognition, or health.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Pobachenko, S. V., Kolesnik, A. G., Borodin, A. S., &amp; Kalyuzhin, V. V. (2006). <span class="ref-title">The contingency of parameters of human encephalograms and Schumann resonance electromagnetic fields revealed in monitoring studies.</span> Biophysics, 51, 480–483. <a href="https://doi.org/10.1134/S0006350906030225" target="_blank" rel="noopener">doi:10.1134/S0006350906030225</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> in a small monitoring sample, cross-correlations (reported range ~0.12–0.65) between Schumann-mode parameters and EEG parameters in the 6–16 Hz range — with the association itself largely determined by solar/geomagnetic activity, so a third factor may drive it. No behavioural or health outcome was measured.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Saroka, K. S., Vares, D. E., &amp; Persinger, M. A. (2016). <span class="ref-title">Similar spectral power densities within the Schumann resonance and a large population of quantitative electroencephalographic profiles.</span> PLOS ONE, 11(1), e0146595. <a href="https://doi.org/10.1371/journal.pone.0146595" target="_blank" rel="noopener">doi:10.1371/journal.pone.0146595</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> spectral <em>similarities</em> and brief coherence episodes between QEEG profiles and Schumann frequencies in some but not all participants. It does not demonstrate causation, entrainment of the brain by the field, or any mood, cognitive, or health benefit, and independent replication outside this research group is lacking.</p>
+      </div>
+      <p class="ref-bottom"><strong>Bottom line:</strong> the geophysics is <span class="ev ev-s">Supported</span> — the resonance is real, continuously measured, and extraordinarily weak (on the order of a picotesla, tens of millions of times weaker than Earth’s steady magnetic field). Its frequency falling inside the EEG theta/alpha range is a true numerical coincidence, supported as arithmetic only — overlap is not evidence of interaction. For claimed effects on mood, cognition, or health there is <strong>no credible evidence of an established effect</strong> — only the hypothesis paper and small, unreplicated correlation studies above.</p>
+    </div>
+
+    <div class="ref-group">
+      <h4>Sound &amp; binaural beats</h4>
+      <div class="ref-entry">
+        <p class="ref-cite">Garcia-Argibay, M., Santed, M. A., &amp; Reales, J. M. (2019). <span class="ref-title">Efficacy of binaural auditory beats in cognition, anxiety, and pain perception: A meta-analysis.</span> Psychological Research, 83(2), 357–372. <a href="https://doi.org/10.1007/s00426-018-1066-8" target="_blank" rel="noopener">doi:10.1007/s00426-018-1066-8</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> pooling 22 studies and 35 effect sizes, a medium, significant overall effect (Hedges’ g = 0.45) across memory, attention, anxiety, and pain perception <em>combined</em> — roughly, the average person in the beat condition scored better than about 67% of the control group on the pooled outcomes. Exposure before, or before-and-during, a task beat exposure during the task only, and the authors stress that direction and magnitude depend on the frequency used. One pooled number across four different outcome families is not an effect on any single outcome in isolation.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Ingendoh, R. M., Posny, E. S., &amp; Heine, A. (2023). <span class="ref-title">Binaural beats to entrain the brain? A systematic review of the effects of binaural beat stimulation on brain oscillatory activity.</span> PLOS ONE, 18(5), e0286023. <a href="https://doi.org/10.1371/journal.pone.0286023" target="_blank" rel="noopener">doi:10.1371/journal.pone.0286023</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> of 14 EEG studies in healthy adults, 5 supported the brainwave-entrainment hypothesis, 8 contradicted it, and 1 was mixed. Methods varied so much that the authors conclude the entrainment question cannot be settled at this point, and applied claims resting on it should be treated with caution.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Chaieb, L., Wilpert, E. C., Reber, T. P., &amp; Fell, J. (2015). <span class="ref-title">Auditory beat stimulation and its effects on cognition and mood states.</span> Frontiers in Psychiatry, 6, 70. <a href="https://doi.org/10.3389/fpsyt.2015.00070" target="_blank" rel="noopener">doi:10.3389/fpsyt.2015.00070</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> an earlier review of binaural and monaural beat stimulation finding promising but often contradictory results for cognition and mood, with protocol differences driving much of the variation.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Garcia-Argibay, M., Santed, M. A., &amp; Reales, J. M. (2019). <span class="ref-title">Binaural auditory beats affect long-term memory.</span> Psychological Research, 83(6), 1124–1136. <a href="https://doi.org/10.1007/s00426-017-0959-2" target="_blank" rel="noopener">doi:10.1007/s00426-017-0959-2</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> in one blinded experiment (n = 32), 20 Hz (beta) beats <em>improved</em> word recall and recognition while 5 Hz (theta) beats <em>worsened</em> it versus white noise — a direct demonstration that “binaural beats help memory” is false as a blanket claim; frequency and outcome interact.</p>
+      </div>
+      <p class="ref-bottom"><strong>Bottom line:</strong> mixed and preliminary. Outcome effects — state anxiety (the most consistent signal), memory and attention (small, inconsistent, sometimes negative), and pain perception (fewer studies) — are <span class="ev ev-i">Still being studied</span>. The claim that beats <em>entrain</em> your brainwaves to the target frequency is <span class="ev ev-n">No credible evidence</span> as a general claim: it is contradicted by the majority of EEG studies in the review above. Most primary studies are small, short, in non-clinical samples, with very different carriers, durations, and controls, and expectancy is rarely controlled.</p>
+    </div>
+
+    <div class="ref-group">
+      <h4>Tuning &amp; specific frequencies</h4>
+      <p style="margin:0 0 6px;color:var(--ink2);font-size:15.5px">“432 Hz music” means a whole recording tuned so A4 = 432 Hz instead of the modern standard A4 = 440 Hz — a shift of about 32 cents, roughly one-third of a semitone, applied to every note. Only a blinded head-to-head comparison with the <em>same music at 440 Hz</em> can show an effect of the tuning itself, and those comparisons are few and tiny.</p>
+      <div class="ref-entry">
+        <p class="ref-cite">Calamassi, D., &amp; Pomponi, G. P. (2019). <span class="ref-title">Music tuned to 440 Hz versus 432 Hz and the health effects: A double-blind cross-over pilot study.</span> Explore, 15(4), 283–290. <a href="https://doi.org/10.1016/j.explore.2019.04.001" target="_blank" rel="noopener">doi:10.1016/j.explore.2019.04.001</a> (Corrigendum: Explore, 2020, 16(1), 8.)</p>
+        <p class="ref-shows"><strong>What this shows:</strong> in 33 volunteers, heart rate fell slightly more with 432 Hz music (−4.79 bpm, p = 0.05 — exactly at the conventional significance borderline), with non-significant trends for blood pressure and respiration. The authors present it as a <strong>pilot</strong> requiring larger randomised trials.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Calamassi, D., Lucicesare, A., Pomponi, G. P., &amp; Bambi, S. (2020). <span class="ref-title">Music tuned to 432 Hz versus music tuned to 440 Hz for improving sleep in patients with spinal cord injuries: A double-blind cross-over pilot study.</span> Acta Biomedica, 91(12-S), e2020008. <a href="https://doi.org/10.23750/abm.v91i12-S.10755" target="_blank" rel="noopener">doi:10.23750/abm.v91i12-S.10755</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> a second tiny pilot (n = 12) reporting improved sleep scores after the 432 Hz period but not the 440 Hz period, without a direct, adequately powered between-tuning test.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Calamassi, D., Li Vigni, M. L., Fumagalli, C., Gheri, F., Pomponi, G. P., &amp; Bambi, S. (2022). <span class="ref-title">The listening to music tuned to 440 Hz versus 432 Hz to reduce anxiety and stress in emergency nurses during the COVID-19 pandemic: A double-blind, randomized controlled pilot study.</span> Acta Biomedica, 93(S2), e2022149. <a href="https://doi.org/10.23750/abm.v93iS2.12915" target="_blank" rel="noopener">doi:10.23750/abm.v93iS2.12915</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> in 54 emergency staff, state anxiety fell in <strong>all three arms — 440 Hz music, 432 Hz music, and an ordinary break with no music</strong> — so the clearest finding is that a break, with or without music, reduced anxiety, not that 432 Hz tuning did.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Menziletoglu, D., Guler, A. Y., Cayir, T., &amp; Isik, B. K. (2021). <span class="ref-title">Binaural beats or 432 Hz music? Which method is more effective for reducing preoperative dental anxiety?</span> Medicina Oral, Patología Oral y Cirugía Bucal, 26(1), e97–e101. <a href="https://doi.org/10.4317/medoral.24051" target="_blank" rel="noopener">doi:10.4317/medoral.24051</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> in 90 dental-surgery patients, anxiety fell after both binaural beats and 432 Hz music versus a no-audio control — but with <strong>no 440 Hz music arm</strong>, the study cannot separate an effect of <em>music</em> from an effect of <em>432 Hz tuning</em>.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Akimoto, K., Hu, A., Yamaguchi, T., &amp; Kobayashi, H. (2018). <span class="ref-title">Effect of 528 Hz music on the endocrine system and autonomic nervous system.</span> Health, 10(9), 1159–1170. <a href="https://doi.org/10.4236/health.2018.109088" target="_blank" rel="noopener">doi:10.4236/health.2018.109088</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> the only human study behind most “528 Hz” claims: <strong>9 participants</strong> listened for <strong>5 minutes</strong>; salivary cortisol fell and oxytocin rose after 528 Hz-tuned music, with no significant hormonal change after 440 Hz music. A pilot in a low-barrier open-access journal, unreplicated at scale — it does not test DNA, healing, sleep, or any other solfeggio frequency.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Babayi Daylari, T., Riazi, G. H., Pooyan, S., Fathi, E., &amp; Hedayati Katouli, F. (2019). <span class="ref-title">Influence of various intensities of 528 Hz sound-wave in production of testosterone in rat’s brain and analysis of behavioral changes.</span> Genes &amp; Genomics, 41(2), 201–211. <a href="https://doi.org/10.1007/s13258-018-0753-6" target="_blank" rel="noopener">doi:10.1007/s13258-018-0753-6</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> effects in <strong>rats</strong> exposed to 528 Hz at up to <strong>100 dB</strong> — loud and prolonged — on brain testosterone-related gene expression, reactive oxygen species, and anxiety-like behaviour. It is not a study of humans listening to music, and it says nothing about DNA repair in people.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Babayi, T., &amp; Riazi, G. H. (2017). <span class="ref-title">The effects of 528 Hz sound wave to reduce cell death in human astrocyte primary cell culture treated with ethanol.</span> Journal of Addiction Research &amp; Therapy, 8, 335. <a href="https://doi.org/10.4172/2155-6105.1000335" target="_blank" rel="noopener">doi:10.4172/2155-6105.1000335</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> a cell-culture experiment — human astrocytes in a dish, poisoned with ethanol — in a low-tier journal. It is routinely inflated online into “528 Hz heals brain cells / repairs DNA,” which it does not test.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Puleo, J., &amp; Horowitz, L. G. (1999). <span class="ref-title">Healing Codes for the Biological Apocalypse.</span> Tetrahedron Publishing. <span class="ev ev-t">Spiritual tradition — provenance</span></p>
+        <p class="ref-shows"><strong>What this shows:</strong> the book that popularised the modern six-tone “solfeggio” set (396, 417, 528, 639, 741, 852 Hz; later lists add 174, 285, 963 Hz) with assigned properties — 528 Hz as “transformation / DNA repair,” for example — derived numerologically. The medieval solfège syllables (Guido d’Arezzo, 11th century) are genuinely old; the Hz values and healing assignments are a 1990s construction with no ancient source.</p>
+      </div>
+      <p class="ref-bottom"><strong>Bottom line:</strong> 432 Hz superiority is mixed and preliminary at best — a handful of tiny pilots, inconsistent, with no large replication: <span class="ev ev-i">Still being studied</span>. For the solfeggio <em>system</em> — that each listed frequency produces its assigned emotional or physical effect — <strong>no peer-reviewed evidence exists</strong>: eight of the nine commonly listed tones have never been tested individually in humans at all, and the ninth (528 Hz) has one 9-person pilot. Claims that 528 Hz “repairs DNA,” that 432 Hz “resonates with the Earth, water, or the heart,” or that any specific frequency treats a condition have <span class="ev ev-n">No credible evidence</span>. The well-supported general finding that <em>music listening itself</em> can reduce short-term stress and anxiety must not be re-labelled as an effect of a tuning frequency.</p>
+    </div>
+
+    <div class="ref-group">
+      <h4>Brainwave bands</h4>
+      <div class="ref-entry">
+        <p class="ref-cite">Kane, N., Acharya, J., Beniczky, S., Caboclo, L., Finnigan, S., Kaplan, P. W., Shibasaki, H., Pressler, R., &amp; van Putten, M. J. A. M. (2017). <span class="ref-title">A revised glossary of terms most commonly used by clinical electroencephalographers and updated proposal for the report format of the EEG findings. Revision 2017.</span> Clinical Neurophysiology Practice, 2, 170–185. <a href="https://doi.org/10.1016/j.cnp.2017.07.002" target="_blank" rel="noopener">doi:10.1016/j.cnp.2017.07.002</a> (Corrigendum: 2019, 4, 133, <a href="https://doi.org/10.1016/j.cnp.2019.06.001" target="_blank" rel="noopener">doi:10.1016/j.cnp.2019.06.001</a>, correcting beta to &gt;13–30 Hz.)</p>
+        <p class="ref-shows"><strong>What this shows:</strong> the International Federation of Clinical Neurophysiology’s standard definitions of the bands and EEG terms — delta 0.1 to &lt;4 Hz, theta 4 to &lt;8 Hz, alpha 8–13 Hz, beta &gt;13–30 Hz, gamma &gt;30–80 Hz. This is the correct citation for “what the bands are.” Typical contexts, not definitions: delta predominates in deep (N3) sleep; theta in drowsiness and some memory tasks; alpha over the back of the head in relaxed wakefulness with eyes closed; beta in alert wakefulness; gamma in brief, localised processing — and gamma is the band most easily contaminated by muscle artefact in scalp recordings.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Poldrack, R. A. (2006). <span class="ref-title">Can cognitive processes be inferred from neuroimaging data?</span> Trends in Cognitive Sciences, 10(2), 59–63. <a href="https://doi.org/10.1016/j.tics.2005.12.004" target="_blank" rel="noopener">doi:10.1016/j.tics.2005.12.004</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> the canonical statement of the reverse-inference problem — inferring a specific mental process from brain activity is not deductively valid, and is only as strong as the selectivity of that activity for that process, which for broad EEG bands is weak.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Cacioppo, J. T., &amp; Tassinary, L. G. (1990). <span class="ref-title">Inferring psychological significance from physiological signals.</span> American Psychologist, 45(1), 16–28.</p>
+        <p class="ref-shows"><strong>What this shows:</strong> physiological measures stand in many-to-many relationships with psychological states — the same signal can accompany different states, and the same state can produce different signals — so a one-to-one “band = feeling” table is scientifically indefensible.</p>
+      </div>
+      <p class="ref-bottom"><strong>Bottom line:</strong> band definitions and EEG measurement are <span class="ev ev-s">Supported</span>. Inferring a specific mental state from band power alone is not supported — band power also depends on electrode location, reference, artefact handling, age, medication, sleep pressure, and task, and consumer single-channel headbands estimate bands very coarsely.</p>
+    </div>
+
+    <div class="ref-group">
+      <h4>The Moon &amp; sleep</h4>
+      <p style="margin:0 0 6px;color:var(--ink2);font-size:15.5px">Two different instruments appear in this literature and must not be mixed up: <strong>polysomnography</strong> (lab EEG sleep staging, behind the 2013/2014 papers) and <strong>wrist actigraphy</strong> (a motion logger that <em>infers</em> sleep from movement, behind the 2021 field study — it cannot measure deep sleep or melatonin). “Around full moon” is defined differently across papers, and lunar phase is confounded with evening moonlight brightness, which peaks <em>before</em> full moon.</p>
+      <div class="ref-entry">
+        <p class="ref-cite">Cajochen, C., Altanay-Ekici, S., Münch, M., Frey, S., Knoblauch, V., &amp; Wirz-Justice, A. (2013). <span class="ref-title">Evidence that the lunar cycle influences human sleep.</span> Current Biology, 23(15), 1485–1488. <a href="https://doi.org/10.1016/j.cub.2013.06.029" target="_blank" rel="noopener">doi:10.1016/j.cub.2013.06.029</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> a <strong>retrospective, post-hoc</strong> reanalysis of lab data from 33 volunteers (64 nights) that was not collected to study the Moon: near full moon, EEG delta activity in NREM sleep was ~30% lower, sleep latency ~5 minutes longer, total sleep ~20 minutes shorter, and melatonin lower. The authors themselves called for confirmation in a purpose-designed study.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Cordi, M., Ackermann, S., Bes, F. W., Hartmann, F., Konrad, B. N., Genzel, L., Pawlowski, M., Steiger, A., Schulz, H., Rasch, B., &amp; Dresler, M. (2014). <span class="ref-title">Lunar cycle effects on sleep and the file drawer problem.</span> Current Biology, 24(12), R549–R550. <a href="https://doi.org/10.1016/j.cub.2014.05.017" target="_blank" rel="noopener">doi:10.1016/j.cub.2014.05.017</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> a reanalysis of three much larger datasets (1,265 volunteers, 2,097 nights) found <strong>no lunar effect</strong> on the same sleep variables, with power to exclude effects of the reported size. The authors also documented unpublished null results totalling &gt;20,000 nights, arguing the positive literature is distorted by publication bias — the “file drawer problem.”</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Turányi, C. Z., Rónai, K. Z., Zoller, R., Véber, O., Czira, M. E., Újszászi, Á., László, G., Szentkirályi, A., Dunai, A., Lindner, A., Szőcs, J. L., Becze, Á., Kelemen, A., Lendvai, Z., Molnar, M. Z., Mucsi, I., &amp; Novák, M. (2014). <span class="ref-title">Association between lunar phase and sleep characteristics.</span> Sleep Medicine, 15(11), 1411–1416. <a href="https://doi.org/10.1016/j.sleep.2014.06.020" target="_blank" rel="noopener">doi:10.1016/j.sleep.2014.06.020</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> in 319 patients <em>referred to a sleep clinic</em> (a clinical sample, not the general population; retrospective), full moon was associated with lower sleep efficiency (median 74% vs 82% at new moon), less deep sleep (6% vs 9%), and longer REM latency (137 vs 98 min) after covariate adjustment — an association in referred patients that does not establish a general-population or causal effect.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Casiraghi, L., Spiousas, I., Dunster, G. P., McGlothlen, K., Fernández-Duque, E., Valeggia, C., &amp; de la Iglesia, H. O. (2021). <span class="ref-title">Moonstruck sleep: Synchronization of human sleep with the moon cycle under field conditions.</span> Science Advances, 7(5), eabe0465. <a href="https://doi.org/10.1126/sciadv.abe0465" target="_blank" rel="noopener">doi:10.1126/sciadv.abe0465</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> by wrist actigraphy in Toba/Qom communities in Argentina with no or limited electricity, and in Seattle university students, sleep started later and was shorter on the <strong>3–5 nights before</strong> full moon (individual duration swings of 20 to &gt;90 minutes across the cycle; group-average swings ~46–58 minutes). The authors propose the parsimonious mechanism of <strong>evening moonlight availability</strong> delaying sleep — not lunar gravity or an endogenous “circalunar clock,” neither of which this design can demonstrate.</p>
+      </div>
+      <p class="ref-bottom"><strong>Bottom line:</strong> mixed and preliminary for sleep timing — the papers genuinely conflict, and the field-study timing (effect <em>before</em>, not on, full moon) fits a light-exposure explanation: <span class="ev ev-i">Still being studied</span>. An established endogenous lunar rhythm in human sleep is not supported — the only lab evidence is one small post-hoc study that a larger reanalysis failed to replicate. Any extension to mood, behaviour, menstrual synchrony, births, accidents, or “full-moon energy” has <span class="ev ev-n">No credible evidence</span> — none of the four papers measures those outcomes.</p>
+    </div>
+
+    <div class="ref-group">
+      <h4>Astrology &amp; Human Design — scientific status</h4>
+      <div class="ref-entry">
+        <p class="ref-cite">Carlson, S. (1985). <span class="ref-title">A double-blind test of astrology.</span> Nature, 318, 419–425. <a href="https://doi.org/10.1038/318419a0" target="_blank" rel="noopener">doi:10.1038/318419a0</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> the benchmark test, designed with astrologer advisers nominated via the National Council for Geocosmic Research, who pre-agreed the design and predicted astrologers would match natal charts to California Psychological Inventory profiles at 50% against 33% chance. The 28 participating astrologers in fact scored <strong>34% (40/116 correct first choices)</strong> — indistinguishable from chance — and clients likewise could not pick out their own chart interpretation above chance.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Hartmann, P., Reuter, M., &amp; Nyborg, H. (2006). <span class="ref-title">The relationship between date of birth and individual differences in personality and general intelligence: A large-scale study.</span> Personality and Individual Differences, 40(7), 1349–1362. <a href="https://doi.org/10.1016/j.paid.2005.11.017" target="_blank" rel="noopener">doi:10.1016/j.paid.2005.11.017</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> in two large samples (4,000+ Vietnam Experience Study men; 11,000+ National Longitudinal Study of Youth participants), date of birth and sun sign showed <strong>no relationship</strong> to personality or general intelligence.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Jovian Archive (the official organisation founded by Human Design’s originator). <span class="ref-title">About Ra Uru Hu / Human Design Dictionary.</span> <a href="https://jovianarchive.com/pages/human-design-dictionary" target="_blank" rel="noopener">jovianarchive.com</a> <span class="ev ev-t">Spiritual tradition — provenance</span></p>
+        <p class="ref-shows"><strong>What this shows</strong> (in the tradition’s own account): Human Design was originated by <strong>Ra Uru Hu, born Alan (Robert) Krakower in Montreal on 9 April 1948</strong>, who, after moving to <strong>Ibiza</strong>, reported an encounter with “a Voice” from <strong>3–11 January 1987</strong> — eight days and nights in which he said the entire system was transmitted to him. He wrote the <em>Rave I’Ching</em> in 1989 (published 1992), taught the system for the next ~25 years, founded Jovian Archive, and died on 12 March 2011.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Parkyn, C., with Robbins, B. (2009). <span class="ref-title">Human Design: Discover the Person You Were Born to Be.</span> New World Library. <span class="ev ev-t">Spiritual tradition — provenance</span></p>
+        <p class="ref-shows"><strong>What this shows:</strong> the standard mainstream introduction to the system as practised — a practitioner text, not a research source.</p>
+      </div>
+      <p class="ref-bottom"><strong>Bottom line:</strong> under controlled, blinded conditions, astrological chart interpretation performs no better than chance, large-scale data show no sun-sign effects, there is no known physical mechanism, and astrology is classified by the scientific community as a pseudoscience / cultural tradition, not a science. That is a statement about <em>predictive and personality claims</em>: <span class="ev ev-n">No credible evidence</span>. It does not touch astrology’s historical, literary, or personal-meaning value, which belongs under <span class="ev ev-t">Spiritual tradition</span>. For <strong>Human Design</strong>, the honest statement is plainer still: <strong>no scientific literature exists to cite</strong> — searches of the scholarly record (checked November 2026) found no peer-reviewed tests, trials, observational studies, or systematic reviews of Types, Strategy, Authority, Profiles, Centres, Channels/Gates, or the BodyGraph. Its documented origin is a 1987 synthesis of older materials — astrology, the I Ching’s 64 hexagrams, the Kabbalistic Tree of Life, and a nine-centre expansion of the chakra model; the antiquity of the ingredients is not antiquity, or validation, of the synthesis. Its “neutrino imprint” mechanism borrows real physics vocabulary (neutrinos do stream through the body in vast numbers and do have tiny mass), but the step to neutrinos encoding personality at birth has no basis in the physics literature. Human Design is labelled <span class="ev ev-t">Spiritual tradition</span> throughout this site.</p>
+    </div>
+
+    <div class="ref-group">
+      <h4>How the calculators work — methods</h4>
+      <p style="margin:0 0 6px;color:var(--ink2);font-size:15.5px">These references support the <em>arithmetic</em> — where a planet stands. They say nothing about interpretation, and this site never lets the first lend its label to the second: “positions computed accurately” is Supported as a calculation; “therefore this placement describes your personality or your year” is Spiritual tradition.</p>
+      <div class="ref-entry">
+        <p class="ref-cite">Koch, D., &amp; Treindl, A. <span class="ref-title">Swiss Ephemeris.</span> Astrodienst AG. <a href="https://www.astro.com/swisseph/swephinfo_e.htm" target="_blank" rel="noopener">astro.com/swisseph/swephinfo_e.htm</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> a high-precision ephemeris library built on NASA JPL Development Ephemerides (original 1997 release on DE405/406; DE431 from release 2.00, 2014; the documentation currently lists DE441). Its compressed files reproduce JPL positions to ~0.001 arcsecond over 13201 BC–AD 17191, with a built-in Moshier semi-analytic fallback (~0.1 arcsecond; Moon ~3 arcseconds). It is the calculation engine inside most professional astrology software, and the reference this site’s calculators were checked against — its accuracy validates <em>positions</em>, not interpretations.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Meeus, J. (1998). <span class="ref-title">Astronomical Algorithms</span> (2nd ed.). Willmann-Bell. ISBN 0-943396-61-1.</p>
+        <p class="ref-shows"><strong>What this shows:</strong> the standard desk reference for implementing planetary calculations in software — e.g., Ch. 12 sidereal time, Ch. 25 Sun position to ~0.01° in the low-accuracy method, Ch. 47 Moon position with periodic terms.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Schlyter, P. <span class="ref-title">How to compute planetary positions.</span> Stockholm. <a href="https://stjarnhimlen.se/comp/ppcomp.html" target="_blank" rel="noopener">stjarnhimlen.se/comp/ppcomp.html</a></p>
+        <p class="ref-shows"><strong>What this shows:</strong> a free, worked tutorial (with test cases) computing Sun, Moon, and planet positions from orbital elements at honestly stated low precision — a fraction of an arcminute for the Sun and inner planets, ~1 arcminute for outer planets, 1–2 arcminutes for the Moon. Suitable for rise/set-type applications; not a substitute for the Swiss Ephemeris where arcsecond accuracy is claimed.</p>
+      </div>
+      <div class="ref-entry">
+        <p class="ref-cite">Calendar Reform Committee (Chair: M. N. Saha; Secretary: N. C. Lahiri). (1955). <span class="ref-title">Report of the Calendar Reform Committee.</span> Government of India, Council of Scientific and Industrial Research, New Delhi.</p>
+        <p class="ref-shows"><strong>What this shows:</strong> the official standardisation of the <strong>Lahiri (Chitrapaksha) ayanamsa</strong> — the tropical-to-sidereal offset anchored to the star Chitra (Spica) at ~180° sidereal longitude, fixed at <strong>23°15′00″ for 21 March 1956</strong> and thereafter growing with precession (~50.3″/year; ~24°13′ in 2026) — as used in India’s official <em>Rashtriya Panchang</em> and <em>Indian Astronomical Ephemeris</em>, and in this site’s Vedic chart. It is an authoritative <em>convention</em> adopted by committee to unify calendars — not a discovery that one ayanamsa is “true.”</p>
+      </div>
+      <p class="ref-bottom"><strong>Bottom line:</strong> the calculators’ astronomy is <span class="ev ev-s">Supported</span> — as astronomy and mathematics only. The one genuinely checkable component of a BodyGraph is the same planetary arithmetic, computed by these methods; that validates the arithmetic only, never the interpretation placed on it.</p>
+    </div>
+
+    <h3 class="ref-subhead">Common claims, claim by claim</h3>
+    <p class="ref-lede">The claims people most often meet on sites like this one, each with the label the research above supports.</p>
+    <table class="claim-table" aria-label="Common claims and their evidence labels">
+      <thead><tr><th scope="col">Claim, as typically worded</th><th scope="col">Label</th></tr></thead>
+      <tbody>
+        <tr><td>“Lightning excites resonances near 7.83, 14, 20 Hz in the Earth–ionosphere cavity”</td><td><span class="ev ev-s">Supported</span></td></tr>
+        <tr><td>“Today’s Schumann spike means collective anxiety / ascension symptoms”</td><td><span class="ev ev-n">No credible evidence</span></td></tr>
+        <tr><td>“Binaural beats reduced anxiety in pooled studies (g ≈ 0.45)”</td><td><span class="ev ev-i">Still being studied</span></td></tr>
+        <tr><td>“This 10 Hz beat entrains your brain into alpha”</td><td><span class="ev ev-n">No credible evidence</span></td></tr>
+        <tr><td>“432 Hz heals / is the frequency of nature”</td><td><span class="ev ev-n">No credible evidence</span></td></tr>
+        <tr><td>“528 Hz repairs DNA”</td><td><span class="ev ev-n">No credible evidence</span></td></tr>
+        <tr><td>“Theta = deep healing state” (read off an EEG chart)</td><td><span class="ev ev-n">No credible evidence</span></td></tr>
+        <tr><td>“People may sleep a little later and shorter before full moon, especially without electric light”</td><td><span class="ev ev-i">Still being studied</span></td></tr>
+        <tr><td>“Your sun sign describes your personality”</td><td><span class="ev ev-t">Spiritual tradition</span> — tested, failed</td></tr>
+        <tr><td>“Positions computed with Swiss Ephemeris / Meeus / Schlyter; Lahiri ayanamsa per the 1955 Committee”</td><td><span class="ev ev-s">Supported</span> — calculation only</td></tr>
+        <tr><td>“Your Human Design Type and Authority describe how you are built to decide”</td><td><span class="ev ev-t">Spiritual tradition</span></td></tr>
+      </tbody>
+    </table>
+    <p style="margin:14px 0 0;color:var(--ink2);font-size:15px">One sentence to carry away: a measurement — a resonance peak, an EEG band, a planet’s longitude, a sleep time — can be Supported while the meaning attached to it is Still being studied or Spiritual tradition. The two must never share a label, and on this site they don’t.</p>
+
     <p class="ev-feedback-line">Spot something wrong on this site? <a href="#feedback">Tell me in Feedback →</a></p>
   </section>
 
