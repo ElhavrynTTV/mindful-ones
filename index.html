@@ -340,6 +340,40 @@ body.has-mini{padding-bottom:78px}
 .ev-feedback-line{margin-top:16px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 16px;font-size:15.5px;color:var(--ink2);box-shadow:var(--shadow)}
 .ev-feedback-line a{font-weight:800}
 </style>
+<style id="phase2-astrology-style">
+/* Phase 2 step 5 — Astrology calculator (additive only) */
+.as-place-row{display:flex;gap:8px}
+.as-place-row input{flex:1 1 auto;min-width:0}
+.as-find{flex:none;padding:11px 14px;font-size:14.5px;border-radius:10px}
+.as-places{display:none;margin-top:4px}
+.as-places.show{display:block}
+.as-place-opt{display:block;width:100%;text-align:left;background:var(--surface2);border:1.5px solid var(--line2);color:var(--ink);font-family:inherit;font-size:15px;font-weight:700;padding:10px 13px;border-radius:10px;cursor:pointer;margin-top:6px}
+.as-place-opt small{display:block;font-weight:600;color:var(--muted);font-size:13px;margin-top:2px}
+.as-place-opt:hover{border-color:var(--purple)}
+.as-place-opt:focus-visible{outline:3px solid var(--teal);outline-offset:1px}
+.as-picked{display:none;margin:10px 0 0;font-size:14.5px;color:var(--chip-s-ink);background:var(--chip-s);border-radius:10px;padding:9px 12px;font-weight:700}
+.as-picked.show{display:block}
+.as-placestatus{font-size:14px;color:var(--muted);margin:8px 0 0}
+.as-coords{display:none}
+.as-coords.show{display:block}
+.as-tabs{display:inline-flex;background:var(--surface2);border:1px solid var(--line2);border-radius:999px;padding:4px;gap:4px;margin:2px 0 18px}
+.as-tab{border:none;background:transparent;color:var(--ink2);font-family:inherit;font-weight:800;font-size:15.5px;padding:9px 22px;border-radius:999px;cursor:pointer}
+.as-tab[aria-pressed="true"]{background:var(--purple);color:#fff}
+.as-tab:focus-visible{outline:3px solid var(--teal);outline-offset:1px}
+@media (prefers-color-scheme: dark){ .as-tab[aria-pressed="true"]{color:#140b28} }
+.as-wheelwrap{display:grid;grid-template-columns:minmax(280px,400px) 1fr;gap:22px;align-items:start}
+@media(max-width:760px){.as-wheelwrap{grid-template-columns:1fr}}
+.as-wheelbox{background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius);padding:14px;text-align:center}
+.as-wheelbox svg{max-width:100%;height:auto}
+.as-table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px}
+.as-table th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);text-align:left;padding:6px 7px;border-bottom:2px solid var(--line)}
+.as-table td{padding:6px 7px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top}
+.as-table td:first-child{font-weight:800;color:var(--ink)}
+.as-table tr:last-child td{border-bottom:none}
+.as-table tr.as-current td{background:var(--chip-s);color:var(--chip-s-ink);font-weight:700}
+.as-table tr.as-current td:first-child{color:var(--chip-s-ink)}
+</style>
+
 </head>
 <body>
 
@@ -411,7 +445,7 @@ body.has-mini{padding-bottom:78px}
   <section aria-label="Explore the sanctuary">
     <div class="sec-head">
       <h2>Explore at your own pace</h2>
-      <p>Six areas are open now. Two more are already designed into the Sanctuary and open in later phases — nothing here will ever need an account or a subscription.</p>
+      <p>All eight areas are open now — and nothing here will ever need an account or a subscription.</p>
     </div>
     <div class="grid">
       <div class="card">
@@ -451,10 +485,10 @@ body.has-mini{padding-bottom:78px}
       </div>
       <div class="card">
         <div class="ic" style="background:#ece4fb"><svg viewBox="0 0 24 24" fill="none" stroke="#5b3a9e" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1.6" fill="#5b3a9e"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
-        <span class="tag tag-soon">Phase 2 · Designed in</span>
+        <span class="tag tag-live">Open now</span>
         <h3>Astrology</h3>
-        <p>Western and Vedic natal charts, moon phases, and transits. The room is built — the chart calculations move in next phase.</p>
-        <a class="go" href="#astrology">Preview the design →</a>
+        <p>Western and Vedic natal charts, calculated in your browser from your birth moment: a chart wheel, Placidus houses and aspects on one side; nakshatras and the Vimshottari dasha timeline on the other.</p>
+        <a class="go" href="#astrology">Build my charts →</a>
       </div>
       <div class="card">
         <div class="ic" style="background:#dcf2ec"><svg viewBox="0 0 24 24" fill="none" stroke="#0e7c74" stroke-width="2" stroke-linecap="round"><path d="M12 3l7 9-7 9-7-9z"/><path d="M5 12h14"/></svg></div>
@@ -768,46 +802,59 @@ body.has-mini{padding-bottom:78px}
   </section>
 
   <!-- ASTROLOGY (designed in) -->
-  <section id="astrology" aria-label="Astrology preview">
+  <section id="astrology" aria-label="Astrology">
     <div class="sec-head">
       <h2>Astrology</h2>
-      <p><span class="tag tag-soon">Phase 2 · Designed in now, calculated later</span></p>
-      <p>The Sanctuary already has its room — layout, inputs, and reading style are settled now, so adding real chart calculations later needs no redesign. The astronomy (where planets actually are) can be calculated precisely; the interpretation is a belief-based tradition, and it will be labeled that way.</p>
+      <p><span class="tag tag-live">Phase 2 · Calculator live</span></p>
+      <p>Two great chart traditions, one sky. Enter your birth details once and this page builds both: a Western (tropical) chart with a chart wheel, Placidus houses, and aspects — and a Vedic (sidereal) chart with nakshatras and the Vimshottari dasha timeline. The astronomy is calculated right here; the meanings come from tradition, and they’re labeled that way.</p>
     </div>
-    <div class="future">
-      <div class="mockrow">
-        <svg viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Preview sketch of a natal chart wheel" style="max-width:100%">
-          <circle cx="100" cy="100" r="92" fill="none" stroke="var(--line2)" stroke-width="2"/>
-          <circle cx="100" cy="100" r="66" fill="none" stroke="var(--line)" stroke-width="1.5"/>
-          <circle cx="100" cy="100" r="30" fill="none" stroke="var(--line)" stroke-width="1.5"/>
-          <g stroke="var(--line2)" stroke-width="1.2">
-            <line x1="100" y1="8" x2="100" y2="34"/><line x1="100" y1="166" x2="100" y2="192"/>
-            <line x1="8" y1="100" x2="34" y2="100"/><line x1="166" y1="100" x2="192" y2="100"/>
-            <line x1="35" y1="35" x2="53" y2="53"/><line x1="147" y1="147" x2="165" y2="165"/>
-            <line x1="165" y1="35" x2="147" y2="53"/><line x1="53" y1="147" x2="35" y2="165"/>
-          </g>
-          <g fill="var(--purple)" font-size="15" text-anchor="middle" font-family="serif">
-            <text x="100" y="24">♈</text><text x="176" y="105">♋</text><text x="100" y="186">♎</text><text x="24" y="105">♑</text>
-          </g>
-          <text x="100" y="105" text-anchor="middle" fill="var(--muted)" font-size="11">natal wheel</text>
-        </svg>
-        <div>
-          <h3>What will live here</h3>
-          <ul>
-            <li><strong>Western natal charts</strong> — Sun, Moon, rising sign, houses, and aspects from your birth date, time, and place.</li>
-            <li><strong>Vedic (sidereal) charts</strong> — the same sky read through the Indian tradition, side by side with the Western view.</li>
-            <li><strong>Moon phases &amp; transits</strong> — a lunar calendar and what’s moving through your chart now.</li>
-            <li><strong>Side-by-side reading</strong> — the astronomical facts and the traditional interpretation in separate, labeled columns, as everywhere on this site.</li>
-          </ul>
-          <div class="disabled-form" aria-hidden="true">
-            <div><label>Birth date</label><input type="date" disabled></div>
-            <div><label>Birth time</label><input type="time" disabled></div>
-            <div><label>Birth place</label><input type="text" placeholder="City, State" disabled></div>
-            <div><label>System</label><select disabled><option>Western (tropical)</option><option>Vedic (sidereal)</option></select></div>
-          </div>
-          <p style="font-size:14px;margin-top:10px">Inputs are a design preview — they don’t collect or send anything yet. Chart calculation (with a properly licensed ephemeris) arrives in Phase 2.</p>
+    <div class="bg-calc" id="asCalc">
+      <span class="ev ev-t">Spiritual tradition</span>
+      <h3 style="margin-top:10px">Build your charts — Western &amp; Vedic</h3>
+      <p class="bg-sub">The Western chart reads the planets against the tropical zodiac, tied to the seasons. The Vedic chart reads the same sky against the sidereal zodiac, tied to the stars, using the Lahiri ayanamsa. Same planets, two lenses — you’ll get both, with a Western / Vedic switch above the results.</p>
+      <p class="bg-privacy">🔒 Only the place name you search is sent to OpenStreetMap to find its coordinates. Your birth date and time never leave this device — both charts are calculated here.</p>
+      <form id="asForm" novalidate>
+        <div class="bg-form">
+          <div><label for="asDate">Birth date</label><input type="date" id="asDate" required></div>
+          <div><label for="asTime">Birth time</label><input type="time" id="asTime"></div>
+          <div><label for="asPlace">Birth place</label><div class="as-place-row"><input type="text" id="asPlace" placeholder="City, State" autocomplete="off"><button type="button" class="btn btn-soft as-find" id="asFind">Find place</button></div></div>
+          <div><label for="asTz">Birth place timezone</label><select id="asTz"></select></div>
         </div>
+        <div class="as-places" id="asPlaceResults" aria-label="Places that match your search"></div>
+        <p class="as-picked" id="asPlacePicked" role="status"></p>
+        <p class="as-placestatus" id="asPlaceStatus" role="status"></p>
+        <div class="bg-check">
+          <input type="checkbox" id="asManual">
+          <span><label for="asManual" style="display:inline;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink2)"><strong>Enter coordinates manually</strong> — if the lookup can’t find your birthplace, or you already know its latitude and longitude.</label></span>
+        </div>
+        <div class="as-coords" id="asCoordRow">
+          <div class="bg-form" style="margin-top:10px">
+            <div><label for="asLat">Latitude (−90 to 90)</label><input type="number" id="asLat" step="any" min="-90" max="90" placeholder="e.g. 38.3498"></div>
+            <div><label for="asLon">Longitude (−180 to 180)</label><input type="number" id="asLon" step="any" min="-180" max="180" placeholder="e.g. −81.6326"></div>
+          </div>
+          <p class="as-placestatus">North latitudes and east longitudes are positive; south and west are negative. Coordinates are what place the Ascendant, houses, and Lagna — without them the charts are still built, just without those pieces.</p>
+        </div>
+        <div class="bg-check">
+          <input type="checkbox" id="asNoTime">
+          <span><label for="asNoTime" style="display:inline;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink2)"><strong>I don’t know my birth time</strong> — we’ll use 12:00 noon. The Ascendant, MC, houses, and Lagna all turn on the birth time, so they’re left out entirely rather than guessed, and the Moon sign is flagged — the Moon moves fast enough to change signs within a day.</label></span>
+        </div>
+        <div class="bg-warn" id="asNoTimeWarn" role="note">⚠️ <strong>No birth time:</strong> these charts are calculated for <strong>12:00 noon</strong>. The Ascendant, MC, houses, and Lagna are hidden — they need a real birth time — and the Moon sign is marked as one that may shift. If you find your birth time later (a birth certificate often has it), rebuild the charts with it.</div>
+        <div class="bg-err" id="asError" role="alert"></div>
+        <div class="bg-buildrow">
+          <button type="submit" class="btn btn-purple" style="font-size:17px;padding:14px 28px">✦&nbsp; Build my charts</button>
+          <span style="font-size:14px;color:var(--muted)">Calculated from the planets’ actual positions at your birth moment. Coordinates are optional — without them, everything except the Ascendant, houses, and Lagna is still calculated.</span>
+        </div>
+      </form>
+      <div class="bg-results" id="asResults" aria-live="polite">
+        <div id="asHead"></div>
+        <div class="as-tabs" role="group" aria-label="Choose which chart to view">
+          <button type="button" class="as-tab" id="asTabW" aria-pressed="true">Western</button>
+          <button type="button" class="as-tab" id="asTabV" aria-pressed="false">Vedic</button>
+        </div>
+        <div id="asPanelW"></div>
+        <div id="asPanelV" class="view-hidden"></div>
       </div>
+      <p class="bg-note"><strong>How honest this is:</strong> Positions are calculated on this device with a compact ephemeris, accurate to a few hundredths of a degree for most bodies. A placement within about 0.1° of a sign or house edge is borderline. The Rising sign depends on birth time — a few minutes can move it, especially near a sign boundary.</p>
     </div>
   </section>
 
@@ -927,6 +974,7 @@ body.has-mini{padding-bottom:78px}
     <div class="phase2-note" role="note"><span class="badge-pending">Pending verification</span> &nbsp;<strong>Phase 2 update:</strong> an Earth view with the live Schumann resonance chart (Tomsk) was added in this build and is pending the owner’s verification.</div>
     <div class="phase2-note" role="note"><span class="badge-verified">Verified</span> &nbsp;<strong>Phase 2:</strong> the BodyGraph (Human Design) calculator was verified on November 15, 2026. The owner ran her own chart on the live site. An independent cross-check against Swiss Ephemeris matched 20 of 26 activations and caught two astronomy errors (Neptune and the Moon’s Nodes); both were fixed, re-validated against 600 test moments spanning 1800–2100 (worst error 0.04°), and the live site then reproduced all 26 activations and every derived result exactly. No other test results or notes were changed by this update.</div>
     <div class="phase2-note" role="note"><span class="badge-pending">Pending verification</span> &nbsp;<strong>Phase 2:</strong> a Feedback view was added in this build — a form that relays visitor messages to the owner's inbox via FormSubmit. It is pending the owner's one-time activation and a delivered test message.</div>
+    <div class="phase2-note" role="note"><span class="badge-pending">Pending verification</span> &nbsp;<strong>Phase 2:</strong> an Astrology calculator (Western and Vedic, with Vimshottari dashas) was added in this build and is pending the owner's verification against her own chart.</div>
     <div class="status-grid">
       <div class="testbox">
         <h3 style="margin:0 0 6px">✅ Verified by the creator — in-person checks</h3>
@@ -2117,6 +2165,685 @@ markPreset(528);
     });
   });
 })();
+</script>
+<script>
+/* ============ PHASE 2 STEP 5 — Astrology calculator (Western + Vedic) ============
+   Separate block only. Planetary positions are calculated locally in the
+   visitor's browser from a compact low-precision ephemeris (Schlyter-style
+   orbital elements, with the corrected Neptune element and the true-node
+   series). The only network call this code ever makes is the optional
+   birthplace lookup: the place NAME the visitor types is sent to
+   OpenStreetMap's Nominatim service to fetch its coordinates. Birth date
+   and time are never sent anywhere. This code touches no audio, no views,
+   no other sections. */
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var form = $('asForm'); if (!form) return;
+
+  /* ---------- math helpers ---------- */
+  var D2R = Math.PI / 180;
+  function rev(x){ x = x % 360; if (x < 0) x += 360; return x; }
+  function sind(x){ return Math.sin(rev(x) * D2R); }
+  function cosd(x){ return Math.cos(rev(x) * D2R); }
+  /* Schlyter day number: days since 1999 Dec 31.0 UT */
+  function dayNum(utcMs){ return utcMs / 86400000 - 10956.0; }
+
+  /* ---------- orbital elements (Schlyter) ----------
+     Each returns [N, i, w, a, e, M] at day d. a in AU (Moon: Earth radii). */
+  function elSun(d){ return [0, 0, 282.9404 + 4.70935E-5*d, 1.0000002, 0.016709 - 1.151E-9*d, 356.0470 + 0.9856002585*d]; }
+  function elMoon(d){ return [125.1228 - 0.0529538083*d, 5.1454, 318.0634 + 0.1643573223*d, 60.2666, 0.054900, 115.3654 + 13.0649929509*d]; }
+  function elMercury(d){ return [48.3313 + 3.24587E-5*d, 7.0047 + 5.00E-8*d, 29.1241 + 1.01444E-5*d, 0.387098, 0.205635 + 5.59E-10*d, 168.6562 + 4.0923344368*d]; }
+  function elVenus(d){ return [76.6799 + 2.46590E-5*d, 3.3946 + 2.75E-8*d, 54.8910 + 1.38374E-5*d, 0.723330, 0.006773 - 1.302E-9*d, 48.0052 + 1.6021302244*d]; }
+  function elMars(d){ return [49.5574 + 2.11081E-5*d, 1.8497 - 1.78E-8*d, 286.5016 + 2.92961E-5*d, 1.523688, 0.093405 + 2.516E-9*d, 18.6021 + 0.5240207766*d]; }
+  function elJupiter(d){ return [100.4542 + 2.76854E-5*d, 1.3032 - 1.557E-7*d, 273.8777 + 1.64505E-5*d, 5.20256, 0.048498 + 4.469E-9*d, 19.8950 + 0.0830853001*d]; }
+  function elSaturn(d){ return [113.6634 + 2.38980E-5*d, 2.4886 - 1.081E-7*d, 339.3939 + 2.97661E-5*d, 9.55475, 0.055546 - 9.499E-9*d, 316.9670 + 0.0334442282*d]; }
+  function elUranus(d){ return [74.0005 + 1.3978E-5*d, 0.7733 + 1.9E-8*d, 96.6612 + 3.0565E-5*d, 19.18171 - 1.55E-8*d, 0.047318 + 7.45E-9*d, 142.5905 + 0.011725806*d]; }
+  /* Neptune mean anomaly at epoch: Schlyter's published 260.2471 (an
+     earlier value 4° lower put every Neptune longitude ~3.9° behind). */
+  function elNeptune(d){ return [131.7806 + 3.0173E-5*d, 1.7700 - 2.55E-7*d, 272.8461 - 6.027E-6*d, 30.05826 + 3.313E-8*d, 0.008606 + 2.15E-9*d, 260.2471 + 0.005995147*d]; }
+  /* Pluto: J2000 elements (a, e, i, node, arg. peri., mean anomaly at J2000);
+     mean motion 360 / 247.94 years. Slow-moving: fixed elements are ample. */
+  function elPluto(d){ return [110.30347, 17.14175, 113.76544, 39.48169, 0.24881, 14.85990 + 0.0039757*(d - 1.5)]; }
+
+  /* Heliocentric ecliptic rectangular coordinates from elements */
+  function helioRect(el){
+    var N = el[0], i = el[1], w = el[2], a = el[3], e = el[4], M = rev(el[5]);
+    var E = M + (180/Math.PI) * e * sind(M) * (1 + e * cosd(M));
+    var k;
+    for (k = 0; k < 8; k++){
+      var E1 = E - (E - (180/Math.PI) * e * sind(E) - M) / (1 - e * cosd(E));
+      if (Math.abs(E1 - E) < 0.0005) { E = E1; break; }
+      E = E1;
+    }
+    var xv = a * (cosd(E) - e), yv = a * Math.sqrt(1 - e*e) * sind(E);
+    var v = Math.atan2(yv, xv) / D2R, r = Math.sqrt(xv*xv + yv*yv);
+    var xh = r * (cosd(N)*cosd(v+w) - sind(N)*sind(v+w)*cosd(i));
+    var yh = r * (sind(N)*cosd(v+w) + cosd(N)*sind(v+w)*cosd(i));
+    var zh = r * (sind(v+w) * sind(i));
+    return [xh, yh, zh];
+  }
+  function lonLat(x, y, z){
+    return [rev(Math.atan2(y, x) / D2R), Math.atan2(z, Math.sqrt(x*x + y*y)) / D2R];
+  }
+
+  /* Sun: geocentric longitude + rectangular position (for planet conversion) */
+  function sunPos(d){
+    var el = elSun(d), w = el[2], e = el[4], M = rev(el[5]);
+    var C = 1.9148*sind(M) + 0.0200*sind(2*M) + 0.0003*sind(3*M);
+    var lon = rev(M + C + w);
+    var E = M + (180/Math.PI) * e * sind(M) * (1 + e * cosd(M));
+    var xv = cosd(E) - e, yv = Math.sqrt(1 - e*e) * sind(E);
+    var r = Math.sqrt(xv*xv + yv*yv);
+    return { lon: lon, x: r * cosd(lon), y: r * sind(lon), r: r };
+  }
+
+  /* Moon: geocentric, with Schlyter's principal perturbation terms */
+  function moonLon(d){
+    var el = elMoon(d);
+    var rect = helioRect(el); /* Moon elements are geocentric already */
+    var ll = lonLat(rect[0], rect[1], rect[2]);
+    var lon = ll[0];
+    var sunEl = elSun(d), Ms = rev(sunEl[5]);
+    var Mm = rev(el[5]);
+    var Lm = rev(el[0] + el[2] + el[5]), Ls = rev(sunEl[2] + sunEl[5]);
+    var D = rev(Lm - Ls), F = rev(Lm - el[0]);
+    lon += -1.274*sind(Mm - 2*D) + 0.658*sind(2*D) - 0.186*sind(Ms)
+           - 0.059*sind(2*Mm - 2*D) - 0.057*sind(Mm - 2*D + Ms)
+           + 0.053*sind(Mm + 2*D) + 0.046*sind(2*D - Ms)
+           + 0.041*sind(Mm - Ms) - 0.035*sind(D) - 0.031*sind(Mm + Ms)
+           - 0.015*sind(2*F - 2*D) + 0.011*sind(Mm - 4*D);
+    return rev(lon);
+  }
+
+  /* True North Node: the standard mean-node polynomial (Meeus, in Julian
+     centuries T from J2000) plus the principal periodic corrections in the
+     fundamental arguments D, M, M' and F — a truncated series whose largest
+     term is 1.4978°·sin(2F − 2D). Agrees with Swiss Ephemeris's true
+     (osculating) node to ~0.02° across 1800–2100. */
+  var NODE_TERMS = [
+    [1.4978, 0, -2, 0, 0, 2], [0.1501, 0, 0, -1, 0, 0], [0.1226, 0, -2, 0, 0, 0],
+    [-0.1176, 0, 0, 0, 0, -2], [0.0804, 0, 0, 0, -2, 2], [0.0613, 0, -2, 1, 0, 2],
+    [-0.0490, 0, -2, 0, 1, 0], [-0.0410, 0, 0, 0, -1, 2], [-0.0327, 0, 0, 0, -1, 0],
+    [-0.0322, 0, -2, -1, 0, 2], [-0.0222, 1, -1, -1, 0, 1], [-0.0180, 0, -2, 0, 1, 2],
+    [0.0150, 0, -2, 0, -1, 2], [-0.0150, 0, -2, 0, 2, 0], [0.0078, 0, -2, 1, 0, 0],
+    [0.0045, 0, -2, 0, -1, 0], [-0.0043, 0, 0, 0, -1, -2], [0.0038, 0, -1, 0, 1, 0],
+    [0.0031, 0, 0, -1, 0, 2], [-0.0031, 0, -2, 1, 1, 0], [-0.0029, 0, -2, 0, 0, 4],
+    [-0.0028, 0, 0, -1, 0, -2]
+  ];
+  function nodeLon(d){
+    var T = (d - 1.5) / 36525; /* Julian centuries from J2000.0 */
+    var T2 = T * T, T3 = T2 * T, T4 = T2 * T2;
+    var D  = rev(297.8501921 + 445267.1114034*T - 0.0018819*T2 + T3/545868 - T4/113065209);
+    var M  = rev(357.5291092 + 35999.0502909*T - 0.0001536*T2 + T3/24490000);
+    var Mp = rev(134.9633964 + 477198.8675055*T + 0.0087414*T2 + T3/69699 - T4/14712000);
+    var F  = rev(93.2720950 + 483202.0175233*T - 0.0036539*T2 - T3/3526000 + T4/863310000);
+    var lon = 125.04452 - 1934.136261*T + 0.0020608*T2 + T3/450000;
+    for (var k = 0; k < NODE_TERMS.length; k++){
+      var t = NODE_TERMS[k];
+      var ang = t[2]*D + t[3]*M + t[4]*Mp + t[5]*F;
+      lon += t[0] * (t[1] ? cosd(ang) : sind(ang));
+    }
+    return rev(lon);
+  }
+
+  /* Mean Black Moon Lilith: Meeus's mean lunar apogee — the mean perigee
+     polynomial + 180°. This is the MEAN Lilith used by most chart software. */
+  function lilithLon(d){
+    var T = (d - 1.5) / 36525;
+    var T2 = T * T, T3 = T2 * T, T4 = T2 * T2;
+    var perigee = 83.3532465 + 4069.0137287*T - 0.0103200*T2 - T3/32741 + T4/15299000;
+    return rev(perigee + 180);
+  }
+
+  function planetLon(elFn, d, sun){
+    var rect = helioRect(elFn(d));
+    return lonLat(rect[0] + sun.x, rect[1] + sun.y, rect[2])[0];
+  }
+
+  var BODIES = ['Sun','Moon','Mercury','Venus','Mars','Jupiter','Saturn','Uranus','Neptune','Pluto','North Node','Lilith'];
+  function allLongitudes(utcMs){
+    var d = dayNum(utcMs);
+    var sun = sunPos(d);
+    return {
+      'Sun': sun.lon,
+      'Moon': moonLon(d),
+      'Mercury': planetLon(elMercury, d, sun),
+      'Venus': planetLon(elVenus, d, sun),
+      'Mars': planetLon(elMars, d, sun),
+      'Jupiter': planetLon(elJupiter, d, sun),
+      'Saturn': planetLon(elSaturn, d, sun),
+      'Uranus': planetLon(elUranus, d, sun),
+      'Neptune': planetLon(elNeptune, d, sun),
+      'Pluto': planetLon(elPluto, d, sun),
+      'North Node': nodeLon(d),
+      'Lilith': lilithLon(d)
+    };
+  }
+  /* Retrograde by finite difference: is the body moving backward
+     half a day from now compared with now? */
+  function retrogrades(utcMs, lons){
+    var later = allLongitudes(utcMs + 0.5 * 86400000);
+    var out = {};
+    BODIES.forEach(function(b){
+      var diff = rev(later[b] - lons[b] + 180) - 180;
+      out[b] = diff < 0;
+    });
+    return out;
+  }
+
+  /* ---------- sidereal time, obliquity, angles, Placidus houses ---------- */
+  function jdOf(utcMs){ return utcMs / 86400000 + 2440587.5; }
+  function gmstDeg(utcMs){
+    var JD = jdOf(utcMs), T = (JD - 2451545.0) / 36525;
+    return rev(280.46061837 + 360.98564736629 * (JD - 2451545.0) + 0.000387933*T*T - T*T*T/38710000);
+  }
+  function obliquity(utcMs){
+    var T = (jdOf(utcMs) - 2451545.0) / 36525;
+    return 23 + (26 + (21.448 - 46.8150*T - 0.00059*T*T + 0.001813*T*T*T) / 60) / 60;
+  }
+  function ascMc(utcMs, lat, lonEast){
+    var ramc = rev(gmstDeg(utcMs) + lonEast);
+    var eps = obliquity(utcMs);
+    var mc = rev(Math.atan2(sind(ramc), cosd(ramc) * cosd(eps)) / D2R);
+    var asc = rev(Math.atan2(cosd(ramc), -(sind(ramc) * cosd(eps) + Math.tan(lat * D2R) * sind(eps))) / D2R);
+    return { ramc: ramc, eps: eps, asc: asc, mc: mc };
+  }
+  /* Placidus cusps by the standard iterative method: each intermediate cusp
+     is the ecliptic point that has covered a set fraction (1/3 or 2/3) of its
+     own semi-arc, so its declination — and the semi-arc itself — is found by
+     repeating the calculation until the longitude settles. */
+  function placidusCusps(ramc, lat, eps, asc, mc){
+    var cusps = { 1: asc, 4: rev(mc + 180), 7: rev(asc + 180), 10: mc };
+    function raToLon(ra){ return rev(Math.atan2(sind(ra), cosd(ra) * cosd(eps)) / D2R); }
+    function cusp(raGuess, house){
+      var lam = raToLon(rev(ramc + raGuess));
+      for (var i = 0; i < 60; i++){
+        var decl = Math.asin(sind(eps) * sind(lam)) / D2R;
+        var cosSA = -Math.tan(lat * D2R) * Math.tan(decl * D2R);
+        cosSA = Math.max(-1, Math.min(1, cosSA));
+        var SA = Math.acos(cosSA) / D2R, NSA = 180 - SA, H;
+        if (house === 11) H = -SA / 3;
+        else if (house === 12) H = -2 * SA / 3;
+        else if (house === 2) H = 180 + 2 * NSA / 3;
+        else H = 180 + NSA / 3; /* house 3 */
+        var newLam = raToLon(rev(ramc - H));
+        var moved = Math.abs(rev(newLam - lam + 180) - 180);
+        lam = newLam;
+        if (moved < 0.00005) break;
+      }
+      return lam;
+    }
+    cusps[11] = cusp(30, 11); cusps[12] = cusp(60, 12);
+    cusps[2] = cusp(120, 2); cusps[3] = cusp(150, 3);
+    cusps[5] = rev(cusps[11] + 180); cusps[6] = rev(cusps[12] + 180);
+    cusps[8] = rev(cusps[2] + 180); cusps[9] = rev(cusps[3] + 180);
+    return cusps;
+  }
+  function houseOf(lon, cusps){
+    for (var h = 1; h <= 12; h++){
+      var start = cusps[h], end = cusps[h === 12 ? 1 : h + 1];
+      if (rev(lon - start) < rev(end - start)) return h;
+    }
+    return 12;
+  }
+
+  /* ---------- Lahiri ayanamsa ----------
+     Linear fit through the Swiss Ephemeris values 23.1587° (1950),
+     23.8571° (2000) and 24.2121° (2025) — the true Lahiri value is very
+     nearly linear, so this stays within ~0.02° across 1950–2025. */
+  function ayanamsa(utcMs){
+    var years = (jdOf(utcMs) - 2451545.0) / 365.25;
+    return 23.8571 + 0.013968 * years;
+  }
+
+  /* ---------- signs, nakshatras, keywords ---------- */
+  var SIGNS = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+  var SIGN_GLYPHS = ['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'];
+  var BODY_GLYPHS = { 'Sun':'☉', 'Moon':'☽', 'Mercury':'☿', 'Venus':'♀', 'Mars':'♂', 'Jupiter':'♃', 'Saturn':'♄', 'Uranus':'♅', 'Neptune':'♆', 'Pluto':'♇', 'North Node':'☊', 'Lilith':'⚸' };
+  var SIGN_KEYS = [
+    'The spark — courage, initiative, and the urge to begin.',
+    'The builder — steadiness, comfort, and roots that hold.',
+    'The messenger — curiosity, quick wit, and two sides to every story.',
+    'The hearth — protection, memory, and fierce tenderness.',
+    'The performer — warmth, generosity, and a heart that wants to be seen.',
+    'The craftsperson — discernment, devotion to detail, and quiet usefulness.',
+    'The scales — harmony, partnership, and the art of fairness.',
+    'The deep water — intensity, transformation, and truths below the surface.',
+    'The archer — the search for meaning, honesty, and wide horizons.',
+    'The mountain — patience, ambition, and building things that last.',
+    'The water-bearer — originality, principle, and a future-facing mind.',
+    'The mystic — compassion, imagination, and dissolving boundaries.'
+  ];
+  var NAK_NAMES = ['Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha','Shravana','Dhanishta','Shatabhisha','Purva Bhadrapada','Uttara Bhadrapada','Revati'];
+  var NAK_KEYS = [
+    'Swift healers — speed, initiative, and a fresh start.',
+    'The bearer — creativity, responsibility, and carrying life through.',
+    'The flame — sharpness, purification, and cutting to the truth.',
+    'The red one — beauty, fertility, and steady growth.',
+    'The searching deer — curiosity, gentleness, and the quest.',
+    'The tear drop — storms, effort, and brilliance after rain.',
+    'The return of light — renewal, optimism, and coming home.',
+    'The nourisher — devotion, care, and quiet flourishing.',
+    'The serpent — intuition, mystery, and coiled wisdom.',
+    'The throne — ancestry, dignity, and inherited power.',
+    'The hammock — romance, pleasure, and creative ease.',
+    'The partnership star — loyalty, generosity, and lasting bonds.',
+    'The hand — skill, craft, and making things happen.',
+    'The jewel — artistry, charisma, and beautiful form.',
+    'The young sprout — independence, flexibility, and bending without breaking.',
+    'The arch — ambition, determination, and triumph after effort.',
+    'The lotus — friendship, discipline, and success through devotion.',
+    'The eldest — seniority, protection, and hard-won authority.',
+    'The root — investigation, uprooting, and getting to the bottom of things.',
+    'The fan — conviction, deep feeling, and an invincible spirit.',
+    'The universal star — integrity, endurance, and lasting victory.',
+    'The ear — listening, learning, and being heard.',
+    'The drum — rhythm, community, and shared celebration.',
+    'The hundred healers — vision, independence, and healing insight.',
+    'The burning pair — intensity, idealism, and transformation.',
+    'The deep serpent — stillness, wisdom, and restful depth.',
+    'The wealthy — compassion, safe journeys, and gentle completion.'
+  ];
+  var NAK_LORDS = ['Ketu','Venus','Sun','Moon','Mars','Rahu','Jupiter','Saturn','Mercury'];
+  function nakshatra(sidLon){
+    var span = 360 / 27;
+    var idx = Math.floor(rev(sidLon) / span);
+    var within = rev(sidLon) - idx * span;
+    return { idx: idx, name: NAK_NAMES[idx], lord: NAK_LORDS[idx % 9],
+             pada: Math.floor(within / (span / 4)) + 1, frac: within / span };
+  }
+
+  /* ---------- Vimshottari dasha ---------- */
+  var DASHA_YEARS = { Ketu: 7, Venus: 20, Sun: 6, Moon: 10, Mars: 7, Rahu: 18, Jupiter: 16, Saturn: 19, Mercury: 17 };
+  var LORD_CYCLE = ['Ketu','Venus','Sun','Moon','Mars','Rahu','Jupiter','Saturn','Mercury'];
+  var YEAR_MS = 365.25 * 86400000;
+  function mahadashas(birthMs, moonSid){
+    var nak = nakshatra(moonSid);
+    var li = LORD_CYCLE.indexOf(nak.lord);
+    var balance = (1 - nak.frac) * DASHA_YEARS[nak.lord];
+    var out = [], t = birthMs;
+    for (var k = 0; k < 9; k++){
+      var lord = LORD_CYCLE[(li + k) % 9];
+      var yrs = k === 0 ? balance : DASHA_YEARS[lord];
+      var end = t + yrs * YEAR_MS;
+      out.push({ lord: lord, start: t, end: end });
+      t = end;
+    }
+    return out;
+  }
+  function antardashas(maha){
+    var li = LORD_CYCLE.indexOf(maha.lord);
+    var out = [], t = maha.start;
+    for (var k = 0; k < 9; k++){
+      var sub = LORD_CYCLE[(li + k) % 9];
+      var end = t + DASHA_YEARS[maha.lord] * DASHA_YEARS[sub] / 120 * YEAR_MS;
+      out.push({ lord: sub, start: t, end: end });
+      t = end;
+    }
+    return out;
+  }
+
+  /* ---------- formatting ---------- */
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function fmtDate(ms){
+    var d = new Date(ms);
+    return MONTHS[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear();
+  }
+  function signIdx(lon){ return Math.floor(rev(lon) / 30); }
+  function fmtDegInSign(lon){
+    var deg = rev(lon) - signIdx(lon) * 30;
+    var dd = Math.floor(deg), mm = Math.floor((deg - dd) * 60);
+    return dd + '°' + (mm < 10 ? '0' : '') + mm + '′';
+  }
+  function fmtSignDeg(lon){ return SIGNS[signIdx(lon)] + ' ' + fmtDegInSign(lon); }
+  function fmtCoord(lat, lon){
+    return Math.abs(lat).toFixed(2) + '° ' + (lat >= 0 ? 'N' : 'S') + ', ' +
+           Math.abs(lon).toFixed(2) + '° ' + (lon >= 0 ? 'E' : 'W');
+  }
+
+  /* ---------- timezone handling (Intl, DST-aware) ---------- */
+  var FALLBACK_TZ = ['America/New_York','America/Chicago','America/Denver','America/Los_Angeles','America/Anchorage','Pacific/Honolulu','America/Toronto','America/Mexico_City','America/Sao_Paulo','Europe/London','Europe/Paris','Europe/Moscow','Africa/Cairo','Asia/Dubai','Asia/Karachi','Asia/Dhaka','Asia/Bangkok','Asia/Shanghai','Asia/Tokyo','Australia/Sydney','Pacific/Auckland','UTC'];
+  (function fillTz(){
+    var sel = $('asTz'); if (!sel) return;
+    var zones = null;
+    try { if (Intl.supportedValuesOf) zones = Intl.supportedValuesOf('timeZone'); } catch(e){}
+    if (!zones || !zones.length) zones = FALLBACK_TZ;
+    zones.forEach(function(z){
+      var o = document.createElement('option'); o.value = z; o.textContent = z.replace(/_/g,' ');
+      sel.appendChild(o);
+    });
+    sel.value = zones.indexOf('America/New_York') !== -1 ? 'America/New_York' : zones[0];
+  })();
+  function tzOffsetMs(tz, utcMs){
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: tz, hour12: false,
+        year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', second:'2-digit' }).formatToParts(new Date(utcMs));
+      var p = {};
+      parts.forEach(function(x){ p[x.type] = x.value; });
+      var asUtc = Date.UTC(+p.year, +p.month - 1, +p.day, (+p.hour) % 24, +p.minute, +p.second);
+      return asUtc - Math.floor(utcMs / 1000) * 1000;
+    } catch(e){ return 0; }
+  }
+  function zonedToUtc(tz, y, mo, d, h, mi){
+    var guess = Date.UTC(y, mo - 1, d, h, mi, 0);
+    var utc = guess;
+    for (var i = 0; i < 3; i++){ utc = guess - tzOffsetMs(tz, utc); }
+    return utc;
+  }
+
+  /* ---------- form elements & state ---------- */
+  var dateInput = $('asDate'), timeInput = $('asTime'), placeInput = $('asPlace'),
+      findBtn = $('asFind'), placeResults = $('asPlaceResults'), placePicked = $('asPlacePicked'),
+      placeStatus = $('asPlaceStatus'), manualBox = $('asManual'), coordRow = $('asCoordRow'),
+      latInput = $('asLat'), lonInput = $('asLon'),
+      noTime = $('asNoTime'), warn = $('asNoTimeWarn'), errBox = $('asError');
+  var pickedPlace = null; /* { name, lat, lon } from the lookup */
+
+  noTime.addEventListener('change', function(){
+    warn.classList.toggle('show', noTime.checked);
+    timeInput.disabled = noTime.checked;
+    if (noTime.checked) timeInput.value = ''; else if (!timeInput.value) timeInput.value = '12:00';
+  });
+  manualBox.addEventListener('change', function(){
+    coordRow.classList.toggle('show', manualBox.checked);
+  });
+  placeInput.addEventListener('input', function(){
+    if (pickedPlace){ pickedPlace = null; placePicked.classList.remove('show'); placePicked.textContent = ''; }
+  });
+  placeInput.addEventListener('keydown', function(ev){
+    if (ev.key === 'Enter'){ ev.preventDefault(); findBtn.click(); }
+  });
+
+  function setPlaceStatus(msg){ placeStatus.textContent = msg || ''; }
+
+  findBtn.addEventListener('click', function(){
+    var q = placeInput.value.replace(/^\s+|\s+$/g, '');
+    placeResults.innerHTML = ''; placeResults.classList.remove('show');
+    if (!q){ setPlaceStatus('Type a place name first, then tap Find place.'); return; }
+    setPlaceStatus('Looking up “' + q + '”…');
+    findBtn.disabled = true;
+    fetch('https://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + encodeURIComponent(q))
+      .then(function(res){ if (!res.ok) throw new Error('lookup returned ' + res.status); return res.json(); })
+      .then(function(list){
+        findBtn.disabled = false;
+        if (!list || !list.length){
+          setPlaceStatus('No matches found for “' + q + '” — check the spelling, add a state or country, or enter the coordinates manually below.');
+          return;
+        }
+        setPlaceStatus('Tap your birthplace:');
+        list.forEach(function(item){
+          var lat = parseFloat(item.lat), lon = parseFloat(item.lon);
+          if (!isFinite(lat) || !isFinite(lon)) return;
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'as-place-opt';
+          b.innerHTML = esc(item.display_name) + '<small>' + fmtCoord(lat, lon) + '</small>';
+          b.addEventListener('click', function(){
+            pickedPlace = { name: item.display_name, lat: lat, lon: lon };
+            placePicked.textContent = '✓ Birthplace set: ' + item.display_name + ' — ' + fmtCoord(lat, lon);
+            placePicked.classList.add('show');
+            placeResults.innerHTML = ''; placeResults.classList.remove('show');
+            setPlaceStatus('');
+          });
+          placeResults.appendChild(b);
+        });
+        placeResults.classList.add('show');
+      })
+      .catch(function(){
+        findBtn.disabled = false;
+        setPlaceStatus('The place lookup couldn’t be reached just now. You can enter the coordinates manually below instead — the charts only need the numbers.');
+      });
+  });
+
+  /* ---------- Western / Vedic tabs ---------- */
+  var tabW = $('asTabW'), tabV = $('asTabV'), panelW = $('asPanelW'), panelV = $('asPanelV');
+  function showPanel(which){
+    var western = which === 'western';
+    tabW.setAttribute('aria-pressed', western ? 'true' : 'false');
+    tabV.setAttribute('aria-pressed', western ? 'false' : 'true');
+    panelW.classList.toggle('view-hidden', !western);
+    panelV.classList.toggle('view-hidden', western);
+  }
+  tabW.addEventListener('click', function(){ showPanel('western'); });
+  tabV.addEventListener('click', function(){ showPanel('vedic'); });
+
+  /* ---------- chart wheel (SVG) ---------- */
+  function wheelSvg(lons, cusps, asc, mc, hasAngles){
+    var C = 200, ascRef = hasAngles ? asc : 0;
+    function pt(lon, r){
+      var phi = (180 + (lon - ascRef)) * D2R;
+      return [C + r * Math.cos(phi), C - r * Math.sin(phi)];
+    }
+    function ptStr(lon, r){ var p = pt(lon, r); return p[0].toFixed(1) + ',' + p[1].toFixed(1); }
+    var s = '<svg viewBox="0 0 400 400" role="img" aria-label="Your natal chart wheel: the twelve signs around the rim, house cusps as spokes, and the planets placed at their birth longitudes">';
+    s += '<circle cx="200" cy="200" r="172" fill="none" stroke="var(--line2)" stroke-width="2"/>';
+    s += '<circle cx="200" cy="200" r="142" fill="none" stroke="var(--line)" stroke-width="1.5"/>';
+    s += '<circle cx="200" cy="200" r="74" fill="none" stroke="var(--line)" stroke-width="1.5"/>';
+    var k, p1, p2;
+    for (k = 0; k < 12; k++){
+      p1 = pt(k * 30, 142); p2 = pt(k * 30, 172);
+      s += '<line x1="' + p1[0].toFixed(1) + '" y1="' + p1[1].toFixed(1) + '" x2="' + p2[0].toFixed(1) + '" y2="' + p2[1].toFixed(1) + '" stroke="var(--line2)" stroke-width="1.2"/>';
+      var g = pt(k * 30 + 15, 157);
+      s += '<text x="' + g[0].toFixed(1) + '" y="' + (g[1] + 7).toFixed(1) + '" text-anchor="middle" font-size="19" fill="var(--purple)">' + SIGN_GLYPHS[k] + '</text>';
+    }
+    if (hasAngles && cusps){
+      for (k = 1; k <= 12; k++){
+        var isAngle = (k === 1 || k === 10);
+        p1 = pt(cusps[k], 74); p2 = pt(cusps[k], 142);
+        s += '<line x1="' + p1[0].toFixed(1) + '" y1="' + p1[1].toFixed(1) + '" x2="' + p2[0].toFixed(1) + '" y2="' + p2[1].toFixed(1) + '" stroke="' + (isAngle ? 'var(--purple)' : 'var(--line2)') + '" stroke-width="' + (isAngle ? 2.4 : 1.1) + '"/>';
+        var next = cusps[k === 12 ? 1 : k + 1];
+        var mid = cusps[k] + rev(next - cusps[k]) / 2;
+        var hp = pt(mid, 90);
+        s += '<text x="' + hp[0].toFixed(1) + '" y="' + (hp[1] + 4).toFixed(1) + '" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">' + k + '</text>';
+      }
+      var aL = pt(asc, 188), mL = pt(mc, 188);
+      s += '<text x="' + aL[0].toFixed(1) + '" y="' + (aL[1] + 4).toFixed(1) + '" text-anchor="middle" font-size="13" font-weight="800" fill="var(--purple)">ASC</text>';
+      s += '<text x="' + mL[0].toFixed(1) + '" y="' + (mL[1] + 4).toFixed(1) + '" text-anchor="middle" font-size="13" font-weight="800" fill="var(--teal)">MC</text>';
+    }
+    /* planet markers, staggered radially when they crowd together */
+    var marks = BODIES.map(function(b){ return { b: b, lon: lons[b] }; })
+      .sort(function(a, b2){ return a.lon - b2.lon; });
+    var radii = [120, 99, 137], lastLon = null, level = 0;
+    marks.forEach(function(m){
+      if (lastLon !== null && rev(m.lon - lastLon) < 10) level = (level + 1) % 3; else level = 0;
+      lastLon = m.lon;
+      var p = pt(m.lon, radii[level]);
+      s += '<text x="' + p[0].toFixed(1) + '" y="' + (p[1] + 6).toFixed(1) + '" text-anchor="middle" font-size="18" fill="var(--purple)">' + BODY_GLYPHS[m.b] + '</text>';
+    });
+    s += '</svg>';
+    return s;
+  }
+
+  /* ---------- aspects ---------- */
+  var ASPECTS = [
+    { angle: 0, name: 'Conjunction', glyph: '☌' },
+    { angle: 60, name: 'Sextile', glyph: '⚹' },
+    { angle: 90, name: 'Square', glyph: '□' },
+    { angle: 120, name: 'Trine', glyph: '△' },
+    { angle: 180, name: 'Opposition', glyph: '☍' }
+  ];
+  function findAspects(lons){
+    var found = [];
+    for (var i = 0; i < BODIES.length; i++){
+      for (var j = i + 1; j < BODIES.length; j++){
+        var a = BODIES[i], b = BODIES[j];
+        var sep = Math.abs(rev(lons[a] - lons[b] + 180) - 180);
+        var limit = (a === 'Sun' || a === 'Moon' || b === 'Sun' || b === 'Moon') ? 8 : 6;
+        var best = null;
+        ASPECTS.forEach(function(asp){
+          var orb = Math.abs(sep - asp.angle);
+          if (orb <= limit && (!best || orb < best.orb)) best = { asp: asp, orb: orb };
+        });
+        if (best) found.push({ a: a, b: b, name: best.asp.name, glyph: best.asp.glyph, orb: best.orb });
+      }
+    }
+    found.sort(function(x, y){ return x.orb - y.orb; });
+    return found;
+  }
+
+  /* ---------- submit ---------- */
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    errBox.classList.remove('show'); errBox.textContent = '';
+    function fail(msg){ errBox.textContent = msg; errBox.classList.add('show'); }
+    var dateVal = dateInput.value;
+    if (!dateVal){ fail('Please choose your birth date — both charts are calculated from it.'); return; }
+    var dp = dateVal.split('-');
+    var y = +dp[0], mo = +dp[1], d = +dp[2];
+    if (!(y >= 1800 && y <= 2100)){ fail('This calculator covers birth years 1800–2100.'); return; }
+    var usedNoon = noTime.checked;
+    var h = 12, mi = 0;
+    if (!usedNoon){
+      var tv = timeInput.value;
+      if (!tv){ fail('Please enter your birth time, or check “I don’t know my birth time” and we’ll use noon.'); return; }
+      var tp = tv.split(':'); h = +tp[0]; mi = +tp[1];
+    }
+    /* coordinates: valid manual entry wins, then a picked place, else none */
+    var coords = null;
+    if (manualBox.checked && (latInput.value !== '' || lonInput.value !== '')){
+      var la = parseFloat(latInput.value), lo = parseFloat(lonInput.value);
+      if (!isFinite(la) || !isFinite(lo)){ fail('Both latitude and longitude are needed to place the Ascendant — or clear both to build the charts without a birthplace.'); return; }
+      if (la < -90 || la > 90 || lo < -180 || lo > 180){ fail('Latitude runs −90 to 90 and longitude −180 to 180 — please check those numbers.'); return; }
+      coords = { name: 'coordinates you entered', lat: la, lon: lo };
+    } else if (pickedPlace){
+      coords = pickedPlace;
+    }
+    var tz = $('asTz').value || 'America/New_York';
+    var birthMs = zonedToUtc(tz, y, mo, d, h, mi);
+    var birthLabel = MONTHS[mo - 1] + ' ' + d + ', ' + y;
+
+    var lons = allLongitudes(birthMs);
+    var retro = retrogrades(birthMs, lons);
+    var aya = ayanamsa(birthMs);
+    var sid = {};
+    BODIES.forEach(function(b){ sid[b] = rev(lons[b] - aya); });
+    sid['Ketu'] = rev(sid['North Node'] + 180);
+
+    var hasAngles = !!coords && !usedNoon;
+    var angles = null, cusps = null;
+    if (hasAngles){
+      angles = ascMc(birthMs, coords.lat, coords.lon);
+      cusps = placidusCusps(angles.ramc, coords.lat, angles.eps, angles.asc, angles.mc);
+    }
+    var lagnaSid = hasAngles ? rev(angles.asc - aya) : null;
+
+    /* ----- header ----- */
+    var head = '';
+    head += '<h4 style="margin-top:6px">Your charts' + (coords ? ' — born in ' + esc(coords.name) : '') + '</h4>';
+    head += '<p style="color:var(--ink2);margin:0 0 16px">Born ' + birthLabel +
+      (usedNoon ? ' (time unknown — calculated for 12:00 noon ' : ' at ' + (h < 10 ? '0' : '') + h + ':' + (mi < 10 ? '0' : '') + mi + ' ') +
+      esc(tz.replace(/_/g, ' ')) + ')' +
+      (coords ? ' · ' + fmtCoord(coords.lat, coords.lon) : '') + '.</p>';
+    if (usedNoon) head += '<div class="bg-warn show" style="margin:0 0 16px">⚠️ Calculated for <strong>12:00 noon</strong> because no birth time was given — the Ascendant, MC, houses, and Lagna are not shown, and the Moon sign is flagged where it appears: the Moon moves fast, and noon may not be your Moon’s sign at all.</div>';
+    else if (!coords) head += '<div class="bg-warn show" style="margin:0 0 16px">ℹ️ <strong>No birthplace coordinates:</strong> the Ascendant, MC, houses, and Lagna need a birthplace, so they’re not shown. Everything else — every planet, the aspects, the nakshatras, and the dasha timeline — is fully calculated. Use Find place or enter coordinates manually and rebuild to add them.</div>';
+    $('asHead').innerHTML = head;
+
+    /* ----- western panel ----- */
+    var w = '';
+    w += '<span class="ev ev-t">Spiritual tradition</span>';
+    w += '<div class="bg-sumgrid" style="margin-top:12px">';
+    w += '<div class="bg-sum"><div class="k">☉ Sun sign</div><div class="v">' + SIGNS[signIdx(lons.Sun)] + '</div><div class="d">' + SIGN_KEYS[signIdx(lons.Sun)] + '</div></div>';
+    w += '<div class="bg-sum"><div class="k">☽ Moon sign' + (usedNoon ? ' — may shift' : '') + '</div><div class="v">' + SIGNS[signIdx(lons.Moon)] + '</div><div class="d">' + SIGN_KEYS[signIdx(lons.Moon)] + (usedNoon ? ' Noon was used; the Moon can change signs within a day.' : '') + '</div></div>';
+    if (hasAngles){
+      w += '<div class="bg-sum"><div class="k">↑ Rising sign (Ascendant)</div><div class="v">' + SIGNS[signIdx(angles.asc)] + '</div><div class="d">' + SIGN_KEYS[signIdx(angles.asc)] + '</div></div>';
+    } else {
+      w += '<div class="bg-sum"><div class="k">↑ Rising sign</div><div class="v">Not shown</div><div class="d">' + (usedNoon ? 'The Rising sign needs a birth time.' : 'The Rising sign needs birthplace coordinates.') + '</div></div>';
+    }
+    w += '</div>';
+    w += '<div class="as-wheelwrap" style="margin-top:18px"><div class="as-wheelbox">' + wheelSvg(lons, cusps, hasAngles ? angles.asc : 0, hasAngles ? angles.mc : 0, hasAngles) +
+      '<div style="font-size:13.5px;color:var(--muted);margin-top:8px">' + (hasAngles ? 'The Ascendant sits at the left; signs and houses run counterclockwise. ' : 'Drawn with 0° Aries at the left — without a birth time and birthplace there is no Ascendant to anchor the wheel. ') + '☉ Sun · ☽ Moon · ☿ Mercury · ♀ Venus · ♂ Mars · ♃ Jupiter · ♄ Saturn · ♅ Uranus · ♆ Neptune · ♇ Pluto · ☊ North Node · ⚸ Lilith</div></div>';
+    w += '<div><h4 style="margin-top:0">Placements — tropical</h4>';
+    w += '<table class="as-table"><thead><tr><th>Body</th><th>Sign</th><th>House</th><th></th></tr></thead><tbody>';
+    BODIES.forEach(function(b){
+      w += '<tr><td>' + BODY_GLYPHS[b] + ' ' + (b === 'Lilith' ? 'Lilith (Black Moon)' : b) + '</td><td>' + fmtSignDeg(lons[b]) + '</td><td>' +
+        (hasAngles ? houseOf(lons[b], cusps) : '—') + '</td><td>' + (retro[b] ? '℞' : '') + '</td></tr>';
+    });
+    w += '</tbody></table>';
+    if (hasAngles){
+      w += '<p style="color:var(--ink2);font-size:14.5px;margin:10px 0 0">Ascendant ' + fmtSignDeg(angles.asc) + ' · Midheaven (MC) ' + fmtSignDeg(angles.mc) + ' · Placidus houses. ℞ marks a planet moving retrograde — backward as seen from Earth — at your birth moment.</p>';
+    } else {
+      w += '<p style="color:var(--ink2);font-size:14.5px;margin:10px 0 0">℞ marks a planet moving retrograde — backward as seen from Earth — at your birth moment.</p>';
+    }
+    w += '</div></div>';
+    var asps = findAspects(lons);
+    w += '<h4>Aspects — the angles between planets</h4>';
+    if (asps.length){
+      w += '<table class="as-table"><thead><tr><th>Pair</th><th>Aspect</th><th>Orb</th></tr></thead><tbody>';
+      asps.forEach(function(a){
+        w += '<tr><td>' + a.a + ' — ' + a.b + '</td><td>' + a.glyph + ' ' + a.name + '</td><td>' + a.orb.toFixed(1) + '°</td></tr>';
+      });
+      w += '</tbody></table>';
+      w += '<p style="color:var(--ink2);font-size:14.5px;margin:10px 0 0">The orb is how far the pair sits from the exact angle — smaller means closer to exact. Tradition reads these as conversations between the planets: some harmonious (trine, sextile), some tense (square, opposition), some a merging of voices (conjunction).</p>';
+    } else {
+      w += '<p style="color:var(--ink2)">No major aspects fall within orb in this chart.</p>';
+    }
+    panelW.innerHTML = w;
+
+    /* ----- vedic panel ----- */
+    var v = '';
+    v += '<p style="color:var(--ink2);margin:0 0 14px">Sidereal positions use the <strong style="color:var(--ink)">Lahiri ayanamsa of ' + aya.toFixed(2) + '°</strong> for this chart — every tropical longitude minus the ayanamsa. Houses are Whole Sign houses counted from the Lagna, as is traditional in Vedic astrology.</p>';
+    v += '<span class="ev ev-t">Spiritual tradition</span>';
+    v += '<div class="bg-sumgrid" style="margin-top:12px">';
+    if (hasAngles){
+      var ln = nakshatra(lagnaSid);
+      v += '<div class="bg-sum"><div class="k">Lagna (Ascendant)</div><div class="v">' + SIGNS[signIdx(lagnaSid)] + '</div><div class="d">' + SIGN_KEYS[signIdx(lagnaSid)] + ' Lagna star: ' + ln.name + ', pada ' + ln.pada + '.</div></div>';
+    } else {
+      v += '<div class="bg-sum"><div class="k">Lagna (Ascendant)</div><div class="v">Not shown</div><div class="d">' + (usedNoon ? 'The Lagna needs a birth time.' : 'The Lagna needs birthplace coordinates.') + '</div></div>';
+    }
+    var moonNak = nakshatra(sid.Moon);
+    v += '<div class="bg-sum"><div class="k">Moon sign · Janma Rashi' + (usedNoon ? ' — may shift' : '') + '</div><div class="v">' + SIGNS[signIdx(sid.Moon)] + '</div><div class="d">' + SIGN_KEYS[signIdx(sid.Moon)] + '</div></div>';
+    v += '<div class="bg-sum"><div class="k">Moon’s nakshatra</div><div class="v">' + moonNak.name + '</div><div class="d">Pada ' + moonNak.pada + ' · ruled by ' + moonNak.lord + '. ' + NAK_KEYS[moonNak.idx] + '</div></div>';
+    v += '</div>';
+    v += '<h4>Placements — sidereal</h4>';
+    v += '<table class="as-table"><thead><tr><th>Body</th><th>Sign</th><th>Nakshatra</th><th>House</th><th></th></tr></thead><tbody>';
+    if (hasAngles){
+      v += '<tr><td>Lagna</td><td>' + fmtSignDeg(lagnaSid) + '</td><td>' + ln.name + ' · pada ' + ln.pada + '</td><td>1</td><td></td></tr>';
+    }
+    var grahas = ['Sun','Moon','Mars','Mercury','Jupiter','Venus','Saturn','North Node','Ketu'];
+    var grahaNames = { 'North Node': 'Rahu', 'Ketu': 'Ketu' };
+    grahas.forEach(function(b){
+      var lon = sid[b], nk = nakshatra(lon);
+      var isRetro = b === 'Ketu' ? retro['North Node'] : retro[b];
+      v += '<tr><td>' + (grahaNames[b] || b) + '</td><td>' + fmtSignDeg(lon) + '</td><td>' + nk.name + ' · pada ' + nk.pada + '</td><td>' +
+        (hasAngles ? (((signIdx(lon) - signIdx(lagnaSid) + 12) % 12) + 1) : '—') + '</td><td>' + (isRetro ? '℞' : '') + '</td></tr>';
+    });
+    v += '</tbody></table>';
+    v += '<p style="color:var(--ink2);font-size:14.5px;margin:10px 0 0">Rahu is the North Node and Ketu the South Node, the eclipse points — in this tradition they are always read as retrograde. The other ℞ marks show planets moving retrograde at your birth moment.</p>';
+
+    /* dashas */
+    var periods = mahadashas(birthMs, sid.Moon);
+    var now = Date.now();
+    var current = null;
+    periods.forEach(function(p){ if (now >= p.start && now < p.end) current = p; });
+    v += '<h4>Vimshottari dasha — the traditional timing system</h4>';
+    v += '<p style="color:var(--ink2);margin:0 0 10px">Your dasha story starts from the Moon’s nakshatra: ' + moonNak.name + ' is ruled by ' + moonNak.lord + ', so your first period was ' + moonNak.lord + '’s, with ' + ((1 - moonNak.frac) * DASHA_YEARS[moonNak.lord]).toFixed(2) + ' of its ' + DASHA_YEARS[moonNak.lord] + ' years left at your birth. Tradition reads these long periods as seasons of a life, each with its ruling planet’s themes. The timeline is shown as the tradition keeps it — as a map of periods, not a prediction.</p>';
+    v += '<table class="as-table"><thead><tr><th>Mahadasha</th><th>From</th><th>To</th></tr></thead><tbody>';
+    periods.forEach(function(p){
+      var isCur = current && p.lord === current.lord && p.start === current.start;
+      v += '<tr' + (isCur ? ' class="as-current"' : '') + '><td>' + p.lord + (isCur ? ' · now' : '') + '</td><td>' + fmtDate(p.start) + '</td><td>' + fmtDate(p.end) + '</td></tr>';
+    });
+    v += '</tbody></table>';
+    if (current){
+      var subs = antardashas(current);
+      v += '<h4 style="font-size:19px">Inside the current ' + current.lord + ' mahadasha — antardashas</h4>';
+      v += '<table class="as-table"><thead><tr><th>Antardasha</th><th>From</th><th>To</th></tr></thead><tbody>';
+      subs.forEach(function(p){
+        var isCur = now >= p.start && now < p.end;
+        v += '<tr' + (isCur ? ' class="as-current"' : '') + '><td>' + current.lord + ' / ' + p.lord + (isCur ? ' · now' : '') + '</td><td>' + fmtDate(p.start) + '</td><td>' + fmtDate(p.end) + '</td></tr>';
+      });
+      v += '</tbody></table>';
+    }
+    v += '<p style="color:var(--ink2);font-size:14px;margin:10px 0 0">Period lengths use the traditional Vimshottari year of 365.25 days, so dates can differ by a few days from calendars that count a year differently.</p>';
+    panelV.innerHTML = v;
+
+    showPanel('western');
+    var box = $('asResults');
+    box.classList.add('show');
+    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+
 </script>
 </body>
 </html>
