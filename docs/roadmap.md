@@ -82,6 +82,15 @@ Still ahead, in the owner's chosen order: the comprehensive frequency
 reference (which draws on this citation base), then the biofield-scan
 question.
 
+Link preview fix (2026-11-16, V23): the owner noticed that sharing the
+site's address (for example on Facebook) showed a gray box with no
+picture or logo, because the page carried no link-preview tags. The
+page head now carries Open Graph and Twitter Card meta tags, a
+1200×630 preview image (assets/og-image.jpg), a real favicon and
+Apple touch icon (assets/favicon.png, assets/apple-touch-icon.png),
+and a proper page title. Head-only change; all content and scripts
+are unchanged from V22.
+
 Principles that do not change:
 
 - Free access. No required account, no subscription, no advertising.
